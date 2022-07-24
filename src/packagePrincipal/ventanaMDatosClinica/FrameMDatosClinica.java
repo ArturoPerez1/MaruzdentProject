@@ -10,7 +10,7 @@ public class FrameMDatosClinica extends javax.swing.JFrame {
 
     public void AgregarVentanaDatosClinica() {
         _panelMDatosClinica = new PanelMDatosClinica();
-        _panelMDatosClinica.setSize(900, 700);
+        _panelMDatosClinica.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelMDatosClinica, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -40,7 +40,7 @@ public class FrameMDatosClinica extends javax.swing.JFrame {
             .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

@@ -13,6 +13,12 @@ public class ControladorMDatosMedico {
 
     private int _posicionMedico;
     private boolean _cedulaRepetida;
+    private boolean _cedulaP1Vacia;
+    private boolean _codigoPErroneo;
+    private boolean _digitosMenor10;
+    private boolean _cedulaP2Vacia;
+    private boolean _codigoVErroneo;
+    private String _cedulaCompleta;
     private VerificarDatosMedico _verificarDatosMedicos;
     private ControladorArraysList _controladorArrayList;
     private PanelMDatosMedicos _panelMDatosMedicos;
@@ -40,15 +46,15 @@ public class ControladorMDatosMedico {
             try {
                 if (evento.getSource() == _panelMDatosMedicos.getBotonBuscar()) {
                     _panelMDatosMedicos.QuitarPanelModificadore();
-                    _verificarDatosMedicos.VerificarCedula(_panelMDatosMedicos.getTextoBuscarCedula());
-                    _posicionMedico = _controladorArrayList.ObtenerIndiceCedulaMedico(_panelMDatosMedicos.getTextoBuscarCedula());
-                    _verificarDatosMedicos.VerificarCedula(_panelMDatosMedicos.getTextoBuscarCedula());
-                    if (_verificarDatosMedicos.IsCedulaVerificada() == true) {
-                        _panelMDatosMedicos.ErrorCedula(true);
-                    } else {
+                    _verificarDatosMedicos.VerificarCedulaMedicoM(_panelMDatosMedicos.getTextoBuscarCedula());
+                    if (_verificarDatosMedicos.IsCedulaP1Vacia() == false) {
+                        _posicionMedico = _controladorArrayList.ObtenerIndiceCedulaMedico(_panelMDatosMedicos.getTextoBuscarCedula());
+                        _panelMDatosMedicos.LlenarTableParcial(_controladorArrayList.getRegistroMedicos(), _posicionMedico);
                         _panelMDatosMedicos.AgregarPanelModificadore();
                         _panelModificadores = _panelMDatosMedicos.getPanelModificadores();
                         _panelModificadores.AddActionListener(new AddActionListenerVentanaModificadores());
+                    } else {
+                        _panelMDatosMedicos.ErrorCedula(true);
                     }
                 } else if (evento.getSource() == _panelMDatosMedicos.getBotonVolver()) {
                     _panelMDatosMedicos.QuitarPanelModificadore();
@@ -70,18 +76,58 @@ public class ControladorMDatosMedico {
         public void actionPerformed(ActionEvent evento) {
             try {
                 if (evento.getSource() == _panelModificadores.getBotonMCedula()) {
-                    _cedulaRepetida = _controladorArrayList.CedulaMedicosRepetida(_panelModificadores.getFtMCedula());
-                    if (_cedulaRepetida == false) {
-                        _controladorArrayList.ModificarCedulaMedico(_posicionMedico, _panelModificadores.getFtMCedula());
-                        _panelModificadores.setFtMCedula();
-                        _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
-                        _panelMDatosMedicos.LlenaComboBoxCedulas1(_controladorArrayList.getRegistroMedicos());
+                    _verificarDatosMedicos.VerificarCedula(_panelModificadores.getFtMCedulP1(), _panelModificadores.getFtCedulaP2());
+                    _cedulaP1Vacia = _verificarDatosMedicos.IsCedulaP1Vacia();
+                    _cedulaP2Vacia = _verificarDatosMedicos.IsCedulaP2Vacia();
+                    _codigoPErroneo = _verificarDatosMedicos.IsCedulaP1CodigoPVerificado();
+                    _codigoVErroneo = _verificarDatosMedicos.IsCedulaP2CodigoVerificacionV();
+                    _digitosMenor10 = _verificarDatosMedicos.IsCedulaP1PocoDigitos();
+
+                    if (_cedulaP1Vacia == false && _cedulaP2Vacia == false && _codigoPErroneo == false
+                            && _codigoVErroneo == false && _digitosMenor10 == false) {
+
+                        _cedulaCompleta = _panelModificadores.getFtMCedulP1() + "-" + _panelModificadores.getFtCedulaP2();
+                        _cedulaRepetida = _controladorArrayList.CedulaMedicosRepetida(_cedulaCompleta);
+                        if (_cedulaRepetida == false) {
+                            _controladorArrayList.ModificarCedulaMedico(_posicionMedico, _cedulaCompleta);
+                            _panelModificadores.setFtMCedula();
+                            _panelModificadores.setFtMCedula1();
+                            _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
+                            _panelMDatosMedicos.LlenaComboBoxCedulas1(_controladorArrayList.getRegistroMedicos());
+                        } else {
+                            _panelModificadores.setLabelCedulaExistente();
+                            _panelModificadores.ErrorCedulaP1(true);
+                            _panelModificadores.ErrorCedulaP2(true);
+                        }
                     } else {
-                        _panelModificadores.setLabelAviso1();
-                        _panelModificadores.ErrorCedula(true);
+                        if (_cedulaP1Vacia == true && _cedulaP2Vacia == true) {
+                            _panelModificadores.ErrorCedulaP1(_cedulaP1Vacia);
+                            _panelModificadores.ErrorCedulaP2(_cedulaP2Vacia);
+                            _panelModificadores.CedulaP1Y2Vacia();
+                        } else if (_cedulaP1Vacia == true) {
+                            _panelModificadores.setLabelErrorCedula1();
+                            _panelModificadores.ErrorCedulaP1(_cedulaP1Vacia);
+                            _panelModificadores.CedulaP1Vacia();
+                        } else if (_cedulaP2Vacia == true) {
+                            _panelModificadores.setLabelErrorCedula1();
+                            _panelModificadores.ErrorCedulaP2(_cedulaP2Vacia);
+                            _panelModificadores.CedulaP2Vacia();
+                        } else if (_codigoPErroneo == true) {
+                            _panelModificadores.setLabelErrorCedula1();
+                            _panelModificadores.ErrorCedulaP1(_codigoPErroneo);
+                            _panelModificadores.CodigoProviciaE();
+                        } else if (_codigoVErroneo == true) {
+                            _panelModificadores.setLabelErrorCedula1();
+                            _panelModificadores.ErrorCedulaP2(_codigoVErroneo);
+                            _panelModificadores.CodigoVerificacionE();
+                        } else if (_digitosMenor10 == true) {
+                            _panelModificadores.setLabelErrorCedula1();
+                            _panelModificadores.ErrorCedulaP1(_digitosMenor10);
+                            _panelModificadores.DigitosMenorA10();
+                        }
                     }
                 } else if (evento.getSource() == _panelModificadores.getBotonMEspecialidad()) {
-                    _verificarDatosMedicos.VerificarNombreMedico(_panelModificadores.getTextoEspecialidad());
+                    _verificarDatosMedicos.VerificarEspecialidad(_panelModificadores.getTextoEspecialidad());
                     if (_verificarDatosMedicos.IsEspecialidadVerificada() == false) {
                         _controladorArrayList.ModificarEspecialidadMedico(_posicionMedico, _panelModificadores.getTextoEspecialidad());
                         _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
@@ -98,6 +144,7 @@ public class ControladorMDatosMedico {
                         _panelModificadores.setFtMNombre();
                     } else {
                         _panelModificadores.ErrorNombre(true);
+                        _panelModificadores.setLabelNombreVacio();
                     }
                 } else if (evento.getSource() == _panelModificadores.getBotonMTelefono()) {
                     _verificarDatosMedicos.VerificarTelefono(_panelModificadores.getFtMTelefono());
@@ -107,7 +154,14 @@ public class ControladorMDatosMedico {
                         _panelModificadores.setFtMTelefono();
                     } else {
                         _panelModificadores.ErrorTelefono(true);
+                        _panelModificadores.setLabelTelefonoVacio();
                     }
+                } else if (evento.getSource() == _panelModificadores.getBotonTableC()) {
+                    _panelMDatosMedicos.QuitarPanelModificadore();
+                    _panelMDatosMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
+                    _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
+                    _panelMDatosMedicos.LlenaComboBoxCedulas1(_controladorArrayList.getRegistroMedicos());
+                    _panelMDatosMedicos.AddActionListener(new AddActionListenerVentanaMDatosMedicos());
                 }
             } catch (Error e) {
                 System.out.println("Error = " + e);

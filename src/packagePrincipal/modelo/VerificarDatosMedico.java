@@ -3,7 +3,11 @@ package packagePrincipal.modelo;
 public class VerificarDatosMedico {
 
     private boolean _isNombreVerificado;
-    private boolean _isCedulaVerificada;
+    private boolean _isCedulaP1Vacia;
+    private boolean _isCedulaP1PocoDigitos;
+    private boolean _isCedulaP1CodigoPVerificado;
+    private boolean _isCedulaP2Vacia;
+    private boolean _isCedulaP2CodigoVerificacionV;
     private boolean _isTelefonoVerificado;
     private boolean _isEspecialidadVerificada;
     private boolean _isEstadoConsultaVerificado;
@@ -35,27 +39,114 @@ public class VerificarDatosMedico {
         }
     }
 
-    public void VerificarCedula(String cedula) {
-        int contador = 0;
-        _isCedulaVerificada = false;
-        char c;
-        if (cedula.isEmpty()) {
-            _isCedulaVerificada = true;
-        } else {
-            for (int i = 0; i < cedula.length(); i++) {
-                c = cedula.charAt(i);
-                if (c < '0' || c > '9') {
-                    _isCedulaVerificada = true;
-                    break;
+    //aquí obtengo los primeros primero 9 dígitos
+    public String ObtenerLosPrimeros9Digitos(String cedulaP1) {
+        int cont = 0;
+        String primero9Digitos = "";
+
+        for (int i = 0; i < cedulaP1.length(); i++) {
+            if (cont == 8) {
+                break;
+            } else {
+                primero9Digitos += String.valueOf(cedulaP1.charAt(i));
+                cont++;
+            }
+        }
+
+        return primero9Digitos;
+    }
+
+    //aqui obtengo el numero de verificacion
+    public int ObtenerNumeroDeVerificador(String primero9Digitos) {
+        int numeroVerificacion = 0;
+        int digito = 0;
+        int digitosPares = 0;
+        int digitosImpares = 0;
+
+        for (int i = 0; i < primero9Digitos.length(); i++) {
+            digito = Integer.valueOf(primero9Digitos.charAt(i));
+            if ((digito % 2) == 0) {
+                digitosPares += digito;
+            } else {
+                digito *= 2;
+                if (digito > 9) {
+                    digito -= 9;
+                    digitosImpares += digito;
                 } else {
-                    _isCedulaVerificada = false;
-                    contador++;
+                    digitosImpares += digito;
                 }
             }
         }
 
-        if (contador >= 9 || contador < 6) {
-            _isCedulaVerificada = true;
+        numeroVerificacion = (digitosImpares + digitosPares) % 10;
+
+        return numeroVerificacion;
+    }
+
+    //aqui obtengo el codigo de provincia
+    public int ObtenerCodigoProvincia(String cedulaP1) {
+        String codigoProvincia = "";
+        int codigo = 0;
+        int cont = 0;
+
+        for (int i = 0; i < cedulaP1.length(); i++) {
+            if (cont > 1) {
+                break;
+            } else {
+                codigoProvincia += cedulaP1.charAt(i);
+                cont++;
+            }
+        }
+
+        codigo = Integer.valueOf(codigoProvincia);
+
+        return codigo;
+    }
+
+    public void VerificarCedulaMedicoM(String cedulaP1) {
+        _isCedulaP1Vacia = false;
+        if (cedulaP1 == " ") {
+            _isCedulaP1Vacia = true;
+        }
+    }
+
+    public void VerificarCedula(String cedulaP1, String cedulaP2) {
+        String primero9Digitos = "";
+        int verificarLengthCedula = 0;
+        int numeroVerificador = 0;
+        int comparadorCodigo = 0;
+        _isCedulaP1Vacia = false;
+        _isCedulaP1CodigoPVerificado = false;
+        _isCedulaP1PocoDigitos = false;
+        _isCedulaP2CodigoVerificacionV = false;
+        _isCedulaP2Vacia = false;
+
+        if (cedulaP1.isEmpty()) {
+            _isCedulaP1Vacia = true;
+        }
+
+        if (cedulaP2.isEmpty()) {
+            _isCedulaP2Vacia = true;
+        }
+
+        if (_isCedulaP1Vacia == false && _isCedulaP2Vacia == false) {
+            verificarLengthCedula = cedulaP1.length() + cedulaP2.length();
+            if (verificarLengthCedula <= 9) {
+                _isCedulaP1PocoDigitos = true;
+            } else {
+                comparadorCodigo = ObtenerCodigoProvincia(cedulaP1);
+                if (comparadorCodigo > 24 && comparadorCodigo != 30) {
+                    _isCedulaP1CodigoPVerificado = true;
+                } else {
+                    primero9Digitos = ObtenerLosPrimeros9Digitos(cedulaP1);
+                    numeroVerificador = ObtenerNumeroDeVerificador(primero9Digitos);
+                    if (numeroVerificador != Integer.valueOf(cedulaP2)) {
+                        _isCedulaP2CodigoVerificacionV = true;
+                    }
+                }
+
+            }
+
         }
     }
 
@@ -88,10 +179,6 @@ public class VerificarDatosMedico {
         return _isNombreVerificado;
     }
 
-    public boolean IsCedulaVerificada() {
-        return _isCedulaVerificada;
-    }
-
     public boolean IsTelefonoVerificado() {
         return _isTelefonoVerificado;
     }
@@ -102,6 +189,26 @@ public class VerificarDatosMedico {
 
     public boolean IsEstadoConsultaVerificado() {
         return _isEstadoConsultaVerificado;
+    }
+
+    public boolean IsCedulaP1Vacia() {
+        return _isCedulaP1Vacia;
+    }
+
+    public boolean IsCedulaP1PocoDigitos() {
+        return _isCedulaP1PocoDigitos;
+    }
+
+    public boolean IsCedulaP1CodigoPVerificado() {
+        return _isCedulaP1CodigoPVerificado;
+    }
+
+    public boolean IsCedulaP2Vacia() {
+        return _isCedulaP2Vacia;
+    }
+
+    public boolean IsCedulaP2CodigoVerificacionV() {
+        return _isCedulaP2CodigoVerificacionV;
     }
 
 }

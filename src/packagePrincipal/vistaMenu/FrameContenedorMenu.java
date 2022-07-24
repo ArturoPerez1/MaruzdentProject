@@ -10,7 +10,7 @@ public class FrameContenedorMenu extends javax.swing.JFrame {
 
     public void AgregarVentanaContenedorMenu() {
         _panelMenu = new PanelMenuCompleto();
-        _panelMenu.setSize(900, 700);
+        _panelMenu.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelMenu, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -27,7 +27,7 @@ public class FrameContenedorMenu extends javax.swing.JFrame {
         setUndecorated(true);
         setResizable(false);
 
-        _panelContenedor.setPreferredSize(new java.awt.Dimension(900, 700));
+        _panelContenedor.setPreferredSize(new java.awt.Dimension(1200, 700));
         _panelContenedor.setLayout(null);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -41,7 +41,7 @@ public class FrameContenedorMenu extends javax.swing.JFrame {
             .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

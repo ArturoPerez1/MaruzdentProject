@@ -31,28 +31,9 @@ public class ControladorMenu {
         this._mostrarBotones = false;
         _frameContenedor.AgregarVentanaContenedorMenu();
         this._panelContenedorMenu = _frameContenedor.getPanelMenu();
-        _panelContenedorMenu.AddActionListener(new AgregarListenerPanelMenuCompleto());
-    }
-
-    public class AgregarListenerPanelMenuCompleto implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent evento) {
-            try {
-                if (evento.getSource() == _panelContenedorMenu.getBotonMenu() && _mostrarBotones == false) {
-                    _panelContenedorMenu.AgregarVentanaMenu();
-                    _panelMenu = _panelContenedorMenu.getPanelMenu();
-                    _panelMenu.AddActionListener(new AgregarListenerBotonesMenu());
-                    _mostrarBotones = true;
-                } else if (evento.getSource() == _panelContenedorMenu.getBotonMenu() && _mostrarBotones == true) {
-                    _panelContenedorMenu.OcularVentanaMenu();
-                    _mostrarBotones = false;
-                }
-            } catch (Error e) {
-                System.out.println("Error" + e);
-            }
-        }
-
+        _panelContenedorMenu.AgregarVentanaMenu();
+        _panelMenu = _panelContenedorMenu.getPanelMenu();
+        _panelMenu.AddActionListener(new AgregarListenerBotonesMenu());
     }
 
     public class AgregarListenerBotonesMenu implements ActionListener {

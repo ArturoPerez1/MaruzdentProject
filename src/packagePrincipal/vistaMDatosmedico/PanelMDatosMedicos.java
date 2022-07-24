@@ -16,7 +16,7 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
 
     public void AgregarPanelModificadore() {
         _panelModificadores = new PanelModificadores();
-        _panelModificadores.setSize(510, 260);
+        _panelModificadores.setSize(739, 300);
         _panelContendorModificadores.removeAll();
         _panelContendorModificadores.add(_panelModificadores, BorderLayout.CENTER);
         _panelContendorModificadores.revalidate();
@@ -59,7 +59,6 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        _lbLogo = new javax.swing.JLabel();
         _botonVolver = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         _jtDatosMedicos = new javax.swing.JTable();
@@ -67,18 +66,16 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _lbSeleccioneC = new javax.swing.JLabel();
         _botonBuscar = new javax.swing.JButton();
         _panelContendorModificadores = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(26, 188, 156));
+        setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        _lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/modificarDatosM.png"))); // NOI18N
-        add(_lbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
-
-        _botonVolver.setBackground(new java.awt.Color(54, 203, 167));
+        _botonVolver.setBackground(new java.awt.Color(77, 182, 172));
         _botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/volver.png"))); // NOI18N
         _botonVolver.setBorder(null);
         _botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 70, 60));
+        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
         _jtDatosMedicos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _jtDatosMedicos.setModel(new javax.swing.table.DefaultTableModel(
@@ -104,7 +101,7 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _jtDatosMedicos.setGridColor(new java.awt.Color(0, 102, 255));
         jScrollPane1.setViewportView(_jtDatosMedicos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 780, 270));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1020, 240));
 
         _cbCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _cbCedula.addActionListener(new java.awt.event.ActionListener() {
@@ -112,30 +109,49 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
                 _cbCedulaActionPerformed(evt);
             }
         });
-        add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 510, 290, 50));
+        add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 290, 50));
 
         _lbSeleccioneC.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbSeleccioneC.setForeground(new java.awt.Color(153, 255, 255));
         _lbSeleccioneC.setText("SELECCIONE LA CÉDULA DEL MÉDICO");
-        add(_lbSeleccioneC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 320, -1));
+        add(_lbSeleccioneC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, 320, -1));
 
         _botonBuscar.setBackground(new java.awt.Color(54, 203, 167));
         _botonBuscar.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
         _botonBuscar.setForeground(new java.awt.Color(255, 255, 255));
         _botonBuscar.setText("BUSCAR");
         _botonBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        add(_botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 570, 150, 50));
+        _botonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        _botonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                _botonBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                _botonBuscarMouseExited(evt);
+            }
+        });
+        add(_botonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 570, 150, 50));
 
-        _panelContendorModificadores.setBackground(new java.awt.Color(26, 188, 156));
+        _panelContendorModificadores.setBackground(new java.awt.Color(38, 166, 154));
         _panelContendorModificadores.setLayout(null);
-        add(_panelContendorModificadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, 510, 260));
+        add(_panelContendorModificadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, 740, 300));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/modificarMedico.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _cbCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbCedulaActionPerformed
-        QuitarPanelModificadore();
         _cbCedula.setBackground(Color.white);
         _textoBuscarCedula = _cbCedula.getSelectedItem().toString();
     }//GEN-LAST:event__cbCedulaActionPerformed
+
+    private void _botonBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonBuscarMouseEntered
+        _botonBuscar.setBackground(new java.awt.Color(0, 191, 165));
+    }//GEN-LAST:event__botonBuscarMouseEntered
+
+    private void _botonBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonBuscarMouseExited
+        _botonBuscar.setBackground(new java.awt.Color(54, 203, 167));
+    }//GEN-LAST:event__botonBuscarMouseExited
 
     public void AddActionListener(ActionListener listener) {
         _botonBuscar.addActionListener(listener);
@@ -147,9 +163,9 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     javax.swing.JButton _botonVolver;
     javax.swing.JComboBox<String> _cbCedula;
     javax.swing.JTable _jtDatosMedicos;
-    javax.swing.JLabel _lbLogo;
     javax.swing.JLabel _lbSeleccioneC;
     javax.swing.JPanel _panelContendorModificadores;
+    javax.swing.JLabel jLabel1;
     javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private PanelModificadores _panelModificadores;
@@ -179,6 +195,29 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
 
             _model.addRow(fila);
         }
+
+    }
+
+    public void LlenarTableParcial(ArrayList<DatosMedicos> registrar, int i) {
+        _model = new DefaultTableModel();
+        this._registrar = registrar;
+
+        _model.addColumn("NOMBRE Y APELLIDO");
+        _model.addColumn("CÉDULA");
+        _model.addColumn("TELÉFONO");
+        _model.addColumn("ESPECIALIDAD");
+
+        _jtDatosMedicos.setModel(_model);
+
+        _model.setRowCount(0);
+
+        Object[] fila = {
+            _registrar.get(i).getNombreMedico(),
+            _registrar.get(i).getCedulaMedico(),
+            _registrar.get(i).getNumeroTelefonico(),
+            _registrar.get(i).getEspecialidad()};
+
+        _model.addRow(fila);
 
     }
 
