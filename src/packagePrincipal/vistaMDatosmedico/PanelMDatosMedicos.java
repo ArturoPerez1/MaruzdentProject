@@ -2,6 +2,7 @@ package packagePrincipal.vistaMDatosmedico;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -36,14 +37,11 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         }
     }
 
-    public void LlenaComboBoxCedulas1(ArrayList<DatosMedicos> registroMedicos) {
+    public void QuitarItems() {
         try {
             _cbCedula.removeAllItems();
         } catch (NullPointerException e) {
-            _cbCedula.addItem(" ");
-        }
-        for (int i = 0; i < registroMedicos.size(); i++) {
-            _cbCedula.addItem(registroMedicos.get(i).getCedulaMedico());
+
         }
     }
 
@@ -67,6 +65,8 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _botonBuscar = new javax.swing.JButton();
         _panelContendorModificadores = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        _labelSelecCError = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,6 +77,7 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
+        _jtDatosMedicos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         _jtDatosMedicos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _jtDatosMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,22 +89,25 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
             new String [] {
                 " NOMBRE Y APELLIDO", "CÉDULA", "TELÉFONO", "ESPECIALIDAD"
             }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         _jtDatosMedicos.setEnabled(false);
-        _jtDatosMedicos.setGridColor(new java.awt.Color(0, 102, 255));
+        _jtDatosMedicos.setFocusable(false);
+        _jtDatosMedicos.setGridColor(new java.awt.Color(102, 102, 102));
+        _jtDatosMedicos.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        _jtDatosMedicos.setRowHeight(25);
+        _jtDatosMedicos.setSelectionBackground(new java.awt.Color(10, 233, 206));
+        _jtDatosMedicos.setSelectionForeground(new java.awt.Color(0, 0, 0));
+        _jtDatosMedicos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(_jtDatosMedicos);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1020, 240));
 
         _cbCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        _cbCedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _cbCedulaMouseClicked(evt);
+            }
+        });
         _cbCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _cbCedulaActionPerformed(evt);
@@ -138,10 +142,21 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/modificarMedico.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
+
+        _labelSelecCError.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
+        _labelSelecCError.setForeground(new java.awt.Color(255, 255, 255));
+        _labelSelecCError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(_labelSelecCError, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 650, 310, 20));
+
+        jLabel2.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel2.setText("LISTA DE MÉDICOS REGISTRADOS");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, 440, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _cbCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbCedulaActionPerformed
         _cbCedula.setBackground(Color.white);
+        setLabelSelecCError1();
         _textoBuscarCedula = _cbCedula.getSelectedItem().toString();
     }//GEN-LAST:event__cbCedulaActionPerformed
 
@@ -153,6 +168,10 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _botonBuscar.setBackground(new java.awt.Color(54, 203, 167));
     }//GEN-LAST:event__botonBuscarMouseExited
 
+    private void _cbCedulaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__cbCedulaMouseClicked
+        _cbCedula.setBackground(Color.white);
+    }//GEN-LAST:event__cbCedulaMouseClicked
+
     public void AddActionListener(ActionListener listener) {
         _botonBuscar.addActionListener(listener);
         _botonVolver.addActionListener(listener);
@@ -163,9 +182,11 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     javax.swing.JButton _botonVolver;
     javax.swing.JComboBox<String> _cbCedula;
     javax.swing.JTable _jtDatosMedicos;
+    javax.swing.JLabel _labelSelecCError;
     javax.swing.JLabel _lbSeleccioneC;
     javax.swing.JPanel _panelContendorModificadores;
     javax.swing.JLabel jLabel1;
+    javax.swing.JLabel jLabel2;
     javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private PanelModificadores _panelModificadores;
@@ -173,10 +194,18 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     private ArrayList<DatosMedicos> _registrar;
     private DefaultTableModel _model;
 
+    public void ObtenerTablaPersonalizada() {
+        _jtDatosMedicos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        _jtDatosMedicos.getTableHeader().setBackground(new Color(2, 119, 189));
+        _jtDatosMedicos.getTableHeader().setForeground(new Color(255, 255, 255));
+        _jtDatosMedicos.setRowHeight(25);
+    }
+
     public void LlenarTable(ArrayList<DatosMedicos> registrar) {
         _model = new DefaultTableModel();
+        _jtDatosMedicos.setEnabled(true);
+        ObtenerTablaPersonalizada();
         this._registrar = registrar;
-
         _model.addColumn("NOMBRE Y APELLIDO");
         _model.addColumn("CÉDULA");
         _model.addColumn("TELÉFONO");
@@ -196,10 +225,13 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
             _model.addRow(fila);
         }
 
+        _jtDatosMedicos.setEnabled(false);
     }
 
     public void LlenarTableParcial(ArrayList<DatosMedicos> registrar, int i) {
         _model = new DefaultTableModel();
+        _jtDatosMedicos.setEnabled(true);
+        ObtenerTablaPersonalizada();
         this._registrar = registrar;
 
         _model.addColumn("NOMBRE Y APELLIDO");
@@ -218,7 +250,17 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
             _registrar.get(i).getEspecialidad()};
 
         _model.addRow(fila);
+        
+        _jtDatosMedicos.setEnabled(false);
 
+    }
+
+    public void setLabelSelecCError() {
+        this._labelSelecCError.setText("SELECCIONE UNA CÉDULA");
+    }
+
+    public void setLabelSelecCError1() {
+        this._labelSelecCError.setText("");
     }
 
     public JButton getBotonBuscar() {

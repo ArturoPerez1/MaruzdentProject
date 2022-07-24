@@ -8,6 +8,7 @@ package packagePrincipal.vistaMDatosmedico;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 public class PanelModificadores extends javax.swing.JPanel {
@@ -70,6 +71,7 @@ public class PanelModificadores extends javax.swing.JPanel {
         _labelNombreVacio = new javax.swing.JLabel();
         _labelTelofonoVacio = new javax.swing.JLabel();
         _botonTableC = new javax.swing.JButton();
+        _labelEspecialidadError = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 137, 123));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -81,6 +83,11 @@ public class PanelModificadores extends javax.swing.JPanel {
 
         _ftMNombre.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftMNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        _ftMNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _ftMNombreMouseClicked(evt);
+            }
+        });
         _ftMNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 _ftMNombreKeyTyped(evt);
@@ -113,16 +120,21 @@ public class PanelModificadores extends javax.swing.JPanel {
         _lbModificarTelefono.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarTelefono.setForeground(new java.awt.Color(153, 255, 255));
         _lbModificarTelefono.setText("MODIFICAR TELÉFONO");
-        add(_lbModificarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
+        add(_lbModificarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
 
         _ftMTelefono.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftMTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        _ftMTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _ftMTelefonoMouseClicked(evt);
+            }
+        });
         _ftMTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 _ftMTelefonoKeyTyped(evt);
             }
         });
-        add(_ftMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 190, 190, 30));
+        add(_ftMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 190, 30));
 
         _lbModificarEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarEspecialidad.setForeground(new java.awt.Color(153, 255, 255));
@@ -176,7 +188,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _botonMTelefonoMouseExited(evt);
             }
         });
-        add(_botonMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 130, 30));
+        add(_botonMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 130, 30));
 
         _botonMEspecialidad.setBackground(new java.awt.Color(54, 203, 167));
         _botonMEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
@@ -195,6 +207,11 @@ public class PanelModificadores extends javax.swing.JPanel {
         add(_botonMEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 130, 30));
 
         _cBMEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Odontólogo general", "Odontopediatra", "Ortodoncista", "Periodoncista", "Endodoncista", "Patólogo oral o Cirujano oral", "Prostodoncista" }));
+        _cBMEspecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _cBMEspecialidadMouseClicked(evt);
+            }
+        });
         _cBMEspecialidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _cBMEspecialidadActionPerformed(evt);
@@ -253,12 +270,17 @@ public class PanelModificadores extends javax.swing.JPanel {
             }
         });
         add(_botonTableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 210, 30));
+
+        _labelEspecialidadError.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
+        _labelEspecialidadError.setForeground(new java.awt.Color(255, 255, 255));
+        _labelEspecialidadError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(_labelEspecialidadError, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _ftMNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftMNombreKeyTyped
         char c = evt.getKeyChar();
-        setLabelNombreVacio1();
         _ftMNombre.setBackground(Color.white);
+        setLabelNombreVacio1();
         if (Character.isLowerCase(c)) {
             String cad = ("" + c).toUpperCase();
             c = cad.charAt(0);
@@ -274,6 +296,7 @@ public class PanelModificadores extends javax.swing.JPanel {
 
     private void _ftCedulaP1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftCedulaP1KeyTyped
         char c = evt.getKeyChar();
+        _ftCedulaP1.setBackground(Color.white);
         setLabelErrorCedula1();
         if (c < '0' || c > '9') {
             evt.consume();
@@ -292,14 +315,15 @@ public class PanelModificadores extends javax.swing.JPanel {
 
     private void _ftMTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftMTelefonoKeyTyped
         char c = evt.getKeyChar();
-        setLabelTelefonoVacio1();
         _ftMTelefono.setBackground(Color.white);
+        setLabelTelefonoVacio1();
         if (c < '0' || c > '9') {
             evt.consume();
         }
     }//GEN-LAST:event__ftMTelefonoKeyTyped
 
     private void _cBMEspecialidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cBMEspecialidadActionPerformed
+        setLabelEspecialidadError1();
         _cBMEspecialidad.setBackground(Color.white);
         _textoEspecialidad = _cBMEspecialidad.getSelectedItem().toString();
     }//GEN-LAST:event__cBMEspecialidadActionPerformed
@@ -307,6 +331,7 @@ public class PanelModificadores extends javax.swing.JPanel {
     private void _ftCedulaP2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftCedulaP2KeyTyped
         char c = evt.getKeyChar();
         setLabelErrorCedula1();
+         _ftCedulaP2.setBackground(Color.white);
         if (c < '0' || c > '9') {
             evt.consume();
         } else {
@@ -382,6 +407,18 @@ public class PanelModificadores extends javax.swing.JPanel {
         _botonTableC.setBackground(new java.awt.Color(54, 203, 167));
     }//GEN-LAST:event__botonTableCMouseExited
 
+    private void _ftMNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__ftMNombreMouseClicked
+        _ftMNombre.setBackground(Color.white);
+    }//GEN-LAST:event__ftMNombreMouseClicked
+
+    private void _cBMEspecialidadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__cBMEspecialidadMouseClicked
+        _cBMEspecialidad.setBackground(Color.white);
+    }//GEN-LAST:event__cBMEspecialidadMouseClicked
+
+    private void _ftMTelefonoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__ftMTelefonoMouseClicked
+        _ftMTelefono.setBackground(Color.white);
+    }//GEN-LAST:event__ftMTelefonoMouseClicked
+
     public void AddActionListener(ActionListener listener) {
         _botonMCedula.addActionListener(listener);
         _botonMNombre.addActionListener(listener);
@@ -402,6 +439,7 @@ public class PanelModificadores extends javax.swing.JPanel {
     javax.swing.JTextField _ftMNombre;
     javax.swing.JTextField _ftMTelefono;
     javax.swing.JLabel _labelError1;
+    javax.swing.JLabel _labelEspecialidadError;
     javax.swing.JLabel _labelNombreVacio;
     javax.swing.JLabel _labelTelofonoVacio;
     javax.swing.JLabel _lbModificarCedula;
@@ -495,7 +533,7 @@ public class PanelModificadores extends javax.swing.JPanel {
     }
 
     public void DigitosMenorA10() {
-        this._labelError1.setText("CÉDULA MENOR A 10 DÍGITOS");
+        this._labelError1.setText("CÉDULA MENOR A 9 DÍGITOS");
     }
 
     public void CodigoVerificacionE() {
@@ -530,6 +568,14 @@ public class PanelModificadores extends javax.swing.JPanel {
 
     public void setLabelTelefonoVacio1() {
         this._labelTelofonoVacio.setText("");
+    }
+
+    public void setLabelEspecialidadError() {
+        this._labelEspecialidadError.setText("SELECCIONE UNA ESPECIALIDAD");
+    }
+
+    public void setLabelEspecialidadError1() {
+        this._labelEspecialidadError.setText("");
     }
 
 }

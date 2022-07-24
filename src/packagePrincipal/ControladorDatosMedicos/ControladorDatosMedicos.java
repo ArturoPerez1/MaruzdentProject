@@ -1,7 +1,11 @@
 package packagePrincipal.ControladorDatosMedicos;
 
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.modelo.VerificarDatosMedico;
 import packagePrincipal.ventanaMDatosClinica.FrameMDatosClinica;
@@ -67,6 +71,7 @@ public class ControladorDatosMedicos {
                             _panelADatosMedico.setLabelErrorCedula();
                             _panelADatosMedico.ErrorCedulaP1(true);
                         } else {
+                            JOptionPane.showMessageDialog(null, "MÉDICO REGISTRADO EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             _panelADatosMedico.setLabelErrorCedula1();
                             _panelADatosMedico.setFtCedulaMedico();
                             _panelADatosMedico.setFtNombreMedico();
@@ -87,6 +92,7 @@ public class ControladorDatosMedicos {
 
                         if (_especialidadV == true) {
                             _panelADatosMedico.ErrorEspecialidad(_especialidadV);
+                            _panelADatosMedico.setLabelEscogerEspecialidad();
                         }
 
                         if (_cedulaP1Vacia == true && _cedulaP2Vacia == true) {

@@ -8,8 +8,6 @@ package packagePrincipal.vistaADatosMedicos;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import vista.PlaceHolder;
 
 public class PanelADatosMedico extends javax.swing.JPanel {
@@ -49,8 +47,6 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     public void ErrorEspecialidad(boolean error) {
         if (error == true) {
             _cbEspecialidadMedico.setBackground(Color.red);
-        } else {
-            _cbEspecialidadMedico.setBackground(Color.white);
         }
     }
 
@@ -74,6 +70,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _ftCedulaP2 = new javax.swing.JTextField();
         _labelNombreVacio = new javax.swing.JLabel();
         _labelTelofonoVacio = new javax.swing.JLabel();
+        _labelEError = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -127,17 +124,22 @@ public class PanelADatosMedico extends javax.swing.JPanel {
 
         _cbEspecialidadMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Odontólogo general", "Odontopediatra", "Ortodoncista", "Periodoncista", "Endodoncista", "Patólogo oral o Cirujano oral", "Prostodoncista" }));
         _cbEspecialidadMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        _cbEspecialidadMedico.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                _cbEspecialidadMedicoMouseClicked(evt);
+            }
+        });
         _cbEspecialidadMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _cbEspecialidadMedicoActionPerformed(evt);
             }
         });
-        add(_cbEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 510, 270, 40));
+        add(_cbEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 270, 40));
 
         _lbEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbEspecialidad.setForeground(new java.awt.Color(153, 255, 255));
         _lbEspecialidad.setText("ESPECIALIDAD DEL MÉDICO");
-        add(_lbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 480, -1, 30));
+        add(_lbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, -1, 30));
 
         _lbTelefonoMedico.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbTelefonoMedico.setForeground(new java.awt.Color(153, 255, 255));
@@ -172,7 +174,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _botonRegistrarMouseExited(evt);
             }
         });
-        add(_botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 600, 290, 60));
+        add(_botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, 290, 60));
 
         _labelError1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelError1.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,10 +215,16 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _labelTelofonoVacio.setForeground(new java.awt.Color(255, 255, 255));
         _labelTelofonoVacio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         add(_labelTelofonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 260, 30));
+
+        _labelEError.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
+        _labelEError.setForeground(new java.awt.Color(255, 255, 255));
+        _labelEError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        add(_labelEError, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 280, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _ftNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftNombreMedicoKeyTyped
         setLabelNombreVacio1();
+        _ftNombreMedico.setBackground(Color.white);
         char c = evt.getKeyChar();
         if (Character.isLowerCase(c)) {
             String cad = ("" + c).toUpperCase();
@@ -233,6 +241,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
 
     private void _ftCedulaP1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftCedulaP1KeyTyped
         setLabelErrorCedula1();
+        _ftCedulaP1.setBackground(Color.white);
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
@@ -251,6 +260,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
 
     private void _ftTelefonoMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftTelefonoMedicoKeyTyped
         setLabelTelefonoVacio1();
+        _ftTelefonoMedico.setBackground(Color.white);
         char c = evt.getKeyChar();
         if (c < '0' || c > '9') {
             evt.consume();
@@ -258,6 +268,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     }//GEN-LAST:event__ftTelefonoMedicoKeyTyped
 
     private void _cbEspecialidadMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbEspecialidadMedicoActionPerformed
+        setLabelEscogerEspecialidad1();
         _cbEspecialidadMedico.setBackground(Color.white);
         _textoEspecialidad = _cbEspecialidadMedico.getSelectedItem().toString();
     }//GEN-LAST:event__cbEspecialidadMedicoActionPerformed
@@ -273,6 +284,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     private void _ftCedulaP2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftCedulaP2KeyTyped
         setLabelErrorCedula1();
         char c = evt.getKeyChar();
+        _ftCedulaP2.setBackground(Color.white);
         if (c < '0' || c > '9') {
             evt.consume();
         } else {
@@ -316,6 +328,10 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         }
     }//GEN-LAST:event__ftCedulaP2KeyReleased
 
+    private void _cbEspecialidadMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__cbEspecialidadMedicoMouseClicked
+        _cbEspecialidadMedico.setBackground(Color.white);
+    }//GEN-LAST:event__cbEspecialidadMedicoMouseClicked
+
     public void AddActionListener(ActionListener listener) {
         _botonVolver.addActionListener(listener);
         _botonRegistrar.addActionListener(listener);
@@ -329,6 +345,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     javax.swing.JTextField _ftCedulaP2;
     javax.swing.JTextField _ftNombreMedico;
     javax.swing.JTextField _ftTelefonoMedico;
+    javax.swing.JLabel _labelEError;
     javax.swing.JLabel _labelError1;
     javax.swing.JLabel _labelGuion;
     javax.swing.JLabel _labelNombreVacio;
@@ -393,7 +410,6 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         this._textoEspecialidad = "";
     }
 
-    //nuevos labels de error para la cedula
     public void CedulaP1Vacia() {
         this._labelError1.setText("CÉDULA VACÍA");
     }
@@ -411,7 +427,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     }
 
     public void DigitosMenorA10() {
-        this._labelError1.setText("CÉDULA MENOR A 10 DÍGITOS");
+        this._labelError1.setText("CÉDULA MENOR A 9 DÍGITOS");
     }
 
     public void CodigoVerificacionE() {
@@ -428,7 +444,6 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         this._labelError1.setText("");
     }
 
-    //-------------------------------------
     public void setLabelNombreVacio() {
         this._labelNombreVacio.setText("CAMPO NOMBRE VACÍO");
     }
@@ -444,4 +459,13 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     public void setLabelTelefonoVacio1() {
         this._labelTelofonoVacio.setText("");
     }
+
+    public void setLabelEscogerEspecialidad() {
+        this._labelEError.setText("SELECCIONE UNA ESPECIALIDAD");
+    }
+
+    public void setLabelEscogerEspecialidad1() {
+        this._labelEError.setText("");
+    }
+
 }

@@ -2,6 +2,7 @@ package packagePrincipal.ControladorDatosMedicos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.modelo.VerificarDatosMedico;
 import packagePrincipal.ventanaMDatosClinica.FrameMDatosClinica;
@@ -55,6 +56,7 @@ public class ControladorMDatosMedico {
                         _panelModificadores.AddActionListener(new AddActionListenerVentanaModificadores());
                     } else {
                         _panelMDatosMedicos.ErrorCedula(true);
+                        _panelMDatosMedicos.setLabelSelecCError();
                     }
                 } else if (evento.getSource() == _panelMDatosMedicos.getBotonVolver()) {
                     _panelMDatosMedicos.QuitarPanelModificadore();
@@ -89,11 +91,13 @@ public class ControladorMDatosMedico {
                         _cedulaCompleta = _panelModificadores.getFtMCedulP1() + "-" + _panelModificadores.getFtCedulaP2();
                         _cedulaRepetida = _controladorArrayList.CedulaMedicosRepetida(_cedulaCompleta);
                         if (_cedulaRepetida == false) {
+                            JOptionPane.showMessageDialog(null, "CÉDULA MODIFICADA EXITOSAMENTE", "MODIFICACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             _controladorArrayList.ModificarCedulaMedico(_posicionMedico, _cedulaCompleta);
                             _panelModificadores.setFtMCedula();
                             _panelModificadores.setFtMCedula1();
                             _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
-                            _panelMDatosMedicos.LlenaComboBoxCedulas1(_controladorArrayList.getRegistroMedicos());
+                            _panelMDatosMedicos.QuitarItems();
+                            _panelMDatosMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
                         } else {
                             _panelModificadores.setLabelCedulaExistente();
                             _panelModificadores.ErrorCedulaP1(true);
@@ -129,16 +133,19 @@ public class ControladorMDatosMedico {
                 } else if (evento.getSource() == _panelModificadores.getBotonMEspecialidad()) {
                     _verificarDatosMedicos.VerificarEspecialidad(_panelModificadores.getTextoEspecialidad());
                     if (_verificarDatosMedicos.IsEspecialidadVerificada() == false) {
+                        JOptionPane.showMessageDialog(null, "ESPECIALIDAD MODIFICADA EXITOSAMENTE", "MODIFICACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                         _controladorArrayList.ModificarEspecialidadMedico(_posicionMedico, _panelModificadores.getTextoEspecialidad());
                         _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
                         _panelModificadores.setcBMEspecialidad();
                         _panelModificadores.setTextoEspecialidad();
                     } else {
                         _panelModificadores.ErrorEspecialidad(true);
+                        _panelModificadores.setLabelEspecialidadError();
                     }
                 } else if (evento.getSource() == _panelModificadores.getBotonMNombre()) {
                     _verificarDatosMedicos.VerificarNombreMedico(_panelModificadores.getFtMNombre());
                     if (_verificarDatosMedicos.IsNombreVerificado() == false) {
+                        JOptionPane.showMessageDialog(null, "NOMBRE MODIFICADO EXITOSAMENTE", "MODIFICACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                         _controladorArrayList.ModificarNombreMedico(_posicionMedico, _panelModificadores.getFtMNombre());
                         _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
                         _panelModificadores.setFtMNombre();
@@ -149,6 +156,7 @@ public class ControladorMDatosMedico {
                 } else if (evento.getSource() == _panelModificadores.getBotonMTelefono()) {
                     _verificarDatosMedicos.VerificarTelefono(_panelModificadores.getFtMTelefono());
                     if (_verificarDatosMedicos.IsTelefonoVerificado() == false) {
+                        JOptionPane.showMessageDialog(null, "NÚMERO TELEFÓNICO MODIFICADO EXITOSAMENTE", "MODIFICACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                         _controladorArrayList.ModificarTelefonoMedico(_posicionMedico, _panelModificadores.getFtMTelefono());
                         _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
                         _panelModificadores.setFtMTelefono();
@@ -158,9 +166,9 @@ public class ControladorMDatosMedico {
                     }
                 } else if (evento.getSource() == _panelModificadores.getBotonTableC()) {
                     _panelMDatosMedicos.QuitarPanelModificadore();
-                    _panelMDatosMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
                     _panelMDatosMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
-                    _panelMDatosMedicos.LlenaComboBoxCedulas1(_controladorArrayList.getRegistroMedicos());
+                    _panelMDatosMedicos.QuitarItems();
+                    _panelMDatosMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
                     _panelMDatosMedicos.AddActionListener(new AddActionListenerVentanaMDatosMedicos());
                 }
             } catch (Error e) {
