@@ -26,7 +26,7 @@ public class PanelBotonesMenu extends javax.swing.JPanel {
         _botonPaciente.setBackground(new java.awt.Color(54, 203, 167));
         _botonPaciente.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _botonPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        _botonPaciente.setText("PACIENTE");
+        _botonPaciente.setText("REGISTRAR PACIENTE");
         _botonPaciente.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _botonPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         _botonPaciente.addMouseListener(new java.awt.event.MouseAdapter() {
