@@ -6,12 +6,14 @@ public class DatosMedicos {
     private String _cedulaMedico;
     private String _especialidad;
     private String _numeroTelefonico;
+    private String _rutaImagen;
 
-    public DatosMedicos(String nombreMedico, String cedulaMedico, String especialidad, String numeroTelefonico) {
+    public DatosMedicos(String nombreMedico, String cedulaMedico, String especialidad, String numeroTelefonico, String rutaImagen) {
         this._nombreMedico = nombreMedico;
         this._cedulaMedico = cedulaMedico;
         this._especialidad = especialidad;
         this._numeroTelefonico = numeroTelefonico;
+        this._rutaImagen = rutaImagen;
     }
 
     public String getNombreMedico() {
@@ -28,6 +30,14 @@ public class DatosMedicos {
 
     public String getNumeroTelefonico() {
         return _numeroTelefonico;
+    }
+
+    public String getRutaImagen() {
+        return _rutaImagen;
+    }
+
+    public void setRutaImagen(String _rutaImagen) {
+        this._rutaImagen = _rutaImagen;
     }
 
     public void setNombreMedico(String _nombreMedico) {

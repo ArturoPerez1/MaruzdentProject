@@ -14,7 +14,7 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     public PanelMDatosMedicos() {
         initComponents();
     }
-
+    
     public void AgregarPanelModificadore() {
         _panelModificadores = new PanelModificadores();
         _panelModificadores.setSize(739, 300);
@@ -77,8 +77,6 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
-        _jtDatosMedicos.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        _jtDatosMedicos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _jtDatosMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -87,20 +85,16 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                " NOMBRE Y APELLIDO", "CÉDULA", "TELÉFONO", "ESPECIALIDAD"
+                "NOMBRE Y APELLIDO", "CÉDULA", "TELÉFONO", "ESPECIALIDAD"
             }
         ));
-        _jtDatosMedicos.setEnabled(false);
         _jtDatosMedicos.setFocusable(false);
-        _jtDatosMedicos.setGridColor(new java.awt.Color(102, 102, 102));
         _jtDatosMedicos.setIntercellSpacing(new java.awt.Dimension(0, 0));
         _jtDatosMedicos.setRowHeight(25);
-        _jtDatosMedicos.setSelectionBackground(new java.awt.Color(10, 233, 206));
-        _jtDatosMedicos.setSelectionForeground(new java.awt.Color(0, 0, 0));
         _jtDatosMedicos.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(_jtDatosMedicos);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1020, 240));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 1040, 240));
 
         _cbCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _cbCedula.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -195,16 +189,16 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
     private DefaultTableModel _model;
 
     public void ObtenerTablaPersonalizada() {
-        _jtDatosMedicos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         _jtDatosMedicos.getTableHeader().setBackground(new Color(2, 119, 189));
+        _jtDatosMedicos.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
         _jtDatosMedicos.getTableHeader().setForeground(new Color(255, 255, 255));
         _jtDatosMedicos.setRowHeight(25);
     }
 
     public void LlenarTable(ArrayList<DatosMedicos> registrar) {
         _model = new DefaultTableModel();
-        _jtDatosMedicos.setEnabled(true);
         ObtenerTablaPersonalizada();
+        _jtDatosMedicos.setEnabled(true);
         this._registrar = registrar;
         _model.addColumn("NOMBRE Y APELLIDO");
         _model.addColumn("CÉDULA");
@@ -230,8 +224,8 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
 
     public void LlenarTableParcial(ArrayList<DatosMedicos> registrar, int i) {
         _model = new DefaultTableModel();
-        _jtDatosMedicos.setEnabled(true);
         ObtenerTablaPersonalizada();
+        _jtDatosMedicos.setEnabled(true);
         this._registrar = registrar;
 
         _model.addColumn("NOMBRE Y APELLIDO");
@@ -250,7 +244,7 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
             _registrar.get(i).getEspecialidad()};
 
         _model.addRow(fila);
-        
+
         _jtDatosMedicos.setEnabled(false);
 
     }

@@ -8,16 +8,27 @@ package packagePrincipal.vistaADatosMedicos;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import vista.PlaceHolder;
 
 public class PanelADatosMedico extends javax.swing.JPanel {
 
     public PanelADatosMedico() {
         initComponents();
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
         _placeHolders = new PlaceHolder("                    INTRODUCIR NOMBRE DEL MÉDICO", _ftNombreMedico);
         _placeHolders = new PlaceHolder("   INTRODUCIR CÉDULA DEL MÉDICO", _ftCedulaP1);
         _placeHolders = new PlaceHolder("   0", _ftCedulaP2);
         _placeHolders = new PlaceHolder("      INTRODUCIR NÚMERO TELEFÓNICO DEL MÉDICO", _ftTelefonoMedico);
+    }
+
+    public void AgregarJFileChooser() {
+        JFileChooser jFChooser = new JFileChooser();
+        jFChooser.setMultiSelectionEnabled(false);
+        if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            rsdragdropfiles.RSDragDropFiles.setCopiar(jFChooser.getSelectedFile().toString(), "src/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto1.jpg");
+            _labelImagenMedico.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
+        }
     }
 
     public void ErrorNombreMedico(boolean error) {
@@ -71,6 +82,9 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _labelNombreVacio = new javax.swing.JLabel();
         _labelTelofonoVacio = new javax.swing.JLabel();
         _labelEError = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        _labelImagenMedico = new javax.swing.JLabel();
+        _botonAgregarImagen = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,12 +93,12 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/volver.png"))); // NOI18N
         _botonVolver.setBorder(null);
         _botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 70, 60));
+        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 0, 70, 60));
 
         _lbNombreMedico.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbNombreMedico.setForeground(new java.awt.Color(153, 255, 255));
         _lbNombreMedico.setText("NOMBRE Y APELLIDO DEL MÉDICO");
-        add(_lbNombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 300, 30));
+        add(_lbNombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 140, 300, 30));
 
         _ftNombreMedico.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftNombreMedico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -98,12 +112,12 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _ftNombreMedicoKeyTyped(evt);
             }
         });
-        add(_ftNombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 340, 40));
+        add(_ftNombreMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 180, 340, 40));
 
         _lbCedulaMedico.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbCedulaMedico.setForeground(new java.awt.Color(153, 255, 255));
         _lbCedulaMedico.setText("NÚMERO CÉDULA DEL MÉDICO");
-        add(_lbCedulaMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, -1, 30));
+        add(_lbCedulaMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 420, -1, 30));
 
         _ftCedulaP1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftCedulaP1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -120,7 +134,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _ftCedulaP1KeyTyped(evt);
             }
         });
-        add(_ftCedulaP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 260, 230, 40));
+        add(_ftCedulaP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 230, 40));
 
         _cbEspecialidadMedico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Odontólogo general", "Odontopediatra", "Ortodoncista", "Periodoncista", "Endodoncista", "Patólogo oral o Cirujano oral", "Prostodoncista" }));
         _cbEspecialidadMedico.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
@@ -134,17 +148,17 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _cbEspecialidadMedicoActionPerformed(evt);
             }
         });
-        add(_cbEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 480, 270, 40));
+        add(_cbEspecialidadMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 570, 340, 40));
 
         _lbEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbEspecialidad.setForeground(new java.awt.Color(153, 255, 255));
         _lbEspecialidad.setText("ESPECIALIDAD DEL MÉDICO");
-        add(_lbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, -1, 30));
+        add(_lbEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 540, -1, 30));
 
         _lbTelefonoMedico.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbTelefonoMedico.setForeground(new java.awt.Color(153, 255, 255));
         _lbTelefonoMedico.setText("NÚMERO TELEFÓNICO MÉDICO");
-        add(_lbTelefonoMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, -1, 30));
+        add(_lbTelefonoMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, -1, 30));
 
         _ftTelefonoMedico.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftTelefonoMedico.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -158,7 +172,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _ftTelefonoMedicoKeyTyped(evt);
             }
         });
-        add(_ftTelefonoMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, 340, 40));
+        add(_ftTelefonoMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 310, 340, 40));
 
         _botonRegistrar.setBackground(new java.awt.Color(54, 203, 167));
         _botonRegistrar.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
@@ -174,20 +188,20 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _botonRegistrarMouseExited(evt);
             }
         });
-        add(_botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 620, 290, 60));
+        add(_botonRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 500, 290, 60));
 
         _labelError1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelError1.setForeground(new java.awt.Color(255, 255, 255));
         _labelError1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 310, 390, 30));
+        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 500, 390, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/registrarMedico (2).png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, 90));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, -1, 90));
 
         _labelGuion.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 36)); // NOI18N
         _labelGuion.setForeground(new java.awt.Color(255, 255, 255));
         _labelGuion.setText("-");
-        add(_labelGuion, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 20, 20));
+        add(_labelGuion, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 460, 20, 20));
 
         _ftCedulaP2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftCedulaP2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -204,22 +218,53 @@ public class PanelADatosMedico extends javax.swing.JPanel {
                 _ftCedulaP2KeyTyped(evt);
             }
         });
-        add(_ftCedulaP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, 30, 40));
+        add(_ftCedulaP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 450, 30, 40));
 
         _labelNombreVacio.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelNombreVacio.setForeground(new java.awt.Color(255, 255, 255));
         _labelNombreVacio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelNombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 290, 30));
+        add(_labelNombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, 290, 30));
 
         _labelTelofonoVacio.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelTelofonoVacio.setForeground(new java.awt.Color(255, 255, 255));
         _labelTelofonoVacio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelTelofonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 430, 260, 30));
+        add(_labelTelofonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 260, 30));
 
         _labelEError.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelEError.setForeground(new java.awt.Color(255, 255, 255));
         _labelEError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelEError, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 530, 280, 30));
+        add(_labelEError, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 620, 280, 30));
+
+        jPanel1.setBackground(new java.awt.Color(0, 137, 123));
+        jPanel1.setLayout(null);
+        jPanel1.add(_labelImagenMedico);
+        _labelImagenMedico.setBounds(20, 20, 150, 150);
+
+        _botonAgregarImagen.setBackground(new java.awt.Color(54, 203, 167));
+        _botonAgregarImagen.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
+        _botonAgregarImagen.setForeground(new java.awt.Color(255, 255, 255));
+        _botonAgregarImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/File-Explorer-fluent-icon.png"))); // NOI18N
+        _botonAgregarImagen.setText("AGREGAR FOTO");
+        _botonAgregarImagen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        _botonAgregarImagen.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        _botonAgregarImagen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        _botonAgregarImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                _botonAgregarImagenMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                _botonAgregarImagenMouseExited(evt);
+            }
+        });
+        _botonAgregarImagen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                _botonAgregarImagenActionPerformed(evt);
+            }
+        });
+        jPanel1.add(_botonAgregarImagen);
+        _botonAgregarImagen.setBounds(190, 70, 210, 40);
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 430, 190));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _ftNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftNombreMedicoKeyTyped
@@ -332,12 +377,25 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _cbEspecialidadMedico.setBackground(Color.white);
     }//GEN-LAST:event__cbEspecialidadMedicoMouseClicked
 
+    private void _botonAgregarImagenMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonAgregarImagenMouseEntered
+        _botonAgregarImagen.setBackground(new java.awt.Color(0, 191, 165));
+    }//GEN-LAST:event__botonAgregarImagenMouseEntered
+
+    private void _botonAgregarImagenMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonAgregarImagenMouseExited
+        _botonAgregarImagen.setBackground(new java.awt.Color(54, 203, 167));
+    }//GEN-LAST:event__botonAgregarImagenMouseExited
+
+    private void _botonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__botonAgregarImagenActionPerformed
+        AgregarJFileChooser();
+    }//GEN-LAST:event__botonAgregarImagenActionPerformed
+
     public void AddActionListener(ActionListener listener) {
         _botonVolver.addActionListener(listener);
         _botonRegistrar.addActionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JButton _botonAgregarImagen;
     javax.swing.JButton _botonRegistrar;
     javax.swing.JButton _botonVolver;
     javax.swing.JComboBox<String> _cbEspecialidadMedico;
@@ -348,6 +406,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     javax.swing.JLabel _labelEError;
     javax.swing.JLabel _labelError1;
     javax.swing.JLabel _labelGuion;
+    javax.swing.JLabel _labelImagenMedico;
     javax.swing.JLabel _labelNombreVacio;
     javax.swing.JLabel _labelTelofonoVacio;
     javax.swing.JLabel _lbCedulaMedico;
@@ -355,6 +414,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     javax.swing.JLabel _lbNombreMedico;
     javax.swing.JLabel _lbTelefonoMedico;
     javax.swing.JLabel jLabel1;
+    javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
     private String _textoEspecialidad = "";
     private PlaceHolder _placeHolders;
@@ -363,6 +423,10 @@ public class PanelADatosMedico extends javax.swing.JPanel {
 
     public JButton getBotonRegistrar() {
         return _botonRegistrar;
+    }
+
+    public String getLabelImagenMedico() {
+        return _labelImagenMedico.getIcon().toString();
     }
 
     public String getFtCedulaP2() {

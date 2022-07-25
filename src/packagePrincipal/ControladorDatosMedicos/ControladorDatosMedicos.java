@@ -1,10 +1,7 @@
 package packagePrincipal.ControladorDatosMedicos;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.modelo.VerificarDatosMedico;
@@ -66,7 +63,8 @@ public class ControladorDatosMedicos {
                     if (_nombreV == false && _telefonoV == false && _especialidadV == false && _cedulaP1Vacia == false
                             && _cedulaP2Vacia == false && _codigoPErroneo == false && _codigoVErroneo == false && _digitosMenor10 == false) {
                         _cedulaCompleta = _panelADatosMedico.getFtCedulaP1() + "-" + _panelADatosMedico.getFtCedulaP2();
-                        _controladorArrayList.AgregarMedico(_panelADatosMedico.getFtNombreMedico(), _cedulaCompleta, _panelADatosMedico.getTextoEspecialidad(), _panelADatosMedico.getFtTelefonoMedico());
+                        System.out.println("Esta es la ruta de la imagen = " + _panelADatosMedico.getLabelImagenMedico());
+                        _controladorArrayList.AgregarMedico(_panelADatosMedico.getFtNombreMedico(), _cedulaCompleta, _panelADatosMedico.getTextoEspecialidad(), _panelADatosMedico.getFtTelefonoMedico(), _panelADatosMedico.getLabelImagenMedico());
                         if (_controladorArrayList.isCedulaRepetida()) {
                             _panelADatosMedico.setLabelErrorCedula();
                             _panelADatosMedico.ErrorCedulaP1(true);

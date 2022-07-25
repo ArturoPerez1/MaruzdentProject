@@ -99,15 +99,15 @@ public class ControladorArraysList {
         }
     }
 
-    public void AgregarMedico(String nombreMedico, String cedulaMedico, String especialidad, String numeroTelefonico) {
+    public void AgregarMedico(String nombreMedico, String cedulaMedico, String especialidad, String numeroTelefonico, String rutaImagen) {
         if (_primerMedico == true) {
-            _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico);
+            _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico,rutaImagen);
             _registroMedicos.AgregarMedico(_datosMedicos);
             _primerMedico = false;
         } else {
             _cedulaRepetida = CedulaMedicosRepetida(cedulaMedico);
             if (_cedulaRepetida == false) {
-                _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico);
+                _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico,rutaImagen);
                 _registroMedicos.AgregarMedico(_datosMedicos);
             }
         }
