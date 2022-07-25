@@ -70,7 +70,6 @@ public class PanelModificadores extends javax.swing.JPanel {
         _labelError1 = new javax.swing.JLabel();
         _labelNombreVacio = new javax.swing.JLabel();
         _labelTelofonoVacio = new javax.swing.JLabel();
-        _botonTableC = new javax.swing.JButton();
         _labelEspecialidadError = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 137, 123));
@@ -79,7 +78,7 @@ public class PanelModificadores extends javax.swing.JPanel {
         _lbModificarNombre.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarNombre.setForeground(new java.awt.Color(153, 255, 255));
         _lbModificarNombre.setText("MODIFICAR NOMBRE");
-        add(_lbModificarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        add(_lbModificarNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, -1, -1));
 
         _ftMNombre.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftMNombre.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -93,12 +92,12 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _ftMNombreKeyTyped(evt);
             }
         });
-        add(_ftMNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 190, 30));
+        add(_ftMNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 40, 190, 30));
 
         _lbModificarCedula.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarCedula.setForeground(new java.awt.Color(153, 255, 255));
         _lbModificarCedula.setText("MODIFICAR CÉDULA");
-        add(_lbModificarCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
+        add(_lbModificarCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
 
         _ftCedulaP1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftCedulaP1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -115,12 +114,12 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _ftCedulaP1KeyTyped(evt);
             }
         });
-        add(_ftCedulaP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 170, 30));
+        add(_ftCedulaP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, 170, 30));
 
         _lbModificarTelefono.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarTelefono.setForeground(new java.awt.Color(153, 255, 255));
         _lbModificarTelefono.setText("MODIFICAR TELÉFONO");
-        add(_lbModificarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 170, -1, -1));
+        add(_lbModificarTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 340, -1, -1));
 
         _ftMTelefono.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftMTelefono.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -134,12 +133,12 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _ftMTelefonoKeyTyped(evt);
             }
         });
-        add(_ftMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 190, 30));
+        add(_ftMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 370, 190, 30));
 
         _lbModificarEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
         _lbModificarEspecialidad.setForeground(new java.awt.Color(153, 255, 255));
         _lbModificarEspecialidad.setText("MODIFICAR ESPECIALIDAD");
-        add(_lbModificarEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, -1, -1));
+        add(_lbModificarEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 160, -1, 30));
 
         _botonMNombre.setBackground(new java.awt.Color(54, 203, 167));
         _botonMNombre.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
@@ -156,7 +155,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _botonMNombreMouseExited(evt);
             }
         });
-        add(_botonMNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 130, 30));
+        add(_botonMNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 130, 30));
 
         _botonMCedula.setBackground(new java.awt.Color(54, 203, 167));
         _botonMCedula.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
@@ -172,7 +171,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _botonMCedulaMouseExited(evt);
             }
         });
-        add(_botonMCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, 130, 30));
+        add(_botonMCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 130, 30));
 
         _botonMTelefono.setBackground(new java.awt.Color(54, 203, 167));
         _botonMTelefono.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
@@ -188,7 +187,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _botonMTelefonoMouseExited(evt);
             }
         });
-        add(_botonMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 240, 130, 30));
+        add(_botonMTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 130, 30));
 
         _botonMEspecialidad.setBackground(new java.awt.Color(54, 203, 167));
         _botonMEspecialidad.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
@@ -204,7 +203,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _botonMEspecialidadMouseExited(evt);
             }
         });
-        add(_botonMEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 80, 130, 30));
+        add(_botonMEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 130, 30));
 
         _cBMEspecialidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "Odontólogo general", "Odontopediatra", "Ortodoncista", "Periodoncista", "Endodoncista", "Patólogo oral o Cirujano oral", "Prostodoncista" }));
         _cBMEspecialidad.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -217,7 +216,7 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _cBMEspecialidadActionPerformed(evt);
             }
         });
-        add(_cBMEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 220, 30));
+        add(_cBMEspecialidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, 220, 30));
 
         _ftCedulaP2.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _ftCedulaP2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -234,47 +233,31 @@ public class PanelModificadores extends javax.swing.JPanel {
                 _ftCedulaP2KeyTyped(evt);
             }
         });
-        add(_ftCedulaP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 40, 30, 30));
+        add(_ftCedulaP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, 30, 30));
 
         jLabel1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("-");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 40, -1, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, -1, 30));
 
         _labelError1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelError1.setForeground(new java.awt.Color(255, 255, 255));
         _labelError1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 120, 260, 30));
+        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 230, 30));
 
         _labelNombreVacio.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelNombreVacio.setForeground(new java.awt.Color(255, 255, 255));
         _labelNombreVacio.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelNombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 200, 30));
+        add(_labelNombreVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, 200, 30));
 
         _labelTelofonoVacio.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelTelofonoVacio.setForeground(new java.awt.Color(255, 255, 255));
-        add(_labelTelofonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 220, 30));
-
-        _botonTableC.setBackground(new java.awt.Color(54, 203, 167));
-        _botonTableC.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 13)); // NOI18N
-        _botonTableC.setForeground(new java.awt.Color(255, 255, 255));
-        _botonTableC.setText("MOSTRAR LISTADO GENERAL");
-        _botonTableC.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        _botonTableC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        _botonTableC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                _botonTableCMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                _botonTableCMouseExited(evt);
-            }
-        });
-        add(_botonTableC, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 210, 30));
+        add(_labelTelofonoVacio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 220, 30));
 
         _labelEspecialidadError.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 12)); // NOI18N
         _labelEspecialidadError.setForeground(new java.awt.Color(255, 255, 255));
         _labelEspecialidadError.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_labelEspecialidadError, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 210, 30));
+        add(_labelEspecialidadError, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _ftMNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftMNombreKeyTyped
@@ -399,14 +382,6 @@ public class PanelModificadores extends javax.swing.JPanel {
         _botonMTelefono.setBackground(new java.awt.Color(54, 203, 167));
     }//GEN-LAST:event__botonMTelefonoMouseExited
 
-    private void _botonTableCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonTableCMouseEntered
-        _botonTableC.setBackground(new java.awt.Color(0, 191, 165));
-    }//GEN-LAST:event__botonTableCMouseEntered
-
-    private void _botonTableCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__botonTableCMouseExited
-        _botonTableC.setBackground(new java.awt.Color(54, 203, 167));
-    }//GEN-LAST:event__botonTableCMouseExited
-
     private void _ftMNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__ftMNombreMouseClicked
         _ftMNombre.setBackground(Color.white);
     }//GEN-LAST:event__ftMNombreMouseClicked
@@ -424,7 +399,6 @@ public class PanelModificadores extends javax.swing.JPanel {
         _botonMNombre.addActionListener(listener);
         _botonMTelefono.addActionListener(listener);
         _botonMEspecialidad.addActionListener(listener);
-        _botonTableC.addActionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -432,7 +406,6 @@ public class PanelModificadores extends javax.swing.JPanel {
     javax.swing.JButton _botonMEspecialidad;
     javax.swing.JButton _botonMNombre;
     javax.swing.JButton _botonMTelefono;
-    javax.swing.JButton _botonTableC;
     javax.swing.JComboBox<String> _cBMEspecialidad;
     javax.swing.JTextField _ftCedulaP1;
     javax.swing.JTextField _ftCedulaP2;
@@ -458,10 +431,6 @@ public class PanelModificadores extends javax.swing.JPanel {
 
     public JButton getBotonMEspecialidad() {
         return _botonMEspecialidad;
-    }
-
-    public JButton getBotonTableC() {
-        return _botonTableC;
     }
 
     public String getFtCedulaP2() {

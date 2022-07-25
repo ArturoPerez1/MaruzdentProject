@@ -22,11 +22,14 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _placeHolders = new PlaceHolder("      INTRODUCIR NÚMERO TELEFÓNICO DEL MÉDICO", _ftTelefonoMedico);
     }
 
+    public void Resetearimagen() {
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+    }
+
     public void AgregarJFileChooser() {
         JFileChooser jFChooser = new JFileChooser();
         jFChooser.setMultiSelectionEnabled(false);
-        if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            rsdragdropfiles.RSDragDropFiles.setCopiar(jFChooser.getSelectedFile().toString(), "src/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto1.jpg");
+        if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {          
             _labelImagenMedico.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
         }
     }

@@ -255,6 +255,10 @@ public class ControladorArraysList {
     public void ModificarCedulaMedico(int posicion, String cedula) {
         _registroMedicos.getRegistroMedicos().get(posicion).setCedulaMedico(cedula);
     }
+    
+    public void ModificarRutaImagenMedico(int posicion, String ruta){
+         _registroMedicos.getRegistroMedicos().get(posicion).setRutaImagen(ruta);
+    }
 
     public void ModificarNombreMedico(int posicion, String nombre) {
         _registroMedicos.getRegistroMedicos().get(posicion).setNombreMedico(nombre);

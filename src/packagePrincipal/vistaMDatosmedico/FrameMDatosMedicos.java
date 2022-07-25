@@ -8,7 +8,16 @@ public class FrameMDatosMedicos extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void AgregarPanelMDatosMedicos() {
+    public void AgregarPanelListaMedicos() {
+        _panelMListamedicos = new PanelListaMedicos();
+        _panelMListamedicos.setSize(1200, 700);
+        _panelContenedor.removeAll();
+        _panelContenedor.add(_panelMListamedicos, BorderLayout.CENTER);
+        _panelContenedor.revalidate();
+        _panelContenedor.repaint();
+    }
+
+    public void AgregarPanelMDAtosMedicos() {
         _panelMDatosMedicos = new PanelMDatosMedicos();
         _panelMDatosMedicos.setSize(1200, 700);
         _panelContenedor.removeAll();
@@ -48,11 +57,15 @@ public class FrameMDatosMedicos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JPanel _panelContenedor;
     // End of variables declaration//GEN-END:variables
+    private PanelListaMedicos _panelMListamedicos;
     private PanelMDatosMedicos _panelMDatosMedicos;
+
+    public PanelListaMedicos getPanelListaMedicos() {
+        return _panelMListamedicos;
+    }
 
     public PanelMDatosMedicos getPanelMDatosMedicos() {
         return _panelMDatosMedicos;
     }
-    
-    
+
 }

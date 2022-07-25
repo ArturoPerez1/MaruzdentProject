@@ -1,34 +1,12 @@
 package packagePrincipal.vistaADatosMedicos;
 
 import java.awt.BorderLayout;
-import javax.swing.UIManager;
 
 public class FrameADatosMedicos extends javax.swing.JFrame {
 
     public FrameADatosMedicos() {
         initComponents();
         AgregarPanelADatosMedico();
-    }
-    
-    /*HAY UN PROBLEMA CON ESTO Y ES QUE SI LO ACTIVO MODIFICA
-    LOS LOOK AND FEELS DE TODO LO CUAL NO QUIERO*/
-    public void AgregarEstiloJFileChooser() {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrameADatosMedicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrameADatosMedicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrameADatosMedicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrameADatosMedicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
     }
 
     public void AgregarPanelADatosMedico() {

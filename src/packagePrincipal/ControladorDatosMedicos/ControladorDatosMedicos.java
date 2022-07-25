@@ -63,13 +63,13 @@ public class ControladorDatosMedicos {
                     if (_nombreV == false && _telefonoV == false && _especialidadV == false && _cedulaP1Vacia == false
                             && _cedulaP2Vacia == false && _codigoPErroneo == false && _codigoVErroneo == false && _digitosMenor10 == false) {
                         _cedulaCompleta = _panelADatosMedico.getFtCedulaP1() + "-" + _panelADatosMedico.getFtCedulaP2();
-                        System.out.println("Esta es la ruta de la imagen = " + _panelADatosMedico.getLabelImagenMedico());
                         _controladorArrayList.AgregarMedico(_panelADatosMedico.getFtNombreMedico(), _cedulaCompleta, _panelADatosMedico.getTextoEspecialidad(), _panelADatosMedico.getFtTelefonoMedico(), _panelADatosMedico.getLabelImagenMedico());
                         if (_controladorArrayList.isCedulaRepetida()) {
                             _panelADatosMedico.setLabelErrorCedula();
                             _panelADatosMedico.ErrorCedulaP1(true);
                         } else {
                             JOptionPane.showMessageDialog(null, "MÉDICO REGISTRADO EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
+                            _panelADatosMedico.Resetearimagen();
                             _panelADatosMedico.setLabelErrorCedula1();
                             _panelADatosMedico.setFtCedulaMedico();
                             _panelADatosMedico.setFtNombreMedico();
