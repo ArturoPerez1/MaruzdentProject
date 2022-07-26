@@ -300,8 +300,10 @@ public class PanelModificadores extends javax.swing.JPanel {
         char c = evt.getKeyChar();
         _ftMTelefono.setBackground(Color.white);
         setLabelTelefonoVacio1();
-        if (c < '0' || c > '9') {
-            evt.consume();
+        if (c != '+') {
+            if (c < '0' || c > '9') {
+                evt.consume();
+            }
         }
     }//GEN-LAST:event__ftMTelefonoKeyTyped
 
@@ -314,7 +316,7 @@ public class PanelModificadores extends javax.swing.JPanel {
     private void _ftCedulaP2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftCedulaP2KeyTyped
         char c = evt.getKeyChar();
         setLabelErrorCedula1();
-         _ftCedulaP2.setBackground(Color.white);
+        _ftCedulaP2.setBackground(Color.white);
         if (c < '0' || c > '9') {
             evt.consume();
         } else {
@@ -531,8 +533,20 @@ public class PanelModificadores extends javax.swing.JPanel {
         this._labelNombreVacio.setText("");
     }
 
-    public void setLabelTelefonoVacio() {
-        this._labelTelofonoVacio.setText("CAMPO TELÉFONO VACÍO");
+    public void setLbNumeroVacio() {
+        this._labelTelofonoVacio.setText("CAMPO NÚMERO TELEFÓNICO VACÍO");
+    }
+
+    public void setLbNumeroFaltanDigitos() {
+        this._labelTelofonoVacio.setText("FALTAN DÍGITOS");
+    }
+
+    public void setLbNumeroSobranDigitos() {
+        this._labelTelofonoVacio.setText("SOBRAN DÍGITOS");
+    }
+
+    public void setLbNumeroError() {
+        this._labelTelofonoVacio.setText("CÓDIGO TELEFÓNICO ERRÓNEO");
     }
 
     public void setLabelTelefonoVacio1() {

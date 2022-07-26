@@ -4,12 +4,14 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import vista.PlaceHolder;
 
 public class PanelRegistrarPaciente extends javax.swing.JPanel {
 
     public PanelRegistrarPaciente() {
         initComponents();
+        _lbIFNImagen.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
         _placeHolders = new PlaceHolder("       INGRESAR NOMBRE", _textNombreP);
         _placeHolders = new PlaceHolder("       INGRESAR APELLIDO", _textApellidoP);
         _placeHolders = new PlaceHolder("       INGRESAR TELÉFONO", _textTelefonoP);
@@ -25,14 +27,43 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
     }
 
     public void Resetearimagen() {
-        _lbIFNImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+        _lbIFNImagen.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+    }
+
+    public boolean FiltrarExtensionesFileChooser(String path) {
+        String extension = "";
+        boolean extensionValida = false;
+        int posicionExtension = 0;
+
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == '.') {
+                posicionExtension = i + 1;
+                break;
+            }
+        }
+
+        for (int i = posicionExtension; i < path.length(); i++) {
+            extension += path.charAt(i);
+        }
+
+        if (extension.equals("png") || extension.equals("jpg")) {
+            extensionValida = true;
+        }
+
+        return extensionValida;
     }
 
     public void AgregarJFileChooser() {
+        boolean extensionValida;
         JFileChooser jFChooser = new JFileChooser();
         jFChooser.setMultiSelectionEnabled(false);
         if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-            _lbIFNImagen.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
+            extensionValida = FiltrarExtensionesFileChooser(jFChooser.getSelectedFile().toString());
+            if (extensionValida == true) {
+                _lbIFNImagen.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
+            } else {
+                JOptionPane.showMessageDialog(null, "SOLO SON VÁLIDOS LOS ARCHIVOS CON \n EXTENSIÓN (.png ó .jpg)", "ERROR DE EXTENSIÓN", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -509,8 +540,6 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(0, 137, 123));
         jPanel1.setLayout(null);
-
-        _lbIFNImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"))); // NOI18N
         jPanel1.add(_lbIFNImagen);
         _lbIFNImagen.setBounds(20, 20, 150, 150);
 
@@ -1236,6 +1265,14 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
         this._lbNumeroError.setText("CAMPO NÚMERO TELEFÓNICO VACÍO");
     }
 
+    public void setLbNumeroFaltanDigitos() {
+        this._lbNumeroError.setText("FALTAN DÍGITOS");
+    }
+
+    public void setLbNumeroSobranDigitos() {
+        this._lbNumeroError.setText("SOBRAN DÍGITOS");
+    }
+
     public void setLbNumeroError() {
         this._lbNumeroError.setText("CÓDIGO TELEFÓNICO ERRÓNEO");
     }
@@ -1248,11 +1285,19 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
         this._lbNumeroRError.setText("CAMPO NÚMERO TELEFÓNICO VACÍO");
     }
 
+    public void setLbNumeroFaltanDigitosR() {
+        this._lbNumeroRError.setText("FALTAN DÍGITOS");
+    }
+
+    public void setLbNumeroSobranDigitosR() {
+        this._lbNumeroRError.setText("SOBRAN DÍGITOS");
+    }
+
     public void setLbNumeroRError() {
         this._lbNumeroRError.setText("CÓDIGO TELEFÓNICO ERRÓNEO");
     }
-    
-    public void setColorDatosResponsable(){
+
+    public void setColorDatosResponsable() {
         _textNombreR.setBackground(Color.white);
         _textApellidoR.setBackground(Color.white);
         _textTelefonoR.setBackground(Color.white);

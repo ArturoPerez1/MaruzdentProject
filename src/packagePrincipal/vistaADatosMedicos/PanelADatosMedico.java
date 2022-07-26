@@ -9,13 +9,15 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import packagePrincipal.vistaMDatosmedico.FrameAyuda;
 import vista.PlaceHolder;
 
 public class PanelADatosMedico extends javax.swing.JPanel {
 
     public PanelADatosMedico() {
         initComponents();
-        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
         _placeHolders = new PlaceHolder("                    INTRODUCIR NOMBRE DEL MÉDICO", _ftNombreMedico);
         _placeHolders = new PlaceHolder("   INTRODUCIR CÉDULA DEL MÉDICO", _ftCedulaP1);
         _placeHolders = new PlaceHolder("   0", _ftCedulaP2);
@@ -23,14 +25,43 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     }
 
     public void Resetearimagen() {
-        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+    }
+
+    public boolean FiltrarExtensionesFileChooser(String path) {
+        String extension = "";
+        boolean extensionValida = false;
+        int posicionExtension = 0;
+
+        for (int i = 0; i < path.length(); i++) {
+            if (path.charAt(i) == '.') {
+                posicionExtension = i + 1;
+                break;
+            }
+        }
+
+        for (int i = posicionExtension; i < path.length(); i++) {
+            extension += path.charAt(i);
+        }
+
+        if (extension.equals("png") || extension.equals("jpg")) {
+            extensionValida = true;
+        }
+
+        return extensionValida;
     }
 
     public void AgregarJFileChooser() {
+        boolean extensionValida;
         JFileChooser jFChooser = new JFileChooser();
         jFChooser.setMultiSelectionEnabled(false);
-        if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {          
-            _labelImagenMedico.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
+        if (jFChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
+            extensionValida = FiltrarExtensionesFileChooser(jFChooser.getSelectedFile().toString());
+            if (extensionValida == true) {
+                _labelImagenMedico.setIcon(new javax.swing.ImageIcon(jFChooser.getSelectedFile().toString()));
+            } else {
+                JOptionPane.showMessageDialog(null, "SOLO SON VÁLIDOS LOS ARCHIVOS CON \n EXTENSIÓN (.png ó .jpg)", "ERROR DE EXTENSIÓN", JOptionPane.ERROR_MESSAGE);
+            }
         }
     }
 
@@ -88,6 +119,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         _labelImagenMedico = new javax.swing.JLabel();
         _botonAgregarImagen = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -268,6 +300,19 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         _botonAgregarImagen.setBounds(190, 70, 210, 40);
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 430, 190));
+
+        jButton1.setBackground(new java.awt.Color(54, 203, 167));
+        jButton1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("AYUDA");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 55, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _ftNombreMedicoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__ftNombreMedicoKeyTyped
@@ -310,8 +355,10 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         setLabelTelefonoVacio1();
         _ftTelefonoMedico.setBackground(Color.white);
         char c = evt.getKeyChar();
-        if (c < '0' || c > '9') {
-            evt.consume();
+        if (c != '+') {
+            if (c < '0' || c > '9') {
+                evt.consume();
+            }
         }
     }//GEN-LAST:event__ftTelefonoMedicoKeyTyped
 
@@ -392,6 +439,11 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         AgregarJFileChooser();
     }//GEN-LAST:event__botonAgregarImagenActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrameAyuda ayuda = new FrameAyuda();
+        ayuda.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void AddActionListener(ActionListener listener) {
         _botonVolver.addActionListener(listener);
         _botonRegistrar.addActionListener(listener);
@@ -416,6 +468,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     javax.swing.JLabel _lbEspecialidad;
     javax.swing.JLabel _lbNombreMedico;
     javax.swing.JLabel _lbTelefonoMedico;
+    javax.swing.JButton jButton1;
     javax.swing.JLabel jLabel1;
     javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
@@ -519,8 +572,20 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         this._labelNombreVacio.setText("");
     }
 
-    public void setLabelTelefonoVacio() {
-        this._labelTelofonoVacio.setText("CAMPO TELÉFONO VACÍO");
+    public void setLbNumeroVacio() {
+        this._labelTelofonoVacio.setText("CAMPO NÚMERO TELEFÓNICO VACÍO");
+    }
+
+    public void setLbNumeroFaltanDigitos() {
+        this._labelTelofonoVacio.setText("FALTAN DÍGITOS");
+    }
+
+    public void setLbNumeroSobranDigitos() {
+        this._labelTelofonoVacio.setText("SOBRAN DÍGITOS");
+    }
+
+    public void setLbNumeroError() {
+        this._labelTelofonoVacio.setText("CÓDIGO TELEFÓNICO ERRÓNEO");
     }
 
     public void setLabelTelefonoVacio1() {

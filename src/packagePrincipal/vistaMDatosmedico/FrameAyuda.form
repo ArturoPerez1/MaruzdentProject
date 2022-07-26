@@ -25,15 +25,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="_panel" min="-2" pref="762" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
+          <Component id="_panel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="_panel" alignment="0" pref="536" max="32767" attributes="0"/>
+          <Component id="_panel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,7 +46,7 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="_labelTitulo">
+        <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Metropolis Black" size="18" style="1"/>
@@ -61,7 +58,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="200" y="30" width="-1" height="-1"/>
+              <AbsoluteConstraints x="210" y="30" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -71,7 +68,7 @@
           </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="20" y="60" width="720" height="440"/>
+              <AbsoluteConstraints x="20" y="70" width="720" height="450"/>
             </Constraint>
           </Constraints>
 
@@ -85,7 +82,7 @@
                   <Font name="Times New Roman" size="14" style="1"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="EN ESTE APARTADO  DEL PROGRAMA PODR&#xc1;S REGISTRAR LOS DATOS &#xa;PERSONALES DE UN PACIENTE.&#xa;&#xa;COSAS IMPORTANTES:&#xa;&#xa;1. SI EL PACIENTE ES MAYOR DE EDAD NO ES NECESARIO ADJUNTARLE UN REPERESENTANTE &#xa;AL MISMO, POR TANTO SE PUEDE OBVIAR DICHAS CASILLAS.&#xa;&#xa;2. DE TENER UN ERROR AL COLOCAR LA FECHA DE NACIMIENTO Y COLOC&#xd3; UNA DE UN &#xa;MENOR DE EDAD CUANDO NO ES AS&#xcd;, SOLAMENTE TIENE QUE MODIFICAR LA EDAD &#xa;Y PRESIONAR REGISTRAR, OBVIANDO LOS CUADROS EN ROJO DEL RESPONSABLE.&#xa;&#xa;3. LOS C&#xd3;DIGOS DE TEL&#xc9;FONOS SON LOS PERTENECIENTES AL ECUADOR POR TANTO &#xa;CUALQUIER OTRO TIPO DE C&#xd3;DIGO NO PODR&#xc1; SER UTILIZADO.&#xa;&#xa;4. EL MODELO DE CORREOS PUEDE SER CUALQUIERA SIEMPRE Y&#xa; CUANDO CUMPLA CON EL MODELO DE UN CORREO ELECTR&#xd3;NICO.&#xa;&#xa;5. LAS IM&#xc1;GENES(FOTOS) TIENEN QUE SER DE 150*150 P&#xcd;XELES NI M&#xc1;S NI MENOS, PARA EDITAR&#xa;DICHAS FOTOS AL EST&#xc1;NDAR PEDIDO PUEDE USAR EL EDITOR DE PAINT EN WINDOWS&#xa;O CUALQUIER OTRO EDITOR.&#xa;&#xa;6. LAS IM&#xc1;GENES(FOTOS) QUE SER&#xc1;N CARGADAS AL REGISTRO TIENEN QUE TENER COMO EXTENSI&#xd3;N &#xa;.png o .jpg OBLIGATORIAMENTE.&#xa;&#xa;7. LOS C&#xd3;DIGOS TELEF&#xd3;NICOS PERMITITDOS SON (+59399 Y +59398) Y &#xa;TAMBI&#xc9;N EST&#xc1; EL CASO DE QUE EL N&#xda;MERO NO SEA CON C&#xd3;DIGO EN ESTE CASO USAMOS (099 &#xd3; 098).&#xa;&#xa;8. EL EST&#xc1;NDAR DE LAS C&#xc9;DULAS ES (LOS DOS PRIMEROS D&#xcd;GITOS SON EL C&#xd3;DIGO DE PROVINCIA, LOS OTROS&#xa;7 SON D&#xcd;GITOS Y EL D&#xc9;CIMO ES EL C&#xd3;DIGO VERIFICADOR).&#xa;&#xa;8. CUALQUIER OTRA PREGUNTA CONTACTE AL PROGRAMADOR ENCARGADO."/>
+                <Property name="text" type="java.lang.String" value="SI EST&#xc1;S EN EL APARTADO DE REGISTRAR UN M&#xc9;DICO PODR&#xc1;S AGREGAR UN M&#xc9;DICO &#xa;PERTENECIENTE A TU INVENTARIO DE M&#xc9;DICOS AL IGUAL QUE EN EL APARTADO DE MODIFICAR&#xa;DATOS DEL M&#xc9;DICO PODR&#xc1;S MODIFICAR ESTE INVENTARIO PERTENECIENTE A TU CL&#xcd;NICA ODONTOL&#xd3;GICA.&#xa;&#xa;&#xa;COSAS IMPOTANTES:&#xa;&#xa;1. LAS IM&#xc1;GENES(FOTOS) TIENEN QUE SER DE 150*150 P&#xcd;XELES NI M&#xc1;S NI MENOS, PARA EDITAR&#xa;DICHAS FOTOS AL EST&#xc1;NDAR PEDIDO PUEDE USAR EL EDITOR DE PAINT EN WINDOWS&#xa;O CUALQUIER OTRO EDITOR.&#xa;&#xa;2. LAS IM&#xc1;GENES(FOTOS) QUE SER&#xc1;N CARGADAS AL REGISTRO TIENEN QUE TENER COMO EXTENSI&#xd3;N &#xa;.png o .jpg OBLIGATORIAMENTE.&#xa;&#xa;3. LOS C&#xd3;DIGOS TELEF&#xd3;NICOS PERMITITDOS SON (+59399 Y +59398) Y &#xa;TAMBI&#xc9;N EST&#xc1; EL CASO DE QUE EL N&#xda;MERO NO SEA CON C&#xd3;DIGO EN ESTE CASO USAMOS (099 &#xd3; 098).&#xa;&#xa;4. EL EST&#xc1;NDAR DE LAS C&#xc9;DULAS ES (LOS DOS PRIMEROS D&#xcd;GITOS SON EL C&#xd3;DIGO DE PROVINCIA, &#xa;LOS OTROS 7 SON D&#xcd;GITOS Y EL D&#xc9;CIMO ES EL C&#xd3;DIGO VERIFICADOR).&#xa;&#xa;5. CUALQUIER OTRA PREGUNTA CONTACTE AL PROGRAMADOR ENCARGADO.&#xa;"/>
               </Properties>
             </Component>
           </SubComponents>

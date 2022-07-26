@@ -14,6 +14,10 @@ import packagePrincipal.vistaMDatosmedico.PanelModificadores;
 public class ControladorMDatosMedico {
 
     private int _posicionMedico;
+    private boolean _telefonoVacio;
+    private boolean _faltanDigitosTelefono;
+    private boolean _sobranDigitosTelefono;
+    private boolean _codigoTelefonicoVerificado;
     private boolean _cedulaRepetida;
     private boolean _cedulaP1Vacia;
     private boolean _codigoPErroneo;
@@ -86,9 +90,9 @@ public class ControladorMDatosMedico {
                     _panelListaMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
                     _panelListaMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
                     _panelListaMedicos.AddActionListener(new AddActionListenerVentanaMDatosMedicos());
-                }else if(evento.getSource() == _panelMDatosMedicos.getBotonMImagen()){
+                } else if (evento.getSource() == _panelMDatosMedicos.getBotonMImagen()) {
                     _panelMDatosMedicos.AgregarJFileChooser();
-                    _controladorArrayList.ModificarRutaImagenMedico(_posicionMedico, _panelMDatosMedicos.getLabelImagen());         
+                    _controladorArrayList.ModificarRutaImagenMedico(_posicionMedico, _panelMDatosMedicos.getLabelImagen());
                 }
 
             } catch (Error e) {
@@ -179,14 +183,35 @@ public class ControladorMDatosMedico {
                     }
                 } else if (evento.getSource() == _panelModificadores.getBotonMTelefono()) {
                     _verificarDatosMedicos.VerificarTelefono(_panelModificadores.getFtMTelefono());
-                    if (_verificarDatosMedicos.IsTelefonoVerificado() == false) {
+                    _codigoTelefonicoVerificado = _verificarDatosMedicos.IsCodigoTelefonicoVerificado();
+                    _faltanDigitosTelefono = _verificarDatosMedicos.isFaltanDigitosTelefono();
+                    _sobranDigitosTelefono = _verificarDatosMedicos.isSobranDigitosTelefono();
+                    _telefonoVacio = _verificarDatosMedicos.IsTelefonoVacio();
+                    if (_faltanDigitosTelefono == false && _sobranDigitosTelefono == false && _codigoTelefonicoVerificado == true && _telefonoVacio == false) {
                         JOptionPane.showMessageDialog(null, "NÚMERO TELEFÓNICO MODIFICADO EXITOSAMENTE", "MODIFICACIÓN EXITOSA", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                         _controladorArrayList.ModificarTelefonoMedico(_posicionMedico, _panelModificadores.getFtMTelefono());
                         _panelMDatosMedicos.LlenarLabels(_controladorArrayList.getRegistroMedicos(), _posicionMedico);
                         _panelModificadores.setFtMTelefono();
                     } else {
-                        _panelModificadores.ErrorTelefono(true);
-                        _panelModificadores.setLabelTelefonoVacio();
+                        if (_telefonoVacio == true) {
+                            _panelModificadores.ErrorTelefono(true);
+                            _panelModificadores.setLbNumeroVacio();
+                        } else {
+                            if (_codigoTelefonicoVerificado == false) {
+                                _panelModificadores.ErrorTelefono(true);
+                                _panelModificadores.setLbNumeroError();
+                            } else {
+
+                                if (_faltanDigitosTelefono == true) {
+                                    _panelModificadores.ErrorTelefono(true);
+                                    _panelModificadores.setLbNumeroFaltanDigitos();
+                                } else if (_sobranDigitosTelefono == true) {
+                                    _panelModificadores.ErrorTelefono(true);
+                                    _panelModificadores.setLbNumeroSobranDigitos();
+                                }
+
+                            }
+                        }
                     }
                 }
             } catch (Error e) {

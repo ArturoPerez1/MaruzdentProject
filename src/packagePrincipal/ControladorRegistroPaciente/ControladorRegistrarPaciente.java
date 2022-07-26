@@ -20,6 +20,10 @@ public class ControladorRegistrarPaciente {
     private boolean _menorDeEdad;
     private boolean _nombrePVacio;
     private boolean _nombreRVacio;
+    private boolean _faltanDigitosTelefono;
+    private boolean _sobranDigitosTelefono;
+    private boolean _faltanDigitosTelefonoR;
+    private boolean _sobranDigitosTelefonoR;
     private boolean _apellidoPVacio;
     private boolean _apellidoRVacio;
     private boolean _cedulaP1Vacia;
@@ -62,6 +66,8 @@ public class ControladorRegistrarPaciente {
         this._apellidoRVacio = false;
         this._telefonoRVacio = false;
         this._codigoTelefonicoRVerificado = false;
+        this._faltanDigitosTelefonoR = false;
+        this._sobranDigitosTelefonoR = false;
         _frameAPaciente.setVisible(true);
         _frameAPaciente.AgregarVentanaRegistrarPaciente();
         _panelRegistrarPaciente = _frameAPaciente.getPanelRegistrarPaciente();
@@ -106,6 +112,8 @@ public class ControladorRegistrarPaciente {
                     _generoVerificado = _verificarDatos.IsGeneroVerificado();
                     _estadoCVerifiado = _verificarDatos.IsEstadoCivilVerificado();
                     _codigoTelefonicoVerificado = _verificarDatos.IsCodigoTelefonicoVerificado();
+                    _faltanDigitosTelefono = _verificarDatos.isFaltanDigitosTelefono();
+                    _sobranDigitosTelefono = _verificarDatos.isSobranDigitosTelefono();
 
                     //-cosas raras pasan aqu[i
                     if ((_diaVacio == false && _mesVacio == false && _anoVacio == false)
@@ -122,6 +130,8 @@ public class ControladorRegistrarPaciente {
                             _telefonoRVacio = _verificarDatos.IsTelefonoVacio();
                             if (_telefonoRVacio == false) {
                                 _codigoTelefonicoRVerificado = _verificarDatos.IsCodigoTelefonicoVerificado();
+                                _faltanDigitosTelefonoR = _verificarDatos.isFaltanDigitosTelefono();
+                                _sobranDigitosTelefonoR = _verificarDatos.isSobranDigitosTelefono();
                             }
                         } else if (_edadPaciente > 18) {
                             _nombreRVacio = false;
@@ -143,7 +153,9 @@ public class ControladorRegistrarPaciente {
                             && _cedulaP2Vacia == false && _codigoPErroneo == false
                             && _codigoVErroneo == false && _digitosMenor9 == false
                             && _estadoCVerifiado == false && _diaVerificado == false && _mesVerificado == false && _anoVerificado == false
-                            && _codigoTelefonicoVerificado == true && (_codigoTelefonicoRVerificado == true || _codigoTelefonicoRVerificado == false)) {
+                            && _codigoTelefonicoVerificado == true && (_codigoTelefonicoRVerificado == true || _codigoTelefonicoRVerificado == false)
+                            && _sobranDigitosTelefonoR == false && _sobranDigitosTelefonoR == false && _faltanDigitosTelefono == false
+                            && _sobranDigitosTelefono == false) {
 
                         _cedulaCompleta = _panelRegistrarPaciente.getCedulaP1() + "-" + _panelRegistrarPaciente.getCedulaP2();
                         String fechaNacimientoAux = _panelRegistrarPaciente.getTextoCMes() + "/" + _panelRegistrarPaciente.getTextoCDia() + "/" + _panelRegistrarPaciente.getTextoCAno();
@@ -197,6 +209,15 @@ public class ControladorRegistrarPaciente {
                             if (_codigoTelefonicoVerificado == false) {
                                 _panelRegistrarPaciente.ErrorTelefonoP(true);
                                 _panelRegistrarPaciente.setLbNumeroError();
+                            } else {
+
+                                if (_faltanDigitosTelefono == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoP(true);
+                                    _panelRegistrarPaciente.setLbNumeroFaltanDigitos();
+                                } else if (_sobranDigitosTelefono == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoP(true);
+                                    _panelRegistrarPaciente.setLbNumeroSobranDigitos();
+                                }
                             }
                         }
 
@@ -299,6 +320,21 @@ public class ControladorRegistrarPaciente {
                                 if (_codigoTelefonicoRVerificado == false) {
                                     _panelRegistrarPaciente.ErrorTelefonoR(true);
                                     _panelRegistrarPaciente.setLbNumeroRError();
+                                }
+
+                                if (_faltanDigitosTelefonoR == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoR(true);
+                                    _panelRegistrarPaciente.setLbNumeroFaltanDigitosR();
+                                } else if (_sobranDigitosTelefono == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoR(true);
+                                    _panelRegistrarPaciente.setLbNumeroSobranDigitos();
+                                }
+                                if (_faltanDigitosTelefonoR == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoR(true);
+                                    _panelRegistrarPaciente.setLbNumeroFaltanDigitosR();
+                                } else if (_sobranDigitosTelefonoR == true) {
+                                    _panelRegistrarPaciente.ErrorTelefonoR(true);
+                                    _panelRegistrarPaciente.setLbNumeroSobranDigitosR();
                                 }
                             }
 

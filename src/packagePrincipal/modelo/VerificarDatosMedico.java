@@ -2,13 +2,17 @@ package packagePrincipal.modelo;
 
 public class VerificarDatosMedico {
 
+    private int _pDespuesCodigoT;
+    private boolean _faltanDigitosTelefono;
+    private boolean _sobranDigitosTelefono;
+    private boolean _codigoTelefonicoVerificado;
+    private boolean _isTelefonoVacio;
     private boolean _isNombreVerificado;
     private boolean _isCedulaP1Vacia;
     private boolean _isCedulaP1PocoDigitos;
     private boolean _isCedulaP1CodigoPVerificado;
     private boolean _isCedulaP2Vacia;
     private boolean _isCedulaP2CodigoVerificacionV;
-    private boolean _isTelefonoVerificado;
     private boolean _isEspecialidadVerificada;
     private boolean _isEstadoConsultaVerificado;
 
@@ -150,22 +154,88 @@ public class VerificarDatosMedico {
         }
     }
 
-    public void VerificarTelefono(String telefono) {
-        char c;
-        _isTelefonoVerificado = false;
-        if (telefono.isEmpty()) {
-            _isTelefonoVerificado = true;
+    public int VerificarCatidadDigitosTelefono(String telefono) {
+        int cont = 0;
+        String digitos = "";
+
+        for (int i = _pDespuesCodigoT; i < telefono.length(); i++) {
+            digitos += telefono.charAt(i);
+            cont++;
         }
+
+        return cont;
+    }
+
+    public boolean VerificarCodigoTelefonico(String codigoTelefonico) {
+        boolean codigoVerificado = false;
+        String arrayCodigos[] = {"+59399", "+59398", "099", "098"};
+
+        for (int i = 0; i < arrayCodigos.length; i++) {
+            if (codigoTelefonico.equals(arrayCodigos[i])) {
+                codigoVerificado = true;
+            }
+        }
+
+        return codigoVerificado;
+    }
+
+    public String ObtenerCodigoNumeroTelefonico(String telefono) {
+        String codigoTelefonico = "";
+        boolean codigoConSigno = false;
+        int cont = 0;
+
         for (int i = 0; i < telefono.length(); i++) {
-            c = telefono.charAt(i);
-            if (c < '0' || c > '9') {
-                _isTelefonoVerificado = true;
-                break;
+            if (telefono.charAt(i) == '+' && cont == 0) {
+                codigoTelefonico += telefono.charAt(i);
+                codigoConSigno = true;
+                cont++;
             } else {
-                _isTelefonoVerificado = false;
+
+                if (cont < 5 && codigoConSigno == true) {
+                    codigoTelefonico += telefono.charAt(i);
+                    cont++;
+                } else if (cont == 5 && codigoConSigno == true) {
+                    codigoTelefonico += telefono.charAt(i);
+                    _pDespuesCodigoT = i + 1;
+                    break;
+                }
+
+                if (cont < 2 && codigoConSigno == false) {
+                    codigoTelefonico += telefono.charAt(i);
+                    cont++;
+                } else if (cont == 2 && codigoConSigno == false) {
+                    codigoTelefonico += telefono.charAt(i);
+                    _pDespuesCodigoT = i + 1;
+                    break;
+                }
+            }
+        }
+
+        return codigoTelefonico;
+    }
+
+    public void VerificarTelefono(String telefono) {
+        _isTelefonoVacio = false;
+        _faltanDigitosTelefono = false;
+        _sobranDigitosTelefono = false;
+        String codigoTelefonico = "";
+        int cantidadDigitos = 0;
+
+        if (telefono.isEmpty()) {
+            _isTelefonoVacio = true;
+        } else {
+            codigoTelefonico = ObtenerCodigoNumeroTelefonico(telefono);
+            _codigoTelefonicoVerificado = VerificarCodigoTelefonico(codigoTelefonico);
+
+            cantidadDigitos = VerificarCatidadDigitosTelefono(telefono);
+            if (cantidadDigitos < 7) {
+                _faltanDigitosTelefono = true;
+            } else if (cantidadDigitos > 7) {
+                _sobranDigitosTelefono = true;
             }
 
         }
+
     }
 
     public void VerificarEspecialidad(String especialidad) {
@@ -177,10 +247,6 @@ public class VerificarDatosMedico {
 
     public boolean IsNombreVerificado() {
         return _isNombreVerificado;
-    }
-
-    public boolean IsTelefonoVerificado() {
-        return _isTelefonoVerificado;
     }
 
     public boolean IsEspecialidadVerificada() {
@@ -209,6 +275,22 @@ public class VerificarDatosMedico {
 
     public boolean IsCedulaP2CodigoVerificacionV() {
         return _isCedulaP2CodigoVerificacionV;
+    }
+
+    public boolean IsTelefonoVacio() {
+        return _isTelefonoVacio;
+    }
+
+    public boolean IsCodigoTelefonicoVerificado() {
+        return _codigoTelefonicoVerificado;
+    }
+
+    public boolean isFaltanDigitosTelefono() {
+        return _faltanDigitosTelefono;
+    }
+
+    public boolean isSobranDigitosTelefono() {
+        return _sobranDigitosTelefono;
     }
 
 }

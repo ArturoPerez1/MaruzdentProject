@@ -20,7 +20,10 @@ public class ControladorDatosMedicos {
     private boolean _cedulaP2Vacia;
     private boolean _codigoVErroneo;
     private boolean _especialidadV;
-    private boolean _telefonoV;
+    private boolean _telefonoVacio;
+    private boolean _faltanDigitosTelefono;
+    private boolean _sobranDigitosTelefono;
+    private boolean _codigoTelefonicoVerificado;
     private String _cedulaCompleta;
     private VerificarDatosMedico _verificarDatosMedico;
     private ControladorArraysList _controladorArrayList;
@@ -54,14 +57,18 @@ public class ControladorDatosMedicos {
                     _codigoVErroneo = _verificarDatosMedico.IsCedulaP2CodigoVerificacionV();
                     _digitosMenor10 = _verificarDatosMedico.IsCedulaP1PocoDigitos();
                     _verificarDatosMedico.VerificarTelefono(_panelADatosMedico.getFtTelefonoMedico());
-                    _telefonoV = _verificarDatosMedico.IsTelefonoVerificado();
+                    _codigoTelefonicoVerificado = _verificarDatosMedico.IsCodigoTelefonicoVerificado();
+                    _faltanDigitosTelefono = _verificarDatosMedico.isFaltanDigitosTelefono();
+                    _sobranDigitosTelefono = _verificarDatosMedico.isSobranDigitosTelefono();
+                    _telefonoVacio = _verificarDatosMedico.IsTelefonoVacio();
                     _verificarDatosMedico.VerificarEspecialidad(_panelADatosMedico.getTextoEspecialidad());
                     _especialidadV = _verificarDatosMedico.IsEspecialidadVerificada();
                     /*-------------------------------------------------------------------------*/
 
  /*----Si se confirma que los datos están correctos se registra al médico----------*/
-                    if (_nombreV == false && _telefonoV == false && _especialidadV == false && _cedulaP1Vacia == false
-                            && _cedulaP2Vacia == false && _codigoPErroneo == false && _codigoVErroneo == false && _digitosMenor10 == false) {
+                    if (_nombreV == false && _telefonoVacio == false && _especialidadV == false && _cedulaP1Vacia == false
+                            && _cedulaP2Vacia == false && _codigoPErroneo == false && _codigoVErroneo == false && _digitosMenor10 == false
+                            && _faltanDigitosTelefono == false && _sobranDigitosTelefono == false && _codigoTelefonicoVerificado == true && _telefonoVacio == false) {
                         _cedulaCompleta = _panelADatosMedico.getFtCedulaP1() + "-" + _panelADatosMedico.getFtCedulaP2();
                         _controladorArrayList.AgregarMedico(_panelADatosMedico.getFtNombreMedico(), _cedulaCompleta, _panelADatosMedico.getTextoEspecialidad(), _panelADatosMedico.getFtTelefonoMedico(), _panelADatosMedico.getLabelImagenMedico());
                         if (_controladorArrayList.isCedulaRepetida()) {
@@ -83,9 +90,24 @@ public class ControladorDatosMedicos {
                             _panelADatosMedico.setLabelNombreVacio();
                         }
 
-                        if (_telefonoV == true) {
-                            _panelADatosMedico.ErrorTelefono(_telefonoV);
-                            _panelADatosMedico.setLabelTelefonoVacio();
+                        if (_telefonoVacio == true) {
+                            _panelADatosMedico.ErrorTelefono(true);
+                            _panelADatosMedico.setLbNumeroVacio();
+                        } else {
+                            if (_codigoTelefonicoVerificado == false) {
+                                _panelADatosMedico.ErrorTelefono(true);
+                                _panelADatosMedico.setLbNumeroError();
+                            } else {
+
+                                if (_faltanDigitosTelefono == true) {
+                                    _panelADatosMedico.ErrorTelefono(true);
+                                    _panelADatosMedico.setLbNumeroFaltanDigitos();
+                                } else if (_sobranDigitosTelefono == true) {
+                                    _panelADatosMedico.ErrorTelefono(true);
+                                    _panelADatosMedico.setLbNumeroSobranDigitos();
+                                }
+
+                            }
                         }
 
                         if (_especialidadV == true) {

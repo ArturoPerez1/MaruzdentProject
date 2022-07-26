@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 public class VerificarDatosPaciente {
 
     private int _edadPaciente;
+    private int _pDespuesCodigoT;
+    private boolean _faltanDigitosTelefono;
+    private boolean _sobranDigitosTelefono;
     private boolean _codigoTelefonicoVerificado;
     private boolean _isMesVacio;
     private boolean _isDiaVacio;
@@ -172,6 +175,18 @@ public class VerificarDatosPaciente {
         }
     }
 
+    public int VerificarCatidadDigitosTelefono(String telefono) {
+        int cont = 0;
+        String digitos = "";
+
+        for (int i = _pDespuesCodigoT; i < telefono.length(); i++) {
+            digitos +=  telefono.charAt(i);
+            cont++;
+        }
+
+        return cont;
+    }
+
     public boolean VerificarCodigoTelefonico(String codigoTelefonico) {
         boolean codigoVerificado = false;
         String arrayCodigos[] = {"+59399", "+59398", "099", "098"};
@@ -185,7 +200,7 @@ public class VerificarDatosPaciente {
         return codigoVerificado;
     }
 
-    public String ObteneCodigoNumeroTelefonico(String telefono) {
+    public String ObtenerCodigoNumeroTelefonico(String telefono) {
         String codigoTelefonico = "";
         boolean codigoConSigno = false;
         int cont = 0;
@@ -202,6 +217,7 @@ public class VerificarDatosPaciente {
                     cont++;
                 } else if (cont == 5 && codigoConSigno == true) {
                     codigoTelefonico += telefono.charAt(i);
+                    _pDespuesCodigoT = i + 1;
                     break;
                 }
 
@@ -210,6 +226,7 @@ public class VerificarDatosPaciente {
                     cont++;
                 } else if (cont == 2 && codigoConSigno == false) {
                     codigoTelefonico += telefono.charAt(i);
+                    _pDespuesCodigoT = i + 1;
                     break;
                 }
             }
@@ -220,12 +237,24 @@ public class VerificarDatosPaciente {
 
     public void VerificarTelefono(String telefono) {
         _isTelefonoVacio = false;
+        _faltanDigitosTelefono = false;
+        _sobranDigitosTelefono = false;
         String codigoTelefonico = "";
+        int cantidadDigitos = 0;
+
         if (telefono.isEmpty()) {
             _isTelefonoVacio = true;
         } else {
-            codigoTelefonico = ObteneCodigoNumeroTelefonico(telefono);
+            codigoTelefonico = ObtenerCodigoNumeroTelefonico(telefono);
             _codigoTelefonicoVerificado = VerificarCodigoTelefonico(codigoTelefonico);
+
+            cantidadDigitos = VerificarCatidadDigitosTelefono(telefono);
+            if (cantidadDigitos < 7) {
+                _faltanDigitosTelefono = true;
+            } else if (cantidadDigitos > 7) {
+                _sobranDigitosTelefono = true;
+            }
+
         }
 
     }
@@ -339,7 +368,7 @@ public class VerificarDatosPaciente {
     public boolean IsCodigoTelefonicoVerificado() {
         return _codigoTelefonicoVerificado;
     }
-   
+
     public boolean IsNombrePVacio() {
         return _isNombrePVacio;
     }
@@ -394,6 +423,14 @@ public class VerificarDatosPaciente {
 
     public int getEdadPaciente() {
         return _edadPaciente;
+    }
+
+    public boolean isFaltanDigitosTelefono() {
+        return _faltanDigitosTelefono;
+    }
+
+    public boolean isSobranDigitosTelefono() {
+        return _sobranDigitosTelefono;
     }
 
     public boolean IsCedulaP1Vacia() {
