@@ -47,18 +47,18 @@ public class ControladorArraysList {
     }
 
     public void AgregarPaciente(String nombres, String apellidos, String Id, String fechaNacimiento, String edad, String genero, String numeroTelefonico, String estadoCivil, String ocupacion,
-            String direccionResidencia, String correoElectronico, String nombreResponsable, String numeroTelefonicoR, String apellidosResponsable) {
+            String direccionResidencia, String correoElectronico, String nombreResponsable, String numeroTelefonicoR, String apellidosResponsable, String rutaImagen) {
 
         if (_primerPaciente == true) {
             _datosPaciente = new DatosPaciente(nombres, apellidos, Id, fechaNacimiento, edad, genero, numeroTelefonico, estadoCivil, ocupacion,
-                    direccionResidencia, correoElectronico, nombreResponsable, numeroTelefonicoR, apellidosResponsable);
+                    direccionResidencia, correoElectronico, nombreResponsable, numeroTelefonicoR, apellidosResponsable, rutaImagen);
             _registroPaciente.AgregarPaciente(_datosPaciente);
             _primerPaciente = false;
         } else {
             _cedulaRepetida = CedulaPacienteRepetida(Id);
             if (_cedulaRepetida == false) {
                 _datosPaciente = new DatosPaciente(nombres, apellidos, Id, fechaNacimiento, edad, genero, numeroTelefonico, estadoCivil, ocupacion,
-                        direccionResidencia, correoElectronico, nombreResponsable, numeroTelefonicoR, apellidosResponsable);
+                        direccionResidencia, correoElectronico, nombreResponsable, numeroTelefonicoR, apellidosResponsable, rutaImagen);
                 _registroPaciente.AgregarPaciente(_datosPaciente);
             }
         }

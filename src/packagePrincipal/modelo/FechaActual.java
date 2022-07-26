@@ -3,7 +3,13 @@ package packagePrincipal.modelo;
 import java.time.LocalDate;
 
 public class FechaActual {
+    private int _obtenerAno;
 
+    public void GenerarAnoActual() {
+        ObtenerFechaActual();
+    }
+    
+    
     public String ObtenerFechaActual() {
         int i;
         int j;
@@ -32,10 +38,17 @@ public class FechaActual {
         for (k = j + 1; k < fechaActual.length(); k++) {
             day += String.valueOf(fechaActual.charAt(k));
         }
-
+        
+        _obtenerAno = Integer.valueOf(year);
         fechaActual = day + "/" + month + "/" + year;
 
         return fechaActual;
     }
+
+    public int getObtenerAno() {
+        return _obtenerAno;
+    }
+    
+    
 
 }

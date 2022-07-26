@@ -493,7 +493,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
         this._labelError1.setText("CÓDIGO DE PROVINCIA ERRÓNEO");
     }
 
-    public void DigitosMenorA10() {
+    public void DigitosMenorA9() {
         this._labelError1.setText("CÉDULA MENOR A 9 DÍGITOS");
     }
 

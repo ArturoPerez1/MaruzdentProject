@@ -41,7 +41,7 @@ public class ControladorMenu {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try {
-                if (evento.getSource() == _panelMenu.getBotonPaciente() && _controladorArrayList.isPrimerMedico() == false) {
+                if (evento.getSource() == _panelMenu.getBotonPaciente() /*&& _controladorArrayList.isPrimerMedico() == false*/) {
                     _panelContenedorMenu.setLabelAvisos();
                     _frameContenedor.setVisible(false);
                     _controladorRPaciente = new ControladorRegistroPaciente(_frameContenedor, _controladorArrayList);

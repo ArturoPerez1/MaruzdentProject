@@ -3,7 +3,7 @@ package packagePrincipal.modelo;
 
 public class DatosPaciente {
 
-    private String _nombres;
+    private String _nombre;
     private String _apellidos;
     private String _cedula;
     private String _fechaNacimiento;
@@ -17,10 +17,11 @@ public class DatosPaciente {
     private String _nombreResponsable;
     private String _numeroTelefonicoR;
     private String _ApellidoResponsable;
+    private String _rutaImagen;
 
-    public DatosPaciente(String nombres, String apellidos, String Id, String fechaNacimiento, String edad, String genero, String numeroTelefonico, String estadoCivil, String ocupacion,
-            String direccionResidencia, String correoElectronico, String nombreResponsable, String numeroTelefonicoR, String apellidosResponsable) {
-        this._nombres = nombres;
+    public DatosPaciente(String nombre, String apellidos, String Id, String fechaNacimiento, String edad, String genero, String numeroTelefonico, String estadoCivil, String ocupacion,
+            String direccionResidencia, String correoElectronico, String nombreResponsable, String numeroTelefonicoR, String apellidosResponsable, String rutaImagen) {
+        this._nombre = nombre;
         this._apellidos = apellidos;
         this._cedula = Id;
         this._fechaNacimiento = fechaNacimiento;
@@ -34,10 +35,11 @@ public class DatosPaciente {
         this._nombreResponsable = nombreResponsable;
         this._numeroTelefonicoR = numeroTelefonicoR;
         this._ApellidoResponsable = apellidosResponsable;
+        this._rutaImagen = rutaImagen;
     }
 
     public String getNombre() {
-        return _nombres;
+        return _nombre;
     }
 
     public String getApellidos() {
@@ -91,5 +93,11 @@ public class DatosPaciente {
     public String getApellidoResponsable() {
         return _ApellidoResponsable;
     }
+
+    public String getRutaImagen() {
+        return _rutaImagen;
+    }
+    
+    
 
 }

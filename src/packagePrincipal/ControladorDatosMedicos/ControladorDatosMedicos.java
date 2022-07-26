@@ -116,7 +116,7 @@ public class ControladorDatosMedicos {
                         } else if (_digitosMenor10 == true) {
                             _panelADatosMedico.setLabelErrorCedula1();
                             _panelADatosMedico.ErrorCedulaP1(_digitosMenor10);
-                            _panelADatosMedico.DigitosMenorA10();
+                            _panelADatosMedico.DigitosMenorA9();
                         }
                     }
                     /*--------------------------------------------------------------------------------*/
