@@ -67,18 +67,18 @@ public class ControladorArraysList {
 
     public void AgregarHistorialClinico(String razonConsulta, String enfermedadActual, String antecedentesPersonales, String antecedentesFamiliares,
             String antecedentesPatologicos, String antecedentesFarmacologicos, String examenFisico, String tipoDeConsulta,
-            String diagnostico, String planTratamiento, String fechaConsulta, String cedulaAsociada) {
+            String diagnostico, String planTratamiento, String cedulaAsociada) {
 
         if (_primerHistorial == true) {
             _historialClinico = new HistorialClinico(razonConsulta, enfermedadActual, antecedentesPersonales, antecedentesFamiliares, antecedentesPatologicos, antecedentesFarmacologicos, examenFisico,
-                    tipoDeConsulta, diagnostico, planTratamiento, fechaConsulta, cedulaAsociada);
+                    tipoDeConsulta, diagnostico, planTratamiento, cedulaAsociada);
             _registroHistorial.AgregarHistorial(_historialClinico);
             _primerHistorial = false;
         } else {
             _cedulaRepetida = CedulaAsociadaHistorialRepetida(cedulaAsociada);
             if (_cedulaRepetida == false) {
                 _historialClinico = new HistorialClinico(razonConsulta, enfermedadActual, antecedentesPersonales, antecedentesFamiliares, antecedentesPatologicos, antecedentesFarmacologicos, examenFisico,
-                        tipoDeConsulta, diagnostico, planTratamiento, fechaConsulta, cedulaAsociada);
+                        tipoDeConsulta, diagnostico, planTratamiento, cedulaAsociada);
                 _registroHistorial.AgregarHistorial(_historialClinico);
             }
         }

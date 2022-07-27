@@ -8,7 +8,6 @@ public class HistorialClinico {
     private String _antecedentesFamiliares;
     private String _antecedentesPatologicos;
     private String _antecedentesFarmacologicos;
-    private String _fechaConsulta;
     private String _examenFisico;
     private String _tipoDeConsulta;
     private String _diagnostico;
@@ -17,7 +16,7 @@ public class HistorialClinico {
 
     public HistorialClinico(String razonConsulta, String enfermedadActual, String antecedentesPersonales, String antecedentesFamiliares,
             String antecedentesPatologicos, String antecedentesFarmacologicos, String examenFisico, String tipoDeConsulta,
-            String diagnostico, String planTratamiento, String fechaConsulta, String cedulaAsociada) {
+            String diagnostico, String planTratamiento, String cedulaAsociada) {
         this._razonConsulta = razonConsulta;
         this._enfermedadActual = enfermedadActual;
         this._antecedentesPersonales = antecedentesPersonales;
@@ -28,7 +27,6 @@ public class HistorialClinico {
         this._tipoDeConsulta = tipoDeConsulta;
         this._diagnostico = diagnostico;
         this._planTratamiento = planTratamiento;
-        this._fechaConsulta = fechaConsulta;
         this._cedulaAsociada = cedulaAsociada;
     }
 
@@ -70,10 +68,6 @@ public class HistorialClinico {
 
     public String getPlanTratamiento() {
         return _planTratamiento;
-    }
-
-    public String getFechaConsulta() {
-        return _fechaConsulta;
     }
 
     public String getCedulaAsociada() {

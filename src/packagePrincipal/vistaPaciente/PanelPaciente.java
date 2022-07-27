@@ -111,11 +111,11 @@ public class PanelPaciente extends javax.swing.JPanel {
         _botonVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
-        _labelAvisos.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        _labelAvisos.setForeground(new java.awt.Color(255, 255, 255));
+        _labelAvisos.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
+        _labelAvisos.setForeground(new java.awt.Color(255, 255, 0));
         _labelAvisos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         _labelAvisos.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        add(_labelAvisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 630, 570, 20));
+        add(_labelAvisos, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 630, 740, 20));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/registroPaciente.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
@@ -194,19 +194,19 @@ public class PanelPaciente extends javax.swing.JPanel {
     }
 
     public void AvisoAgregarPaciente() {
-        this._labelAvisos.setText("POR FAVOR AÑADA UN PACIENTE ANTES ");
+        this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE ANTES ");
     }
 
     public void AvisoFaltaConsulta() {
-        this._labelAvisos.setText("AÑADA UNA cITA ANTES");
+        this._labelAvisos.setText("AGREGUE UNA CITA ANTES");
     }
 
     public void Aviso1() {
-        this._labelAvisos.setText("POR FAVOR AÑADA UN PACIENTE ANTES Y TAMBIÉN UN ESTADO DE CITA");
+        this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE Y UNA CITA ANTES");
     }
 
     public void Aviso2() {
-        this._labelAvisos.setText("AÑADA UN PACIENTE");
+        this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE ANTES");
     }
 
     public void setLabelAviso() {

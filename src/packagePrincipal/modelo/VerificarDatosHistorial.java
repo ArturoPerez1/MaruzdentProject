@@ -120,53 +120,6 @@ public class VerificarDatosHistorial {
         }
     }
 
-    public void VerificarFechaNacimiento(String mes, String dia, String ano) {
-        char c;
-        String regex = "^\\d{4}[\\-\\/\\s]?((((0[13578])|(1[02]))[\\-\\/\\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\\-\\/\\s]?(([0-2][0-9])|(30)))|(02[\\-\\/\\s]?[0-2][0-9]))$";
-        String fechaActual;
-
-        if (mes.equals("") || mes.equals(" ")) {
-            _isMesVerificado = true;
-            _isVerificadoTotal = false;
-        } else {
-            _isMesVerificado = false;
-        }
-        if (dia.equals("") || dia.equals(" ")) {
-            _isDiaVerificado = true;
-            _isVerificadoTotal = false;
-        } else {
-            _isDiaVerificado = false;
-        }
-        if (ano.equals("") || ano.equals(" ")) {
-            _isAnoVerificado = true;
-            _isVerificadoTotal = false;
-        } else if (ano.equals("") == false || ano.equals(" ") == false) {
-            for (int i = 0; i < ano.length(); i++) {
-                c = ano.charAt(i);
-                if (c < '0' || c > '9') {
-                    _isAnoVerificado = true;
-                    _isVerificadoTotal = false;
-                    break;
-                } else {
-                    _isAnoVerificado = false;
-                }
-            }
-
-            if (_isAnoVerificado == false) {
-                fechaActual = ano + "/" + mes + "/" + dia;
-                Pattern patron = Pattern.compile(regex);
-                Matcher match = patron.matcher(fechaActual);
-                if (match.find() == false) {
-                    _isVerificadoTotal = false;
-                    _isMesVerificado = true;
-                    _isDiaVerificado = true;
-                    _isAnoVerificado = true;
-                }
-            }
-        }
-
-    }
-
     public boolean IsRazonVerificada() {
         return _isRazonVerificada;
     }

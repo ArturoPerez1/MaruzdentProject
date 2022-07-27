@@ -1,5 +1,6 @@
 package packagePrincipal.vistaAHistorialClinico;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -12,10 +13,36 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         initComponents();
     }
 
-    public void LlenaComboBoxCedulas(ArrayList<DatosPaciente> _registroPaciente) {
+    public void AgregarDatosPaciente(ArrayList<DatosPaciente> _registroPaciente, int i) {
+        _panelDatosPaciente = new PanelDatosPaciente();
+        _panelDatosPaciente.LlenarDatosPaciente(_registroPaciente, i);
+        _panelDatosPaciente.setSize(290, 420);
+        _panelContenedorDatos.removeAll();
+        _panelContenedorDatos.add(_panelDatosPaciente, BorderLayout.CENTER);
+        _panelContenedorDatos.revalidate();
+        _panelContenedorDatos.repaint();
+    }
+
+    public void QuitarDatosPaciente() {
+        _panelContenedorDatos.removeAll();
+        _panelContenedorDatos.revalidate();
+        _panelContenedorDatos.repaint();
+    }
+
+    public void LlenaComboBoxCedulas(ArrayList<DatosPaciente> registroPaciente) {
         _cbCedula.addItem(" ");
-        for (int i = 0; i < _registroPaciente.size(); i++) {
-            _cbCedula.addItem(_registroPaciente.get(i).getCedula());
+        _registroPaciente = registroPaciente;
+        for (int i = 0; i < registroPaciente.size(); i++) {
+            _cbCedula.addItem(registroPaciente.get(i).getCedula());
+        }
+    }
+    
+    public void ObtenerPosicionPersona(String cedula, ArrayList<DatosPaciente> registroPaciente){
+        for (int i = 0; i < registroPaciente.size(); i++) {
+            if(registroPaciente.get(i).getCedula().equals(cedula)){
+                _posicion = i;
+                break;
+            }         
         }
     }
 
@@ -40,14 +67,6 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
     public void ErrorAnteFarmacologico(boolean error) {
         if (error == true) {
             _aaAnteFarmacologicos.setBackground(Color.red);
-        }
-    }
-
-    public void ErrorMes(boolean error) {
-        if (error == true) {
-            _cbMes.setBackground(Color.red);
-        } else {
-            _cbMes.setBackground(Color.white);
         }
     }
 
@@ -95,27 +114,10 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         }
     }
 
-    public void ErrorDia(boolean error) {
-        if (error == true) {
-            _cbDia.setBackground(Color.red);
-        } else {
-            _cbDia.setBackground(Color.white);
-        }
-    }
-
-    public void ErrorAno(boolean error) {
-        if (error == true) {
-            _cbAno.setBackground(Color.red);
-        } else {
-            _cbAno.setBackground(Color.white);
-        }
-    }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        _labelLogo = new javax.swing.JLabel();
         _botonVolver = new javax.swing.JButton();
         _botonRegistrarH = new javax.swing.JButton();
         _lbRazonConsilta = new javax.swing.JLabel();
@@ -147,29 +149,23 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         _lbPlanDeTratamiento = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         _aaPlanDeTratamiento = new javax.swing.JTextArea();
-        _lbFechaConsulta = new javax.swing.JLabel();
-        _lbMes = new javax.swing.JLabel();
-        _lbDia = new javax.swing.JLabel();
-        _lbAno = new javax.swing.JLabel();
-        _cbMes = new javax.swing.JComboBox<>();
-        _cbDia = new javax.swing.JComboBox<>();
-        _cbAno = new javax.swing.JComboBox<>();
         _lbCedulaAsociado = new javax.swing.JLabel();
         _cbCedula = new javax.swing.JComboBox<>();
         _labelError1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        _panelContenedorDatos = new javax.swing.JPanel();
+        _lbLogo1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(26, 188, 156));
+        setBackground(new java.awt.Color(38, 166, 154));
         setForeground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        _labelLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/agregarHistorial.png"))); // NOI18N
-        _labelLogo.setToolTipText("");
-        add(_labelLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 730, 60));
-
-        _botonVolver.setBackground(new java.awt.Color(26, 188, 156));
+        _botonVolver.setBackground(new java.awt.Color(77, 182, 172));
         _botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/volver.png"))); // NOI18N
         _botonVolver.setBorder(null);
-        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 70, 60));
+        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
         _botonRegistrarH.setBackground(new java.awt.Color(54, 203, 167));
         _botonRegistrarH.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
@@ -177,12 +173,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         _botonRegistrarH.setText("REGISTRAR HISTORIAL");
         _botonRegistrarH.setToolTipText("");
         _botonRegistrarH.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        add(_botonRegistrarH, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 620, 310, 50));
+        add(_botonRegistrarH, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 590, 310, 50));
 
-        _lbRazonConsilta.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbRazonConsilta.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbRazonConsilta.setForeground(new java.awt.Color(153, 255, 255));
         _lbRazonConsilta.setText("RAZON CONSULTA");
-        add(_lbRazonConsilta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 160, 20));
+        add(_lbRazonConsilta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, 180, 20));
 
         _tfRazonConsulta.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         _tfRazonConsulta.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -191,12 +187,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
                 _tfRazonConsultaKeyTyped(evt);
             }
         });
-        add(_tfRazonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 200, 30));
+        add(_tfRazonConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 150, 200, 30));
 
-        _lbEnfermedadActual.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbEnfermedadActual.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbEnfermedadActual.setForeground(new java.awt.Color(153, 255, 255));
         _lbEnfermedadActual.setText("ENFERMEDAD ACTUAL");
-        add(_lbEnfermedadActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 200, 20));
+        add(_lbEnfermedadActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 390, 210, 20));
 
         _aaEnfermedadActual.setColumns(20);
         _aaEnfermedadActual.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -208,13 +204,13 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(_aaEnfermedadActual);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 110, 220, 80));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 420, 220, 80));
 
-        _lbAntePersonales.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbAntePersonales.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbAntePersonales.setForeground(new java.awt.Color(153, 255, 255));
         _lbAntePersonales.setText("ANTECEDENTES PERSONALES");
         _lbAntePersonales.setToolTipText("");
-        add(_lbAntePersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 200, -1, -1));
+        add(_lbAntePersonales, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 130, -1, -1));
 
         _aaAntePersonales.setColumns(20);
         _aaAntePersonales.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -226,12 +222,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(_aaAntePersonales);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 220, 230, 80));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 150, 230, 80));
 
-        _lbAnteFamiliares.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbAnteFamiliares.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbAnteFamiliares.setForeground(new java.awt.Color(153, 255, 255));
         _lbAnteFamiliares.setText("ANTECEDENTES FAMILIARES");
-        add(_lbAnteFamiliares, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
+        add(_lbAnteFamiliares, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 260, -1, -1));
 
         _aaAnteFamiliares.setColumns(20);
         _aaAnteFamiliares.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -243,12 +239,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(_aaAnteFamiliares);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 330, 230, 80));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 280, 230, 80));
 
-        _lbAntePatologicos.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbAntePatologicos.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbAntePatologicos.setForeground(new java.awt.Color(153, 255, 255));
         _lbAntePatologicos.setText("ANTECEDENTES PATOLÓGICOS");
-        add(_lbAntePatologicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 420, -1, -1));
+        add(_lbAntePatologicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 400, -1, -1));
 
         _aaAntePatologicos.setColumns(20);
         _aaAntePatologicos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -260,12 +256,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane4.setViewportView(_aaAntePatologicos);
 
-        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 230, 80));
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 420, 230, 80));
 
-        _lbAnteFarmacologicos.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbAnteFarmacologicos.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbAnteFarmacologicos.setForeground(new java.awt.Color(153, 255, 255));
         _lbAnteFarmacologicos.setText("ANTECEDENTES FARMACOLÓGICOS");
-        add(_lbAnteFarmacologicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 530, -1, -1));
+        add(_lbAnteFarmacologicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 550, -1, -1));
 
         _aaAnteFarmacologicos.setColumns(20);
         _aaAnteFarmacologicos.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -277,12 +273,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane5.setViewportView(_aaAnteFarmacologicos);
 
-        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, 240, 80));
+        add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 570, 240, 80));
 
-        _lbTipoConsulta.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbTipoConsulta.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbTipoConsulta.setForeground(new java.awt.Color(153, 255, 255));
         _lbTipoConsulta.setText("TIPO DE CONSULTA");
-        add(_lbTipoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 90, -1, -1));
+        add(_lbTipoConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 260, -1, -1));
 
         _aaTipoConsulta.setColumns(20);
         _aaTipoConsulta.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -294,13 +290,13 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane6.setViewportView(_aaTipoConsulta);
 
-        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, 210, 80));
+        add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 210, 80));
 
-        _lbExamenFisico.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbExamenFisico.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbExamenFisico.setForeground(new java.awt.Color(153, 255, 255));
         _lbExamenFisico.setText("EXAMEN FÍSICO");
         _lbExamenFisico.setToolTipText("");
-        add(_lbExamenFisico, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, -1, -1));
+        add(_lbExamenFisico, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, -1, -1));
 
         _aaExamenFisico.setColumns(20);
         _aaExamenFisico.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -312,12 +308,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane7.setViewportView(_aaExamenFisico);
 
-        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, 210, 80));
+        add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 150, 210, 80));
 
-        _lbDiagnostico.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbDiagnostico.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbDiagnostico.setForeground(new java.awt.Color(153, 255, 255));
         _lbDiagnostico.setText("DIAGNÓSTICO");
-        add(_lbDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, -1, -1));
+        add(_lbDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 260, -1, -1));
 
         _aaDiagnostico.setColumns(20);
         _aaDiagnostico.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -329,12 +325,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane8.setViewportView(_aaDiagnostico);
 
-        add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 210, 80));
+        add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 280, 210, 80));
 
-        _lbPlanDeTratamiento.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
+        _lbPlanDeTratamiento.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbPlanDeTratamiento.setForeground(new java.awt.Color(153, 255, 255));
         _lbPlanDeTratamiento.setText("PLAN DE TRATAMIENTO");
-        add(_lbPlanDeTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, -1, -1));
+        add(_lbPlanDeTratamiento, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, -1, -1));
 
         _aaPlanDeTratamiento.setColumns(20);
         _aaPlanDeTratamiento.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
@@ -346,88 +342,54 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         });
         jScrollPane9.setViewportView(_aaPlanDeTratamiento);
 
-        add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 440, 210, 80));
-
-        _lbFechaConsulta.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
-        _lbFechaConsulta.setForeground(new java.awt.Color(153, 255, 255));
-        _lbFechaConsulta.setText("FECHA CONSULTA");
-        add(_lbFechaConsulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 180, -1));
-
-        _lbMes.setFont(new java.awt.Font("Metropolis Black", 1, 13)); // NOI18N
-        _lbMes.setForeground(new java.awt.Color(255, 255, 255));
-        _lbMes.setText("MES");
-        add(_lbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, -1, -1));
-
-        _lbDia.setFont(new java.awt.Font("Metropolis Black", 1, 13)); // NOI18N
-        _lbDia.setForeground(new java.awt.Color(255, 255, 255));
-        _lbDia.setText("DÍA");
-        add(_lbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, -1, -1));
-
-        _lbAno.setFont(new java.awt.Font("Metropolis Black", 1, 13)); // NOI18N
-        _lbAno.setForeground(new java.awt.Color(255, 255, 255));
-        _lbAno.setText("AÑO");
-        add(_lbAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 240, -1, -1));
-
-        _cbMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12" }));
-        _cbMes.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        _cbMes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _cbMesActionPerformed(evt);
-            }
-        });
-        add(_cbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, 70, 40));
-
-        _cbDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" }));
-        _cbDia.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        _cbDia.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _cbDiaActionPerformed(evt);
-            }
-        });
-        add(_cbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 80, 40));
-
-        _cbAno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " ", "2022", "2021", "2020", "2019", "2018", "2017", "2016", "2015", "2014", "2013", "2012", "2011", "2010", "2009", "2008", "2007", "2006", "2005", "2004", "2003", "2002", "2001", "2000", "1999", "1998", "1997", "1996", "1995", "1994", "1993", "1992", "1991", "1990", "1989", "1988", "1987", "1986", "1985", "1984", "1983", "1982", "1981", "1980", "1979", "1978", "1977", "1976", "1975", "1974", "1973", "1972", "1971", "1970" }));
-        _cbAno.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        _cbAno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _cbAnoActionPerformed(evt);
-            }
-        });
-        add(_cbAno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 260, 90, 40));
+        add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 420, 210, 80));
 
         _lbCedulaAsociado.setFont(new java.awt.Font("Metropolis Black", 1, 16)); // NOI18N
         _lbCedulaAsociado.setForeground(new java.awt.Color(153, 255, 255));
         _lbCedulaAsociado.setText("CÉDULA ASOCIADA AL HISTORIAL");
-        add(_lbCedulaAsociado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, -1, -1));
+        add(_lbCedulaAsociado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
-        _cbCedula.setEditable(true);
         _cbCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _cbCedula.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 _cbCedulaActionPerformed(evt);
             }
         });
-        add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 260, 40));
+        add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 260, 40));
 
         _labelError1.setFont(new java.awt.Font("Metropolis Black", 1, 10)); // NOI18N
         _labelError1.setForeground(new java.awt.Color(255, 255, 255));
-        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 300, 30));
+        add(_labelError1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 300, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/agregarHistorial.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, -1, 90));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 30, 590));
+
+        _panelContenedorDatos.setBackground(new java.awt.Color(0, 137, 123));
+        _panelContenedorDatos.setLayout(null);
+        add(_panelContenedorDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 270, 290, 420));
+
+        _lbLogo1.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
+        _lbLogo1.setForeground(new java.awt.Color(255, 255, 255));
+        _lbLogo1.setText("DATOS DEL PACIENTE");
+        add(_lbLogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, -1, -1));
+
+        jButton1.setBackground(new java.awt.Color(54, 203, 167));
+        jButton1.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("AYUDA");
+        jButton1.setToolTipText("");
+        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 55, 30));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void _cbMesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbMesActionPerformed
-        _cbMes.setBackground(Color.white);
-        _textoCMes = _cbMes.getSelectedItem().toString();
-    }//GEN-LAST:event__cbMesActionPerformed
-
-    private void _cbDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbDiaActionPerformed
-        _cbDia.setBackground(Color.white);
-        _textoCDia = _cbDia.getSelectedItem().toString();
-    }//GEN-LAST:event__cbDiaActionPerformed
-
-    private void _cbAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbAnoActionPerformed
-        _cbAno.setBackground(Color.white);
-        _textoCAno = _cbAno.getSelectedItem().toString();
-    }//GEN-LAST:event__cbAnoActionPerformed
 
     private void _tfRazonConsultaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__tfRazonConsultaKeyTyped
         _tfRazonConsulta.setBackground(Color.white);
@@ -533,7 +495,16 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         _cbCedula.setBackground(Color.white);
         setAviso();
         _textoCedula = _cbCedula.getSelectedItem().toString();
+        if(_textoCedula != " "){
+            ObtenerPosicionPersona(_textoCedula, _registroPaciente);
+            AgregarDatosPaciente(_registroPaciente, _posicion);
+        }
     }//GEN-LAST:event__cbCedulaActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        FrameAyuda ayuda = new FrameAyuda();
+        ayuda.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void AddActionListener(ActionListener listener) {
         _botonVolver.addActionListener(listener);
@@ -552,28 +523,24 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
     javax.swing.JTextArea _aaTipoConsulta;
     javax.swing.JButton _botonRegistrarH;
     javax.swing.JButton _botonVolver;
-    javax.swing.JComboBox<String> _cbAno;
     javax.swing.JComboBox<String> _cbCedula;
-    javax.swing.JComboBox<String> _cbDia;
-    javax.swing.JComboBox<String> _cbMes;
     javax.swing.JLabel _labelError1;
-    javax.swing.JLabel _labelLogo;
-    javax.swing.JLabel _lbAno;
     javax.swing.JLabel _lbAnteFamiliares;
     javax.swing.JLabel _lbAnteFarmacologicos;
     javax.swing.JLabel _lbAntePatologicos;
     javax.swing.JLabel _lbAntePersonales;
     javax.swing.JLabel _lbCedulaAsociado;
-    javax.swing.JLabel _lbDia;
     javax.swing.JLabel _lbDiagnostico;
     javax.swing.JLabel _lbEnfermedadActual;
     javax.swing.JLabel _lbExamenFisico;
-    javax.swing.JLabel _lbFechaConsulta;
-    javax.swing.JLabel _lbMes;
+    javax.swing.JLabel _lbLogo1;
     javax.swing.JLabel _lbPlanDeTratamiento;
     javax.swing.JLabel _lbRazonConsilta;
     javax.swing.JLabel _lbTipoConsulta;
+    javax.swing.JPanel _panelContenedorDatos;
     javax.swing.JTextField _tfRazonConsulta;
+    javax.swing.JButton jButton1;
+    javax.swing.JLabel jLabel1;
     javax.swing.JScrollPane jScrollPane1;
     javax.swing.JScrollPane jScrollPane2;
     javax.swing.JScrollPane jScrollPane3;
@@ -583,11 +550,12 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane7;
     javax.swing.JScrollPane jScrollPane8;
     javax.swing.JScrollPane jScrollPane9;
+    javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
-    private String _textoCMes = "";
-    private String _textoCDia = "";
-    private String _textoCAno = "";
     private String _textoCedula = "";
+    private int _posicion;
+    private PanelDatosPaciente _panelDatosPaciente;
+    private ArrayList<DatosPaciente> _registroPaciente;
 
     public JButton getBotonRegistrarH() {
         return _botonRegistrarH;
@@ -641,18 +609,6 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         return _tfRazonConsulta.getText();
     }
 
-    public String getTextoCMes() {
-        return _textoCMes;
-    }
-
-    public String getTextoCDia() {
-        return _textoCDia;
-    }
-
-    public String getTextoCAno() {
-        return _textoCAno;
-    }
-
     public void setAaAnteFamiliares() {
         this._aaAnteFamiliares.setText("");
     }
@@ -693,20 +649,8 @@ public class PanelAHistorialClinico extends javax.swing.JPanel {
         this._tfRazonConsulta.setText("");
     }
 
-    public void setCbAno() {
-        this._cbAno.setSelectedItem(" ");
-    }
-
     public void setCbCedula() {
         this._cbCedula.setSelectedItem(" ");
-    }
-
-    public void setCbDia() {
-        this._cbDia.setSelectedItem(" ");
-    }
-
-    public void setCbMes() {
-        this._cbMes.setSelectedItem(" ");
     }
 
     public void AvisoCedulaAsociada() {

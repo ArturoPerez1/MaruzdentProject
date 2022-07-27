@@ -11,9 +11,6 @@ public class ControladorRegistrarHistorial {
     
     /*Las variables booleanas la uso para poder verificar que todos los datos
     cumples y poder proceder a registrar al historial*/
-    private boolean _diaV;
-    private boolean _mesV;
-    private boolean _anoV;
     private boolean _razonV;
     private boolean _tipoV;
     private boolean _anteFV;
@@ -83,28 +80,21 @@ public class ControladorRegistrarHistorial {
                     /*----------------------------------------------------------------------------------------------*/
                     
                     /*------Verificamos el contenido de los comboBoxes----------------------------------------------*/
-                    _verificarHistorial.VerificarFechaNacimiento(_panelAHistorialClinico.getTextoCMes(), _panelAHistorialClinico.getTextoCDia(), _panelAHistorialClinico.getTextoCAno());
-                    _panelAHistorialClinico.ErrorDia(_verificarHistorial.IsDiaVerificado());
-                    _panelAHistorialClinico.ErrorMes(_verificarHistorial.IsMesVerificado());
-                    _panelAHistorialClinico.ErrorAno(_verificarHistorial.IsAnoVerificado());
-                    _diaV = _verificarHistorial.IsDiaVerificado();
-                    _mesV = _verificarHistorial.IsMesVerificado();
-                    _anoV = _verificarHistorial.IsAnoVerificado();
                     _verificarHistorial.VerificarCedula(_panelAHistorialClinico.getTextoCedula());
                     _panelAHistorialClinico.ErrorCedula(_verificarHistorial.IsCedulaVerificada());
                     _cedulaAV = _verificarHistorial.IsCedulaVerificada();
+                    
                     /*-------------------------------------------------------------------------------------------------*/
                     
                     /*----Si se confirma que todo cumple aquí se hace el proceso de registro del historial clinico----*/
                     if (_razonV == false && _antePV == false && _anteFV == false && _antePTV == false && _anteFMV == false && _enfermedadV == false && _examenV == false
                             && _diagnosticoV == false && _tipoV == false && _planTratamientoV == false
-                            && _diaV == false && _mesV == false && _anoV == false && _cedulaAV == false) {
-                        String fechaConsulta = _panelAHistorialClinico.getTextoCMes() + "/" + _panelAHistorialClinico.getTextoCDia() + "/" + _panelAHistorialClinico.getTextoCAno();
+                            && _cedulaAV == false) {
                         _controladorArrayList.AgregarHistorialClinico(_panelAHistorialClinico.getTfRazonConsulta(), _panelAHistorialClinico.getAaEnfermedadActual(),
                                 _panelAHistorialClinico.getAaAntePersonales(), _panelAHistorialClinico.getAaAnteFamiliares(),
                                 _panelAHistorialClinico.getAaAntePatologicos(), _panelAHistorialClinico.getAaAnteFarmacologicos(),
                                 _panelAHistorialClinico.getAaExamenFisico(), _panelAHistorialClinico.getAaTipoConsulta(),
-                                _panelAHistorialClinico.getAaDiagnostico(), _panelAHistorialClinico.getAaPlanDeTratamiento(), fechaConsulta, _panelAHistorialClinico.getTextoCedula());
+                                _panelAHistorialClinico.getAaDiagnostico(), _panelAHistorialClinico.getAaPlanDeTratamiento(),_panelAHistorialClinico.getTextoCedula());
 
                         if (_controladorArrayList.isCedulaRepetida() == true) {
                             _panelAHistorialClinico.ErrorCedula(true);
@@ -121,10 +111,8 @@ public class ControladorRegistrarHistorial {
                             _panelAHistorialClinico.setAaExamenFisico();
                             _panelAHistorialClinico.setAaTipoConsulta();
                             _panelAHistorialClinico.setTfRazonConsulta();
-                            _panelAHistorialClinico.setCbAno();
-                            _panelAHistorialClinico.setCbMes();
-                            _panelAHistorialClinico.setCbDia();
                             _panelAHistorialClinico.setCbCedula();
+                            _panelAHistorialClinico.QuitarDatosPaciente();
                         }
                     }
                     /*--------------------------------------------------------------------------------------------------------*/
@@ -140,9 +128,6 @@ public class ControladorRegistrarHistorial {
                     _panelAHistorialClinico.setAaExamenFisico();
                     _panelAHistorialClinico.setAaTipoConsulta();
                     _panelAHistorialClinico.setTfRazonConsulta();
-                    _panelAHistorialClinico.setCbAno();
-                    _panelAHistorialClinico.setCbMes();
-                    _panelAHistorialClinico.setCbDia();
                     _panelAHistorialClinico.setCbCedula();
                     _frameAHistorialMedico.dispose();
                     _frameContenedorPaciente.setVisible(true);
