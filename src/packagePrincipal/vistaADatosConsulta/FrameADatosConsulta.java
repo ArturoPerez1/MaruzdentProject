@@ -10,7 +10,7 @@ public class FrameADatosConsulta extends javax.swing.JFrame {
 
     public void AgregarVentanaADatosConsulta() {
         _panelADatosConsulta = new PanelADatosConsulta();
-        _panelADatosConsulta.setSize(900, 700);
+        _panelADatosConsulta.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelADatosConsulta, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -33,14 +33,14 @@ public class FrameADatosConsulta extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, 700, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

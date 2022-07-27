@@ -2,6 +2,7 @@ package packagePrincipal.ControladorRegistroPaciente;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import packagePrincipal.modelo.VerificarDatosHistorial;
 import packagePrincipal.vistaAHistorialClinico.FrameAHistorialMedico;
 import packagePrincipal.vistaAHistorialClinico.PanelAHistorialClinico;
@@ -100,6 +101,7 @@ public class ControladorRegistrarHistorial {
                             _panelAHistorialClinico.ErrorCedula(true);
                             _panelAHistorialClinico.AvisoCedulaAsociada();
                         } else {
+                            JOptionPane.showMessageDialog(null, "HISTORIAL REGISTRADO EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             _panelAHistorialClinico.setAviso();
                             _panelAHistorialClinico.setAaAnteFamiliares();
                             _panelAHistorialClinico.setAaAnteFarmacologicos();

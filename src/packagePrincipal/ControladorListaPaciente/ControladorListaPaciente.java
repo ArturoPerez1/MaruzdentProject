@@ -73,7 +73,7 @@ public class ControladorListaPaciente {
                     _posicion = _controladorArrayList.ObtenerIndiceCedulaHistorial(_panelListaPaciente.getTextoCedula());
                     /*si el historial está vacío se muestra un mensaje y no se permite el acceso
                     a la ventana del historial*/
-                    if (_posicion != 0) {
+                    if (_posicion != -1) {
                         _panelPacienteDetallado.SetAvisoAgregarHistorial();
                         _frameListaPaciente.AgregarVentaHistorialPaciente();
                         _frameListaPaciente.LlenarHistorialPaciente(_controladorArrayList.getRegistroHistorial(), _posicion);

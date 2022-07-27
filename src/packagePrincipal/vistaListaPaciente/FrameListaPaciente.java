@@ -77,7 +77,6 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         String antecedentesFamiliares = _registroHistorial.get(i).getAntecedentesFamiliares();
         String antecedentesPatologicos = _registroHistorial.get(i).getAntecedentesPatologicos();
         String antecedentesFarmacologicos = _registroHistorial.get(i).getAntecedentesFarmacologicos();
-        String fechaConsulta = _registroHistorial.get(i).getFechaConsulta();
         String examenFisico = _registroHistorial.get(i).getExamenFisico();
         String tipoDeConsulta = _registroHistorial.get(i).getTipoDeConsulta();
         String diagnostico = _registroHistorial.get(i).getDiagnostico();
@@ -91,7 +90,6 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         _panelHistorialPaciente.setaEnfermedadActual(enfermedadActual);
         _panelHistorialPaciente.setaExamenFisico(examenFisico);
         _panelHistorialPaciente.setaPlanTratamiento(planTratamiento);
-        _panelHistorialPaciente.setLbTFecha(fechaConsulta);
         _panelHistorialPaciente.setLbTRazonConsulta(razonConsulta);
         _panelHistorialPaciente.setLbTTipoConsulta(tipoDeConsulta);
                 

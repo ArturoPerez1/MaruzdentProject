@@ -101,13 +101,13 @@ public class ControladorArraysList {
 
     public void AgregarMedico(String nombreMedico, String cedulaMedico, String especialidad, String numeroTelefonico, String rutaImagen) {
         if (_primerMedico == true) {
-            _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico,rutaImagen);
+            _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico, rutaImagen);
             _registroMedicos.AgregarMedico(_datosMedicos);
             _primerMedico = false;
         } else {
             _cedulaRepetida = CedulaMedicosRepetida(cedulaMedico);
             if (_cedulaRepetida == false) {
-                _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico,rutaImagen);
+                _datosMedicos = new DatosMedicos(nombreMedico, cedulaMedico, especialidad, numeroTelefonico, rutaImagen);
                 _registroMedicos.AgregarMedico(_datosMedicos);
             }
         }
@@ -144,7 +144,7 @@ public class ControladorArraysList {
     }
 
     public int ObtenerIndiceCedulaHistorial(String cedula) {
-        int retornar = 0;
+        int retornar = -1;
         int cont = 0;
 
         for (HistorialClinico historial : _registroHistorial.getRegistroHistorial()) {
@@ -154,6 +154,8 @@ public class ControladorArraysList {
             }
             cont++;
         }
+
+        System.out.println("cedula = " + _registroHistorial.getRegistroHistorial().get(retornar).getCedulaAsociada());
 
         return retornar;
     }
@@ -255,9 +257,9 @@ public class ControladorArraysList {
     public void ModificarCedulaMedico(int posicion, String cedula) {
         _registroMedicos.getRegistroMedicos().get(posicion).setCedulaMedico(cedula);
     }
-    
-    public void ModificarRutaImagenMedico(int posicion, String ruta){
-         _registroMedicos.getRegistroMedicos().get(posicion).setRutaImagen(ruta);
+
+    public void ModificarRutaImagenMedico(int posicion, String ruta) {
+        _registroMedicos.getRegistroMedicos().get(posicion).setRutaImagen(ruta);
     }
 
     public void ModificarNombreMedico(int posicion, String nombre) {

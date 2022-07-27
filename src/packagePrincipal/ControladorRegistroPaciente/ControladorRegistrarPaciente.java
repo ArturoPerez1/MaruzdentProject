@@ -2,6 +2,7 @@ package packagePrincipal.ControladorRegistroPaciente;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import packagePrincipal.modelo.FechaActual;
 import packagePrincipal.modelo.VerificarDatosPaciente;
 import packagePrincipal.vistaAPaciente.FrameAPaciente;
@@ -168,6 +169,7 @@ public class ControladorRegistrarPaciente {
                             _panelRegistrarPaciente.ErrorCedulaP1(true);
                             _panelRegistrarPaciente.setLabelCedulaRepetida();
                         } else {
+                            JOptionPane.showMessageDialog(null, "PACIENTE REGISTRADO EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             _panelRegistrarPaciente.Resetearimagen();
                             _panelRegistrarPaciente.setTextNombreP();
                             _panelRegistrarPaciente.setTextApellidoP();
