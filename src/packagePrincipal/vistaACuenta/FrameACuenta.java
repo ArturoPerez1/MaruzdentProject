@@ -9,7 +9,7 @@ public class FrameACuenta extends javax.swing.JFrame {
     }
 
     public void AgregarVentanaACuenta() {
-        _panelACuenta = new PanelACuenta();
+        _panelACuenta = new PanelListaPacienteCuenta();
         _panelACuenta.setSize(900, 700);
         _panelContendor.removeAll();
         _panelContendor.add(_panelACuenta, BorderLayout.CENTER);
@@ -40,7 +40,7 @@ public class FrameACuenta extends javax.swing.JFrame {
             .addComponent(_panelContendor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -48,9 +48,9 @@ public class FrameACuenta extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JPanel _panelContendor;
     // End of variables declaration//GEN-END:variables
-    PanelACuenta _panelACuenta;
+    PanelListaPacienteCuenta _panelACuenta;
 
-    public PanelACuenta getPanelACuenta() {
+    public PanelListaPacienteCuenta getPanelACuenta() {
         return _panelACuenta;
     }
 

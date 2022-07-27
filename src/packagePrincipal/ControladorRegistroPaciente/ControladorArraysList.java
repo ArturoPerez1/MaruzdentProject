@@ -113,16 +113,16 @@ public class ControladorArraysList {
         }
     }
 
-    public void AgregarConsulta(String estadoConsulta, DatosMedicos medicoAsociado, String nombreP, String cedulaP) {
+    public void AgregarConsulta(String estadoConsulta, DatosMedicos medicoAsociado, String nombreP, String cedulaP, String fechaCita, String horaCita) {
         if (_primerConsulta) {
-            _datosConsulta = new DatosConsulta(estadoConsulta, medicoAsociado, nombreP, cedulaP);
+            _datosConsulta = new DatosConsulta(estadoConsulta, medicoAsociado, nombreP, cedulaP, fechaCita, horaCita);
             _registroConsulta.AgregarDatosConsulta(_datosConsulta);
             _primerConsulta = false;
         } else {
             _cedulaConsultaRepetida = CedulaAsociadaConsultaRepetida(cedulaP);
 
             if (_cedulaConsultaRepetida == false) {
-                _datosConsulta = new DatosConsulta(estadoConsulta, medicoAsociado, nombreP, cedulaP);
+                _datosConsulta = new DatosConsulta(estadoConsulta, medicoAsociado, nombreP, cedulaP, fechaCita, horaCita);
                 _registroConsulta.AgregarDatosConsulta(_datosConsulta);
             }
         }

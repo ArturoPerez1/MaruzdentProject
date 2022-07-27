@@ -36,13 +36,6 @@ public class VerificarDatosMedico {
         }
     }
 
-    public void VerificarEstadoConsulta(String estadoConsulta) {
-        _isEstadoConsultaVerificado = false;
-        if (estadoConsulta.equals("") || estadoConsulta.equals(" ")) {
-            _isEstadoConsultaVerificado = true;
-        }
-    }
-
     //aquí obtengo los primeros primero 9 dígitos
     public String ObtenerLosPrimeros9Digitos(String cedulaP1) {
         int cont = 0;

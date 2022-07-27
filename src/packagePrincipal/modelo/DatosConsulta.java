@@ -6,12 +6,16 @@ public class DatosConsulta {
     private DatosMedicos _medicoAsociado;
     private String _nombrePaciente;
     private String _cedulaPaciente;
+    private String _fechaCita;
+    private String _horaCita;
 
-    public DatosConsulta(String estadoConsulta, DatosMedicos medicoAsociado, String nombrePaciente, String cedulaPaciente) {
+    public DatosConsulta(String estadoConsulta, DatosMedicos medicoAsociado, String nombrePaciente, String cedulaPaciente, String fechaCita, String horaCita) {
         this._estadoConsulta = estadoConsulta;
         this._medicoAsociado = medicoAsociado;
         this._cedulaPaciente = cedulaPaciente;
         this._nombrePaciente = nombrePaciente;
+        this._fechaCita = fechaCita;
+        this._horaCita = horaCita;
     }
 
     public String getEstadoConsulta() {
@@ -28,6 +32,22 @@ public class DatosConsulta {
 
     public String getCedulaPaciente() {
         return _cedulaPaciente;
+    }
+
+    public String getFechaCita() {
+        return _fechaCita;
+    }
+
+    public void setFechaCita(String _fechaCita) {
+        this._fechaCita = _fechaCita;
+    }
+
+    public String getHoraCita() {
+        return _horaCita;
+    }
+
+    public void setHoraCita(String _horaCita) {
+        this._horaCita = _horaCita;
     }
 
     public void setEstadoConsulta(String _estadoConsulta) {

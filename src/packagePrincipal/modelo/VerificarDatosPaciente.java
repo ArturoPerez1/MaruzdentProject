@@ -71,6 +71,13 @@ public class VerificarDatosPaciente {
         }
     }
 
+    public void VerificarCedulaPacienteLista(String cedulaP1) {
+        _isCedulaP1Vacia = false;
+        if (cedulaP1 == " ") {
+            _isCedulaP1Vacia = true;
+        }
+    }
+
     //aquí obtengo los primeros primero 9 dígitos
     public String ObtenerLosPrimeros9Digitos(String cedulaP1) {
         int cont = 0;
@@ -180,7 +187,7 @@ public class VerificarDatosPaciente {
         String digitos = "";
 
         for (int i = _pDespuesCodigoT; i < telefono.length(); i++) {
-            digitos +=  telefono.charAt(i);
+            digitos += telefono.charAt(i);
             cont++;
         }
 
