@@ -251,6 +251,9 @@ public class FrameAgregarCuenta extends javax.swing.JFrame {
 
     private void _cbTipoTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbTipoTratamientoActionPerformed
         _textoTipoTratamiento = _cbTipoTratamiento.getSelectedItem().toString();
+        if(_textoTipoTratamiento.equals("TRATAMIENTO ÚNICO")){
+            QuitarAvisoPresupuesto();
+        }
     }//GEN-LAST:event__cbTipoTratamientoActionPerformed
 
     private void _tfCostoConsultaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__tfCostoConsultaKeyReleased

@@ -100,10 +100,12 @@ public class ControladorACuentaPaciente {
                     }
                     if (_tratamientoUnico == true) {
                         if (_costoTratamiento.isEmpty() == true) {
+                            _frameAgragarCuenta.QuitarAvisoPresupuesto();
                             _frameAgragarCuenta.ErrorCosto(true);
                             _frameAgragarCuenta.AvisoCostoTratamiento();
                         } else {
                             _frameAgragarCuenta.QuitarAvisoCostoTratamiento();
+                            _frameAgragarCuenta.QuitarAvisoPresupuesto();
                             _costoTratamiento = _frameAgragarCuenta.getTfCostoConsulta();
                             _presupuestoPaciente = _frameAgragarCuenta.getTfPresupuesto();
                             _tipoTratamiento = _frameAgragarCuenta.getTextoTipoTratamiento();
@@ -117,9 +119,11 @@ public class ControladorACuentaPaciente {
                             _frameAgragarCuenta.ErrorPresupuesto(true);
                             _frameAgragarCuenta.AvisoPresupuesto();
                         } else if (_costoTratamiento.isEmpty() == true) {
+                            _frameAgragarCuenta.QuitarAvisoPresupuesto();
                             _frameAgragarCuenta.ErrorCosto(true);
                             _frameAgragarCuenta.AvisoCostoTratamiento();
                         } else if (_presupuestoPaciente.isEmpty() == true) {
+                            _frameAgragarCuenta.QuitarAvisoCostoTratamiento();
                             _frameAgragarCuenta.ErrorPresupuesto(true);
                             _frameAgragarCuenta.AvisoPresupuesto();
                         } else if (_costoTratamiento.isEmpty() == false && _presupuestoPaciente.isEmpty() == false) {
