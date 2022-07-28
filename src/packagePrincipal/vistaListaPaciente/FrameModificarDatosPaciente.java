@@ -23,6 +23,7 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
         _lbINFEstado.setText(paciente.get(i).getEstadoCivil());
         _lbINFGenero.setText(paciente.get(i).getGenero());
         _areaINFdireccion.setText(paciente.get(i).getDireccionResidencia());
+        _lbINFOcupacion.setText(paciente.get(i).getOcupacion());
 
         if (Integer.valueOf(paciente.get(i).getEdad()) < 18) {
             _lbINFNombreR.setText(paciente.get(i).getNombreResponsable());
@@ -205,6 +206,8 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
         _btnMTelefonoR = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        _lbOcupacion = new javax.swing.JLabel();
+        _lbINFOcupacion = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -222,95 +225,95 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
         _logo2.setFont(new java.awt.Font("Metropolis Black", 1, 24)); // NOI18N
         _logo2.setForeground(new java.awt.Color(255, 255, 255));
         _logo2.setText("DATOS DEL PACIENTE");
-        jPanel1.add(_logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 290, 30));
+        jPanel1.add(_logo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 290, 30));
 
         _lbNombre.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbNombre.setForeground(new java.awt.Color(0, 255, 255));
         _lbNombre.setText("NOMBRE :");
-        jPanel1.add(_lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, -1, -1));
+        jPanel1.add(_lbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
 
         _lbINFNombre.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFNombre.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 320, 20));
+        jPanel1.add(_lbINFNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 320, 20));
 
         _lbApellido.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbApellido.setForeground(new java.awt.Color(0, 255, 255));
         _lbApellido.setText("APELLIDO :");
-        jPanel1.add(_lbApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, -1, -1));
+        jPanel1.add(_lbApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         _lbINFApellido.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFApellido.setForeground(new java.awt.Color(255, 255, 255));
         _lbINFApellido.setToolTipText("");
-        jPanel1.add(_lbINFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 200, 330, 20));
+        jPanel1.add(_lbINFApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 330, 20));
 
         _lcCedula.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lcCedula.setForeground(new java.awt.Color(0, 255, 255));
         _lcCedula.setText("CÉDULA :");
-        jPanel1.add(_lcCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        jPanel1.add(_lcCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, -1, -1));
 
         _lbINFCedula.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFCedula.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 340, 20));
+        jPanel1.add(_lbINFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 340, 20));
 
         _lbTelefono.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbTelefono.setForeground(new java.awt.Color(0, 255, 255));
         _lbTelefono.setText("TELÉFONO :");
-        jPanel1.add(_lbTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
+        jPanel1.add(_lbTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         _lbINFTelefono.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFTelefono.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 320, 20));
+        jPanel1.add(_lbINFTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 320, 20));
 
         _lbCorreo.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbCorreo.setForeground(new java.awt.Color(0, 255, 255));
         _lbCorreo.setText("CORREO :");
-        jPanel1.add(_lbCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, -1, -1));
+        jPanel1.add(_lbCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         _lbINFCorreo.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFCorreo.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 290, 340, 20));
+        jPanel1.add(_lbINFCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 340, 20));
 
         _lbFecha.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbFecha.setForeground(new java.awt.Color(0, 255, 255));
         _lbFecha.setText("FECHA DE NACIMIENTO :");
-        jPanel1.add(_lbFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, -1, -1));
+        jPanel1.add(_lbFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, -1, -1));
 
         _lbINFFecha.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFFecha.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, 200, 20));
+        jPanel1.add(_lbINFFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 200, 20));
 
         _lbEdad.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbEdad.setForeground(new java.awt.Color(0, 255, 255));
         _lbEdad.setText("EDAD :");
         _lbEdad.setToolTipText("");
-        jPanel1.add(_lbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, -1, -1));
+        jPanel1.add(_lbEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
 
         _lbINFEdad.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFEdad.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, 180, 20));
+        jPanel1.add(_lbINFEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 310, 180, 20));
 
         _lbEstado.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbEstado.setForeground(new java.awt.Color(0, 255, 255));
         _lbEstado.setText("ESTADO CIVIL :");
-        jPanel1.add(_lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, -1, -1));
+        jPanel1.add(_lbEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, -1, -1));
 
         _lbINFEstado.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFEstado.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 380, 290, 20));
+        jPanel1.add(_lbINFEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 290, 20));
 
         _lbGenero.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbGenero.setForeground(new java.awt.Color(0, 255, 255));
         _lbGenero.setText("GÉNERO :");
-        jPanel1.add(_lbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 410, -1, -1));
+        jPanel1.add(_lbGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
         _lbINFGenero.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFGenero.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(_lbINFGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 410, 300, 20));
+        jPanel1.add(_lbINFGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 370, 300, 20));
 
         _lbDireccion.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbDireccion.setForeground(new java.awt.Color(0, 255, 255));
         _lbDireccion.setText("DIRECCIÓN RESIDENCIAL :");
-        jPanel1.add(_lbDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, -1, -1));
+        jPanel1.add(_lbDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
 
         _lbNombreR.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
         _lbNombreR.setForeground(new java.awt.Color(0, 255, 255));
@@ -323,7 +326,7 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
         _areaINFdireccion.setRows(5);
         jScrollPane1.setViewportView(_areaINFdireccion);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 210, 110));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 210, 110));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 570, 1200, 10));
 
         _logo.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
@@ -705,6 +708,15 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(487, 580, 710, 110));
 
+        _lbOcupacion.setFont(new java.awt.Font("Metropolis Black", 1, 18)); // NOI18N
+        _lbOcupacion.setForeground(new java.awt.Color(0, 255, 255));
+        _lbOcupacion.setText("OCUPACIÓN :");
+        jPanel1.add(_lbOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, -1, -1));
+
+        _lbINFOcupacion.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
+        _lbINFOcupacion.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(_lbINFOcupacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 400, 300, 20));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -891,6 +903,7 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
         _btnMNombreR.addActionListener(listener);
         _btnMTelefono.addActionListener(listener);
         _btnMTelefonoR.addActionListener(listener);
+        _btnMOcupacion.addActionListener(listener);
         _botonVolver.addActionListener(listener);
     }
 
@@ -935,10 +948,12 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
     javax.swing.JLabel _lbINFGenero;
     javax.swing.JLabel _lbINFNombre;
     javax.swing.JLabel _lbINFNombreR;
+    javax.swing.JLabel _lbINFOcupacion;
     javax.swing.JLabel _lbINFTelefono;
     javax.swing.JLabel _lbINFTelefonoR;
     javax.swing.JLabel _lbNombre;
     javax.swing.JLabel _lbNombreR;
+    javax.swing.JLabel _lbOcupacion;
     javax.swing.JLabel _lbTelefono;
     javax.swing.JLabel _lbTelefonoR;
     javax.swing.JLabel _lcCedula;
@@ -985,6 +1000,18 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
 
     public String getAreaMDireccion() {
         return _areaMDireccion.getText();
+    }
+
+    public JButton getBtnMOcupacion() {
+        return _btnMOcupacion;
+    }
+
+    public String getTfOcupacion() {
+        return _tfOcupacion.getText();
+    }
+
+    public void setTfOcupacion() {
+        this._tfOcupacion.setText("");
     }
 
     public JButton getBotonVolver() {
@@ -1081,6 +1108,34 @@ public class FrameModificarDatosPaciente extends javax.swing.JFrame {
 
     public String getTextoEstadoCivil() {
         return _textoEstadoCivil;
+    }
+
+    public void setAreaMDireccion() {
+        this._areaMDireccion.setText("");
+    }
+
+    public void setTfCedulaP1() {
+        this._tfCedulaP1.setText("");
+    }
+
+    public void setTfCedulaP2() {
+        this._tfCedulaP2.setText("");
+    }
+
+    public void setTfNAC() {
+        this._tfNAC.setText("");
+    }
+
+    public void setTfNAR() {
+        this._tfNAR.setText("");
+    }
+
+    public void setTfTelefono() {
+        this._tfTelefono.setText("");
+    }
+
+    public void setTfTelefonoR() {
+        this._tfTelefonoR.setText("");
     }
 
 }

@@ -271,6 +271,66 @@ public class ControladorArraysList {
         _registroMedicos.getRegistroMedicos().get(posicion).setNumeroTelefonico(telefono);
     }
 
+    public void ModificarNombrePaciente(int i, String nombre) {
+        _registroPaciente.getRegistroPacientes().get(i).setNombre(nombre);
+    }
+
+    public void ModificarApellidoPaciente(int i, String apellido) {
+        _registroPaciente.getRegistroPacientes().get(i).setApellidos(apellido);
+    }
+
+    public void ModificarCedulaPaciente(int i, String cedula) {
+        _registroPaciente.getRegistroPacientes().get(i).setCedula(cedula);
+    }
+
+    public void ModificarCorreoPaciente(int i, String correo) {
+        _registroPaciente.getRegistroPacientes().get(i).setCorreoElectronico(correo);
+    }
+
+    public void ModificarTelefonoPaciente(int i, String telefono) {
+        _registroPaciente.getRegistroPacientes().get(i).setNumeroTelefonico(telefono);
+    }
+
+    public void ModificarFechaNacimientoPaciente(int i, String fechaNacimiento) {
+        _registroPaciente.getRegistroPacientes().get(i).setFechaNacimiento(fechaNacimiento);
+    }
+
+    public void ModificarEdadPaciente(int i, String edad) {
+        _registroPaciente.getRegistroPacientes().get(i).setEdad(edad);
+    }
+
+    public void ModificarOcupacionPaciente(int i, String ocupacion) {
+        _registroPaciente.getRegistroPacientes().get(i).setOcupacion(ocupacion);
+    }
+
+    public void ModificarDireccionPaciente(int i, String direccion) {
+        _registroPaciente.getRegistroPacientes().get(i).setDireccionResidencia(direccion);
+    }
+
+    public void ModificarEstadoCivilPaciente(int i, String estadoCivil) {
+        _registroPaciente.getRegistroPacientes().get(i).setEstadoCivil(estadoCivil);
+    }
+
+    public void ModificarGeneroPaciente(int i, String genero) {
+        _registroPaciente.getRegistroPacientes().get(i).setGenero(genero);
+    }
+
+    public void ModificarNombreResponsable(int i, String nombre) {
+        _registroPaciente.getRegistroPacientes().get(i).setNombreResponsable(nombre);
+    }
+
+    public void ModificarApellidoResponsable(int i, String apellido) {
+        _registroPaciente.getRegistroPacientes().get(i).setApellidoResponsable(apellido);
+    }
+
+    public void ModificarTelefonoResponable(int i, String telefono) {
+        _registroPaciente.getRegistroPacientes().get(i).setNumeroTelefonicoR(telefono);
+    }
+
+    public void ModificarRutaImagenPaciente(int posicion, String ruta) {
+        _registroPaciente.getRegistroPacientes().get(posicion).setRutaImagen(ruta);
+    }
+
     public void EliminarConsultasRegistradas() {
         for (int i = 0; i < _registroConsulta.getRegistroConsulta().size(); i++) {
             _registroConsulta.getRegistroConsulta().remove(i);

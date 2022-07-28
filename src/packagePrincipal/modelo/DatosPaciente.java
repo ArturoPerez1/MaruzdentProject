@@ -97,6 +97,67 @@ public class DatosPaciente {
     public String getRutaImagen() {
         return _rutaImagen;
     }
+
+    public void setNombre(String _nombre) {
+        this._nombre = _nombre;
+    }
+
+    public void setApellidos(String _apellidos) {
+        this._apellidos = _apellidos;
+    }
+
+    public void setCedula(String _cedula) {
+        this._cedula = _cedula;
+    }
+
+    public void setFechaNacimiento(String _fechaNacimiento) {
+        this._fechaNacimiento = _fechaNacimiento;
+    }
+
+    public void setEdad(String _edad) {
+        this._edad = _edad;
+    }
+
+    public void setGenero(String _genero) {
+        this._genero = _genero;
+    }
+
+    public void setNumeroTelefonico(String _numeroTelefonico) {
+        this._numeroTelefonico = _numeroTelefonico;
+    }
+
+    public void setEstadoCivil(String _estadoCivil) {
+        this._estadoCivil = _estadoCivil;
+    }
+
+    public void setOcupacion(String _ocupacion) {
+        this._ocupacion = _ocupacion;
+    }
+
+    public void setDireccionResidencia(String _direccionResidencia) {
+        this._direccionResidencia = _direccionResidencia;
+    }
+
+    public void setCorreoElectronico(String _correoElectronico) {
+        this._correoElectronico = _correoElectronico;
+    }
+
+    public void setNombreResponsable(String _nombreResponsable) {
+        this._nombreResponsable = _nombreResponsable;
+    }
+
+    public void setNumeroTelefonicoR(String _numeroTelefonicoR) {
+        this._numeroTelefonicoR = _numeroTelefonicoR;
+    }
+
+    public void setApellidoResponsable(String _ApellidoResponsable) {
+        this._ApellidoResponsable = _ApellidoResponsable;
+    }
+
+    public void setRutaImagen(String _rutaImagen) {
+        this._rutaImagen = _rutaImagen;
+    }
+    
     
     
 

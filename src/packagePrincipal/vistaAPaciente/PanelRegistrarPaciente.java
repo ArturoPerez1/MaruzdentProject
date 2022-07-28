@@ -870,10 +870,6 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
         _fTCedulaP2.setBackground(Color.white);
     }//GEN-LAST:event__fTCedulaP2MouseClicked
 
-    private void _botonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__botonAgregarImagenActionPerformed
-        AgregarJFileChooser();
-    }//GEN-LAST:event__botonAgregarImagenActionPerformed
-
     private void _textNombrePMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event__textNombrePMouseClicked
         _textNombreP.setBackground(Color.white);
     }//GEN-LAST:event__textNombrePMouseClicked
@@ -931,6 +927,11 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event__textNombrePKeyTyped
+
+    private void _botonAgregarImagenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__botonAgregarImagenActionPerformed
+        System.out.println("hola");
+        AgregarJFileChooser();
+    }//GEN-LAST:event__botonAgregarImagenActionPerformed
 
     public void AddActionListener(ActionListener listener) {
         _botonRegistrar.addActionListener(listener);

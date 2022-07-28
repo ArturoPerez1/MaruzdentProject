@@ -56,11 +56,8 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         String rutaImagen = _registroPaciente.get(i).getRutaImagen();
 
         _panelPacienteDetallado.setLbTNombre(nombres);
-        _panelPacienteDetallado.setLbTNombreR(nombreResponsable);
         _panelPacienteDetallado.setLbTApellido(apellidos);
-        _panelPacienteDetallado.setLbTApellidoR(apellidoResponsable);
         _panelPacienteDetallado.setLbTTelefono(numeroTelefonico);
-        _panelPacienteDetallado.setLbTNumeroR(numeroTelefonicoR);
         _panelPacienteDetallado.setLbTCedula(Id);
         _panelPacienteDetallado.setLbTCorreo(correoElectronico);
         _panelPacienteDetallado.setLbTGenero(genero);
@@ -70,6 +67,16 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         _panelPacienteDetallado.setaDireccionResidencial(direccionResidencia);
         _panelPacienteDetallado.setLbTEstadoCivil(estadoCivil);
         _panelPacienteDetallado.setLbImagen(rutaImagen);
+
+        if (Integer.valueOf(_registroPaciente.get(i).getEdad()) < 18) {
+            _panelPacienteDetallado.setLbTNombreR(nombreResponsable);
+            _panelPacienteDetallado.setLbTApellidoR(apellidoResponsable);
+            _panelPacienteDetallado.setLbTNumeroR(numeroTelefonicoR);
+        } else {
+            _panelPacienteDetallado.setLbTNombreR("PACIENTE MAYOR DE EDAD");
+            _panelPacienteDetallado.setLbTApellidoR("PACIENTE MAYOR DE EDAD");
+            _panelPacienteDetallado.setLbTNumeroR("PACIENTE MAYOR DE EDAD");
+        }
     }
 
     public void LlenarHistorialPaciente(ArrayList<HistorialClinico> _registroHistorial, int i) {
@@ -83,7 +90,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         String tipoDeConsulta = _registroHistorial.get(i).getTipoDeConsulta();
         String diagnostico = _registroHistorial.get(i).getDiagnostico();
         String planTratamiento = _registroHistorial.get(i).getPlanTratamiento();
-        
+
         _panelHistorialPaciente.setaAnteFamiliares(antecedentesFamiliares);
         _panelHistorialPaciente.setaAnteFarmacologicos(antecedentesFarmacologicos);
         _panelHistorialPaciente.setaAntePatalogico(antecedentesPatologicos);
@@ -94,7 +101,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         _panelHistorialPaciente.setaPlanTratamiento(planTratamiento);
         _panelHistorialPaciente.setLbTRazonConsulta(razonConsulta);
         _panelHistorialPaciente.setLbTTipoConsulta(tipoDeConsulta);
-                
+
     }
 
     @SuppressWarnings("unchecked")
