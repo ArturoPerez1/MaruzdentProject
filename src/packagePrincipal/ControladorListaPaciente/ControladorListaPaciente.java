@@ -70,19 +70,22 @@ public class ControladorListaPaciente {
         public void actionPerformed(ActionEvent evento) {
             try {
                 if (evento.getSource() == _panelPacienteDetallado.getBotonVerHistorial()) {
-                    _posicion = _controladorArrayList.ObtenerIndiceCedulaHistorial(_panelListaPaciente.getTextoCedula());
-                    /*si el historial está vacío se muestra un mensaje y no se permite el acceso
+                    if (_controladorArrayList.isPrimerHistorial() == false) {
+                        _posicion = _controladorArrayList.ObtenerIndiceCedulaHistorial(_panelListaPaciente.getTextoCedula());
+                        /*si el historial está vacío se muestra un mensaje y no se permite el acceso
                     a la ventana del historial*/
-                    if (_posicion != -1) {
-                        _panelPacienteDetallado.SetAvisoAgregarHistorial();
-                        _frameListaPaciente.AgregarVentaHistorialPaciente();
-                        _frameListaPaciente.LlenarHistorialPaciente(_controladorArrayList.getRegistroHistorial(), _posicion);
-                        _panelHistorialPaciente = _frameListaPaciente.getPanelHistorialPaciente();
-                        _panelHistorialPaciente.AddActionListener(new AgregarListenerVentanaHistorialPaciente());
-                    } else {
-                        _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
+                        if (_posicion != -1) {
+                            _panelPacienteDetallado.SetAvisoAgregarHistorial();
+                            _frameListaPaciente.AgregarVentaHistorialPaciente();
+                            _frameListaPaciente.LlenarHistorialPaciente(_controladorArrayList.getRegistroHistorial(), _posicion);
+                            _panelHistorialPaciente = _frameListaPaciente.getPanelHistorialPaciente();
+                            _panelHistorialPaciente.AddActionListener(new AgregarListenerVentanaHistorialPaciente());
+                        } else {
+                            _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
+                        }
+                    }else{
+                         _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
                     }
-
                 } else if (evento.getSource() == _panelPacienteDetallado.getBotonVolver()) {
                     _frameListaPaciente.AgregarVentaListaPaciente();
                     _panelListaPaciente = _frameListaPaciente.getPanelListaPaciente();

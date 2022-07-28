@@ -13,7 +13,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
 
     public void AgregarVentaPacienteDetallado() {
         _panelPacienteDetallado = new PanelPacienteDetallado();
-        _panelPacienteDetallado.setSize(900, 700);
+        _panelPacienteDetallado.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelPacienteDetallado, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -22,7 +22,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
 
     public void AgregarVentaListaPaciente() {
         _panelListaPaciente = new PanelListaPaciente();
-        _panelListaPaciente.setSize(900, 700);
+        _panelListaPaciente.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelListaPaciente, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -31,7 +31,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
 
     public void AgregarVentaHistorialPaciente() {
         _panelHistorialPaciente = new PanelHistorialPaciente();
-        _panelHistorialPaciente.setSize(900, 700);
+        _panelHistorialPaciente.setSize(1200, 700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelHistorialPaciente, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -53,6 +53,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         String nombreResponsable = _registroPaciente.get(i).getNombreResponsable();
         String numeroTelefonicoR = _registroPaciente.get(i).getNumeroTelefonicoR();
         String apellidoResponsable = _registroPaciente.get(i).getApellidoResponsable();
+        String rutaImagen = _registroPaciente.get(i).getRutaImagen();
 
         _panelPacienteDetallado.setLbTNombre(nombres);
         _panelPacienteDetallado.setLbTNombreR(nombreResponsable);
@@ -68,6 +69,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
         _panelPacienteDetallado.setLbTFechaNacimieto(fechaNacimiento);
         _panelPacienteDetallado.setaDireccionResidencial(direccionResidencia);
         _panelPacienteDetallado.setLbTEstadoCivil(estadoCivil);
+        _panelPacienteDetallado.setLbImagen(rutaImagen);
     }
 
     public void LlenarHistorialPaciente(ArrayList<HistorialClinico> _registroHistorial, int i) {
@@ -117,7 +119,7 @@ public class FrameListaPaciente extends javax.swing.JFrame {
             .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

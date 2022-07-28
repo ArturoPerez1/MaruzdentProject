@@ -1,6 +1,7 @@
 package packagePrincipal.vistaListaPaciente;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -29,8 +30,17 @@ public class PanelListaPaciente extends javax.swing.JPanel {
         }
     }
 
+    public void ObtenerTablaPersonalizada() {
+        _jtListaPacientes.getTableHeader().setBackground(new Color(2, 119, 189));
+        _jtListaPacientes.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        _jtListaPacientes.getTableHeader().setForeground(new Color(255, 255, 255));
+        _jtListaPacientes.setRowHeight(25);
+    }
+
     public void LlenarTablaPacientes(ArrayList<DatosPaciente> registroPaciente) {
         _model = new DefaultTableModel();
+        ObtenerTablaPersonalizada();
+        _jtListaPacientes.setEnabled(true);
         this._registroPaciente = registroPaciente;
 
         _model.addColumn("NOMBRE PACIENTE");
@@ -51,6 +61,7 @@ public class PanelListaPaciente extends javax.swing.JPanel {
             _model.addRow(fila);
         }
 
+        _jtListaPacientes.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -62,27 +73,31 @@ public class PanelListaPaciente extends javax.swing.JPanel {
         _lbListaPaciente = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         _jtListaPacientes = new javax.swing.JTable();
-        _botonVerInformacion = new javax.swing.JButton();
-        _cbCedula = new javax.swing.JComboBox<>();
         _lbInformacion = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator3 = new javax.swing.JSeparator();
+        jPanel1 = new javax.swing.JPanel();
         _lbCedula = new javax.swing.JLabel();
+        _cbCedula = new javax.swing.JComboBox<>();
+        _botonVerInformacion = new javax.swing.JButton();
         _lbErrorCedula = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(26, 188, 156));
+        setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        _lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/listaPaciente.png"))); // NOI18N
-        add(_lbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+        _lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/listaDePacientes.png"))); // NOI18N
+        add(_lbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, 760, -1));
 
-        _botonVolver.setBackground(new java.awt.Color(26, 188, 156));
+        _botonVolver.setBackground(new java.awt.Color(77, 182, 172));
         _botonVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/volver.png"))); // NOI18N
         _botonVolver.setBorder(null);
-        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 70, 60));
+        add(_botonVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 0, 70, 60));
 
         _lbListaPaciente.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 36)); // NOI18N
         _lbListaPaciente.setForeground(new java.awt.Color(153, 255, 255));
         _lbListaPaciente.setText("LISTA DE PACIENTES REGISTRADOS");
-        add(_lbListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, -1, -1));
+        add(_lbListaPaciente, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
         _jtListaPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,16 +110,33 @@ public class PanelListaPaciente extends javax.swing.JPanel {
                 "NOMBRE PACIENTE", "APELLIDO", "CÉDULA", "CORREO"
             }
         ));
+        _jtListaPacientes.setFocusable(false);
+        _jtListaPacientes.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        _jtListaPacientes.setRowHeight(25);
+        _jtListaPacientes.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(_jtListaPacientes);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 860, 160));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 860, 200));
 
-        _botonVerInformacion.setBackground(new java.awt.Color(54, 203, 167));
-        _botonVerInformacion.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
-        _botonVerInformacion.setForeground(new java.awt.Color(255, 255, 255));
-        _botonVerInformacion.setText("VER INFORMACIÓN");
-        _botonVerInformacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
-        add(_botonVerInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 580, 210, 40));
+        _lbInformacion.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
+        _lbInformacion.setForeground(new java.awt.Color(153, 255, 255));
+        _lbInformacion.setText("VER INFORMACIÓN DETALLADA ");
+        add(_lbInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 430, -1, 40));
+
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, -1, 230));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 510, -1));
+
+        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, 20, 230));
+
+        jPanel1.setBackground(new java.awt.Color(0, 137, 123));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        _lbCedula.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
+        _lbCedula.setForeground(new java.awt.Color(255, 255, 255));
+        _lbCedula.setText("SELECCIONE LA CÉDULA DEL PACIENTE");
+        jPanel1.add(_lbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, -1));
 
         _cbCedula.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _cbCedula.addActionListener(new java.awt.event.ActionListener() {
@@ -112,29 +144,27 @@ public class PanelListaPaciente extends javax.swing.JPanel {
                 _cbCedulaActionPerformed(evt);
             }
         });
-        add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 290, 40));
+        jPanel1.add(_cbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 50, 290, 40));
 
-        _lbInformacion.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 24)); // NOI18N
-        _lbInformacion.setForeground(new java.awt.Color(153, 255, 255));
-        _lbInformacion.setText("VER INFORMACIÓN DETALLADA ");
-        add(_lbInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 460, -1, 40));
-
-        _lbCedula.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 14)); // NOI18N
-        _lbCedula.setForeground(new java.awt.Color(255, 255, 255));
-        _lbCedula.setText("SELECCIONES LA CÉDULA DEL PACIENTE");
-        add(_lbCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
+        _botonVerInformacion.setBackground(new java.awt.Color(54, 203, 167));
+        _botonVerInformacion.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 18)); // NOI18N
+        _botonVerInformacion.setForeground(new java.awt.Color(255, 255, 255));
+        _botonVerInformacion.setText("VER INFORMACIÓN");
+        _botonVerInformacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
+        jPanel1.add(_botonVerInformacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 210, 40));
 
         _lbErrorCedula.setFont(new java.awt.Font("Microsoft New Tai Lue", 1, 16)); // NOI18N
         _lbErrorCedula.setForeground(new java.awt.Color(255, 255, 255));
         _lbErrorCedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_lbErrorCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 530, 360, 30));
+        jPanel1.add(_lbErrorCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 360, 30));
+
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 490, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void _cbCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbCedulaActionPerformed
         _cbCedula.setBackground(Color.white);
         setLbErrorCedula1();
         _textoCedula = _cbCedula.getSelectedItem().toString();
-        System.out.println("este es el contenido = " + _textoCedula);
     }//GEN-LAST:event__cbCedulaActionPerformed
 
     public void AddActionListener(ActionListener listener) {
@@ -152,7 +182,11 @@ public class PanelListaPaciente extends javax.swing.JPanel {
     javax.swing.JLabel _lbInformacion;
     javax.swing.JLabel _lbListaPaciente;
     javax.swing.JLabel _lbLogo;
+    javax.swing.JPanel jPanel1;
     javax.swing.JScrollPane jScrollPane1;
+    javax.swing.JSeparator jSeparator1;
+    javax.swing.JSeparator jSeparator2;
+    javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
     private ArrayList<DatosPaciente> _registroPaciente;
     private DefaultTableModel _model;

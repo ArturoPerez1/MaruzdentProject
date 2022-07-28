@@ -154,9 +154,6 @@ public class ControladorArraysList {
             }
             cont++;
         }
-
-        System.out.println("cedula = " + _registroHistorial.getRegistroHistorial().get(retornar).getCedulaAsociada());
-
         return retornar;
     }
 
