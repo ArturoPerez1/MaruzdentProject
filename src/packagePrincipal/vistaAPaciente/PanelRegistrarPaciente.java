@@ -2,9 +2,12 @@ package packagePrincipal.vistaAPaciente;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import packagePrincipal.modelo.DatosPaciente;
+import packagePrincipal.vistaListaPaciente.FrameModificarDatosPaciente;
 import vista.PlaceHolder;
 
 public class PanelRegistrarPaciente extends javax.swing.JPanel {
@@ -672,23 +675,6 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
         add(_botonAyuda, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void _textNombrePKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__textNombrePKeyTyped
-        char c = evt.getKeyChar();
-        setLbVaciarAvisoNombreP();
-        _textNombreP.setBackground(Color.white);
-        if (Character.isLowerCase(c)) {
-            String cad = ("" + c).toUpperCase();
-            c = cad.charAt(0);
-            evt.setKeyChar(c);
-        }
-
-        if (c != ' ') {
-            if (c == '0' || c < '9') {
-                evt.consume();
-            }
-        }
-    }//GEN-LAST:event__textNombrePKeyTyped
-
     private void _textApellidoPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__textApellidoPKeyTyped
         char c = evt.getKeyChar();
         setLbApellidoVacio1();
@@ -928,6 +914,23 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
         FrameAyuda frameayuda = new FrameAyuda();
         frameayuda.setVisible(true);
     }//GEN-LAST:event__botonAyudaActionPerformed
+
+    private void _textNombrePKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event__textNombrePKeyTyped
+        char c = evt.getKeyChar();
+        setLbVaciarAvisoNombreP();
+        _textNombreP.setBackground(Color.white);
+        if (Character.isLowerCase(c)) {
+            String cad = ("" + c).toUpperCase();
+            c = cad.charAt(0);
+            evt.setKeyChar(c);
+        }
+
+        if (c != ' ') {
+            if (c == '0' || c < '9') {
+                evt.consume();
+            }
+        }
+    }//GEN-LAST:event__textNombrePKeyTyped
 
     public void AddActionListener(ActionListener listener) {
         _botonRegistrar.addActionListener(listener);

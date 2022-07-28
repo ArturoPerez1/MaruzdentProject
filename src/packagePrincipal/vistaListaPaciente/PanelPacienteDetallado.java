@@ -1,15 +1,23 @@
 package packagePrincipal.vistaListaPaciente;
 
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import packagePrincipal.modelo.DatosPaciente;
 
 public class PanelPacienteDetallado extends javax.swing.JPanel {
 
     public PanelPacienteDetallado() {
         initComponents();
+    }
+
+    public void VentanaModificarDatos(ArrayList<DatosPaciente> paciente, int i) {
+        _frameModificar = new FrameModificarDatosPaciente();
+        _frameModificar.LlenarDatosPaciente(paciente, i);
+        _frameModificar.setVisible(true);
     }
 
     public boolean FiltrarExtensionesFileChooser(String path) {
@@ -253,11 +261,6 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
         _botonAgregar.setText("AGREGAR FOTO");
         _botonAgregar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null));
         _botonAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        _botonAgregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _botonAgregarActionPerformed(evt);
-            }
-        });
         _panelImagen.add(_botonAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 70, 210, 40));
 
         add(_panelImagen, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 390, 180));
@@ -305,13 +308,12 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 348, 510, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void _botonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__botonAgregarActionPerformed
-        AgregarJFileChooser();
-    }//GEN-LAST:event__botonAgregarActionPerformed
-
     public void AddActionListener(ActionListener listener) {
         _botonVerHistorial.addActionListener(listener);
         _botonVolver.addActionListener(listener);
+        _botonModificar.addActionListener(listener);
+        _botonAgregar.addActionListener(listener);
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -360,6 +362,15 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
     javax.swing.JSeparator jSeparator4;
     javax.swing.JSeparator jSeparator5;
     // End of variables declaration//GEN-END:variables
+    private FrameModificarDatosPaciente _frameModificar;
+
+    public FrameModificarDatosPaciente getFrameModificar() {
+        return _frameModificar;
+    }
+
+    public JButton getBotonModificar() {
+        return _botonModificar;
+    }
 
     public JButton getBotonVerHistorial() {
         return _botonVerHistorial;
@@ -372,7 +383,7 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
     public void setLbImagen(String ruta) {
         this._lbImagen.setIcon(new javax.swing.ImageIcon(ruta));
     }
-     
+
     public JButton getBotonVolver() {
         return _botonVolver;
     }

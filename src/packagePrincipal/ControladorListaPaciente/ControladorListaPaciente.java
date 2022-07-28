@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.modelo.VerificarDatosHistorial;
 import packagePrincipal.vistaListaPaciente.FrameListaPaciente;
+import packagePrincipal.vistaListaPaciente.FrameModificarDatosPaciente;
 import packagePrincipal.vistaListaPaciente.PanelListaPaciente;
 import packagePrincipal.vistaListaPaciente.PanelPacienteDetallado;
 import packagePrincipal.vistaMenu.FrameContenedorMenu;
@@ -21,6 +22,7 @@ public class ControladorListaPaciente {
     private PanelHistorialPaciente _panelHistorialPaciente;
     private FrameContenedorMenu _frameContenedor;
     private FrameListaPaciente _frameListaPaciente;
+    private FrameModificarDatosPaciente _frameModificar;
 
     public ControladorListaPaciente(FrameContenedorMenu frameContenedor, ControladorArraysList controladorArrayList) {
         this._controladorArrayList = controladorArrayList;
@@ -83,9 +85,14 @@ public class ControladorListaPaciente {
                         } else {
                             _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
                         }
-                    }else{
-                         _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
+                    } else {
+                        _panelPacienteDetallado.AvisoAgregarHistorial(_panelListaPaciente.getTextoCedula());
                     }
+                } else if (evento.getSource() == _panelPacienteDetallado.getBotonModificar()) {
+                    _frameListaPaciente.setVisible(false);
+                    _panelPacienteDetallado.VentanaModificarDatos(_controladorArrayList.getRegistroPaciente1(), _posicion);
+                    _frameModificar = _panelPacienteDetallado.getFrameModificar();
+                    _frameModificar.AddActionListener(new AgregarActionListenerVentanaModificador());
                 } else if (evento.getSource() == _panelPacienteDetallado.getBotonVolver()) {
                     _frameListaPaciente.AgregarVentaListaPaciente();
                     _panelListaPaciente = _frameListaPaciente.getPanelListaPaciente();
@@ -107,6 +114,27 @@ public class ControladorListaPaciente {
         public void actionPerformed(ActionEvent evento) {
             try {
                 if (evento.getSource() == _panelHistorialPaciente.getBotonVolver()) {
+                    _posicion = _controladorArrayList.ObtenerIndiceCedulaPaciente(_panelListaPaciente.getTextoCedula());
+                    _frameListaPaciente.AgregarVentaPacienteDetallado();
+                    _frameListaPaciente.LlenarDatosPacienteDetallado(_controladorArrayList.getRegistroPaciente1(), _posicion);
+                    _panelPacienteDetallado = _frameListaPaciente.getPanelPacienteDetallado();
+                    _panelPacienteDetallado.AddActionListener(new AgregarListenerVentanaPacienteDetallado());
+                }
+            } catch (Error e) {
+                System.out.println("Error = " + e);
+            }
+        }
+
+    }
+
+    public class AgregarActionListenerVentanaModificador implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try {
+                if (evento.getSource() == _frameModificar.getBotonVolver()) {
+                    _frameModificar.dispose();
+                    _frameListaPaciente.setVisible(true);
                     _posicion = _controladorArrayList.ObtenerIndiceCedulaPaciente(_panelListaPaciente.getTextoCedula());
                     _frameListaPaciente.AgregarVentaPacienteDetallado();
                     _frameListaPaciente.LlenarDatosPacienteDetallado(_controladorArrayList.getRegistroPaciente1(), _posicion);
