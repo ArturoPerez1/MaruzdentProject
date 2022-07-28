@@ -24,6 +24,7 @@ public class ControladorCitasPaciente {
     private boolean _cedulaPV;
     private boolean _cedulaMV;
     private boolean _fechaVerificada;
+    private boolean _fechaCumple;
     private String _fechaCita;
     private String _horaCita;
     private VerificarFechaYHoraCita _verificarFH;
@@ -70,7 +71,7 @@ public class ControladorCitasPaciente {
                     /*---------------------------------------------------------------------*/
 
  /*----Si se confirma que los datos están correcto entonces se registra una consulta---*/
-                    if (_cedulaMV == false && _cedulaPV == false && _botonAjustarFHPresionado == true && _fechaVerificada == true) {
+                    if (_cedulaMV == false && _cedulaPV == false && _botonAjustarFHPresionado == true && _fechaVerificada == true && _fechaCumple == true) {
                         _registroMedicos = _controladorArrayList.getRegistroMedicos();
                         _registroPaciente = _controladorArrayList.getRegistroPaciente1();
                         _posicionMedicoAsociado = _controladorArrayList.ObtenerIndiceCedulaMedico(_panelADatosConsulta.getTextoCedulaM());
@@ -84,7 +85,7 @@ public class ControladorCitasPaciente {
                             _panelADatosConsulta.ErrorCedulaPaciente(true);
                             _panelADatosConsulta.AvisoCedulaAsociada();
                         } else {
-                             JOptionPane.showMessageDialog(null, "CITA AGREGADA EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
+                            JOptionPane.showMessageDialog(null, "CITA AGREGADA EXITOSAMENTE", "REGISTRO EXITOSO", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             _panelADatosConsulta.setTextoCedulaM();
                             _panelADatosConsulta.setTextoCedulaP();
                             _panelADatosConsulta.setCbCedulaMedico();
@@ -138,11 +139,17 @@ public class ControladorCitasPaciente {
             try {
                 if (evento.getSource() == evento.getSource()) {
                     _verificarFH = new VerificarFechaYHoraCita();
-                    _fechaVerificada = _verificarFH.VerificarFechaNacimiento(_frameJFH.getFecha());
+                    _verificarFH.VerificarFechaCita(_frameJFH.getFecha());
+                    _fechaVerificada = _verificarFH.isFechaVerificada();
+                    _fechaCumple = _verificarFH.isFechaCumple();
                     if (_fechaVerificada == true) {
-                        _fechaCita = _frameJFH.getFecha();
-                        _horaCita = _frameJFH.getHora() + ":" + _frameJFH.getMinutos() + " " + _frameJFH.getTurno();
-                        _frameJFH.dispose();
+                        if (_fechaCumple == true) {
+                            _fechaCita = _frameJFH.getFecha();
+                            _horaCita = _frameJFH.getHora() + ":" + _frameJFH.getMinutos() + " " + _frameJFH.getTurno();
+                            _frameJFH.dispose();
+                        }else{
+                            JOptionPane.showMessageDialog(null, "LA FECHA SELECCIONADA ES ANTIGUA \n SELECCIONE UNA QUE SEA ACTUAL", "SELECCIÓN DE FECHA", JOptionPane.WARNING_MESSAGE);
+                        }
                     } else {
                         JOptionPane.showMessageDialog(null, "SELECCIONE UN FECHA PARA PODER REGISTRAR", "SELECCIÓN DE FECHA", JOptionPane.WARNING_MESSAGE);
                     }

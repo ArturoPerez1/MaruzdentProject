@@ -15,6 +15,7 @@ public class VerificarFechaYHoraCita {
     private boolean _isDiaVerificado;
     private boolean _isAnoVerificado;
     private boolean _fechaVerificada;
+    private boolean _fechaCumple;
 
     public void ObtenerFechaSeparada(String fecha) {
         int cont = 0;
@@ -29,26 +30,61 @@ public class VerificarFechaYHoraCita {
             }
             _dia += fecha.charAt(i);
         }
-        
+
         for (int i = cont; i < fecha.length(); i++) {
             if (fecha.charAt(i) == '/') {
-                cont = i+1;
+                cont = i + 1;
                 break;
             }
             _mes += fecha.charAt(i);
         }
-        
-        for(int i = cont; i < fecha.length(); i++){
+
+        for (int i = cont; i < fecha.length(); i++) {
             _ano += fecha.charAt(i);
         }
-        
+
     }
 
-    public boolean VerificarFechaNacimiento(String fecha) {
+    public boolean FechaCumple(String fecha) {
+        boolean fechaCumple = false;
+        String fechaActual = "";
+        String mes = "";
+        String dia = "";
+        String ano = "";
+
+        FechaActual obtenerFechaActual = new FechaActual();
+        fechaActual = obtenerFechaActual.ObtenerFechaActual();
+
+        mes = obtenerFechaActual.getMes();
+        dia = obtenerFechaActual.getDia();
+        ano = obtenerFechaActual.getAno();
+
+        if (fecha.equals(fechaActual)) {
+            fechaCumple = true;
+        } else {
+            if (_ano.equals(ano)) {
+                if (mes.equals(_mes)) {
+                    if (dia.equals(_dia)) {
+                        fechaCumple = true;
+                    } else {
+                        fechaCumple = (Integer.valueOf(dia) < Integer.valueOf(_dia));
+                    }
+                } else {
+                    fechaCumple = (Integer.valueOf(mes) < Integer.valueOf(_mes));
+                }
+            } else {
+                fechaCumple = (Integer.valueOf(ano) < Integer.valueOf(_ano));
+            }
+        }
+
+        return fechaCumple;
+    }
+
+    public void VerificarFechaCita(String fecha) {
         char c;
         ObtenerFechaSeparada(fecha);
         String regex = "^\\d{4}[\\-\\/\\s]?((((0[13578])|(1[02]))[\\-\\/\\s]?(([0-2][0-9])|(3[01])))|(((0[469])|(11))[\\-\\/\\s]?(([0-2][0-9])|(30)))|(02[\\-\\/\\s]?[0-2][0-9]))$";
-        String fechaActual;
+        String fechaActual = "";
         _fechaVerificada = false;
         _isMesVerificado = false;
         _isDiaVerificado = false;
@@ -91,9 +127,19 @@ public class VerificarFechaYHoraCita {
         if (_isMesVacio == false && _isDiaVacio == false && _isAnoVacio == false) {
             if (_isMesVerificado == false && _isDiaVerificado == false && _isAnoVerificado == false) {
                 _fechaVerificada = true;
+                _fechaCumple = FechaCumple(fechaActual);
             }
         }
 
+    }
+
+    public boolean isFechaVerificada() {
         return _fechaVerificada;
     }
+
+    public boolean isFechaCumple() {
+        return _fechaCumple;
+    }
+    
+    
 }

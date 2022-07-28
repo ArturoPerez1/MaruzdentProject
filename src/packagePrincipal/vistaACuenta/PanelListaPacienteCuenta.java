@@ -7,11 +7,17 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 import packagePrincipal.modelo.DatosPaciente;
+import packagePrincipal.modelo.HistorialClinico;
 
 public class PanelListaPacienteCuenta extends javax.swing.JPanel {
 
     public PanelListaPacienteCuenta() {
         initComponents();
+    }
+
+    public void AgregarVentanaDeAdjuntarCuenta(ArrayList<DatosPaciente> paciente, int i, ArrayList<HistorialClinico> historial, int j) {
+        _frameAgregarCuenta = new FrameAgregarCuenta();
+        _frameAgregarCuenta.LlenarDatosPaciente(_registrarPaciente, i, historial, j);
     }
 
     public void LlenaComboBoxCedulas(ArrayList<DatosPaciente> _registroPaciente) {
@@ -170,11 +176,16 @@ public class PanelListaPacienteCuenta extends javax.swing.JPanel {
     javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
     private String _textoCedula = "";
+    private FrameAgregarCuenta _frameAgregarCuenta;
     private ArrayList<DatosPaciente> _registrarPaciente;
     private DefaultTableModel _model;
 
     public JButton getBotonRegistrar() {
         return _botonRegistrar;
+    }
+
+    public FrameAgregarCuenta getFrameAgregarCuenta() {
+        return _frameAgregarCuenta;
     }
 
     public JButton getBotonVolver() {
@@ -199,6 +210,10 @@ public class PanelListaPacienteCuenta extends javax.swing.JPanel {
 
     public void setLabelErrorCedula() {
         this._labelCedulaRepetida.setText("ESTA CÉDULA YA ESTÁ ASOCIADA A LA CUENTRA DE UN PACIENTE");
+    }
+
+    public void setLabelErrorCedula2() {
+        this._labelCedulaRepetida.setText("SELECCIONE UNA CÉDULA");
     }
 
     public void setLabelErrorCedula1() {

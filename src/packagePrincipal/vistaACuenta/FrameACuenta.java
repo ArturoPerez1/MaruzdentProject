@@ -10,7 +10,7 @@ public class FrameACuenta extends javax.swing.JFrame {
 
     public void AgregarVentanaACuenta() {
         _panelACuenta = new PanelListaPacienteCuenta();
-        _panelACuenta.setSize(900, 700);
+        _panelACuenta.setSize(1200, 700);
         _panelContendor.removeAll();
         _panelContendor.add(_panelACuenta, BorderLayout.CENTER);
         _panelContendor.revalidate();

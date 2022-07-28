@@ -85,15 +85,15 @@ public class ControladorArraysList {
 
     }
 
-    public void AgregarCuentaPaciente(String costoTotalTratamiento, String deudaTotalAcumulada, String costoConsulta, String cedulaAsociada) {
+    public void AgregarCuentaPaciente(String costoTotalTratamiento, String cedulaAsociada, String presupuestoPaciente, String tipoTratamiento, boolean tratamientoUnico) {
         if (_primerCuenta == true) {
-            _cuentaPaciente = new CuentaPaciente(costoTotalTratamiento, deudaTotalAcumulada, costoConsulta, cedulaAsociada);
+            _cuentaPaciente = new CuentaPaciente(costoTotalTratamiento, cedulaAsociada, presupuestoPaciente, tipoTratamiento, tratamientoUnico);
             _registroCuenta.AgregarCuenta(_cuentaPaciente);
             _primerCuenta = false;
         } else {
             _cedulaRepetida = CedulaCuentaPacienteRepetida(cedulaAsociada);
             if (_cedulaRepetida == false) {
-                _cuentaPaciente = new CuentaPaciente(costoTotalTratamiento, deudaTotalAcumulada, costoConsulta, cedulaAsociada);
+                _cuentaPaciente = new CuentaPaciente(costoTotalTratamiento, cedulaAsociada, presupuestoPaciente, tipoTratamiento, tratamientoUnico);
                 _registroCuenta.AgregarCuenta(_cuentaPaciente);
             }
         }
