@@ -10,7 +10,7 @@ public class FramePago extends javax.swing.JFrame {
     
     public void AgregarVentanaPago(){
         _panelPago = new PanelPago();
-        _panelPago.setSize(900,700);
+        _panelPago.setSize(1200,700);
         _panelContenedor.removeAll();
         _panelContenedor.add(_panelPago, BorderLayout.CENTER);
         _panelContenedor.revalidate();
@@ -40,7 +40,7 @@ public class FramePago extends javax.swing.JFrame {
             .addComponent(_panelContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(900, 700));
+        setSize(new java.awt.Dimension(1200, 700));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 

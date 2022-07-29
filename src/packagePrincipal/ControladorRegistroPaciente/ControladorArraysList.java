@@ -330,6 +330,10 @@ public class ControladorArraysList {
     public void ModificarRutaImagenPaciente(int posicion, String ruta) {
         _registroPaciente.getRegistroPacientes().get(posicion).setRutaImagen(ruta);
     }
+    
+    public void EliminarCitaRegistrada(int i){
+        _registroConsulta.getRegistroConsulta().remove(i);
+    }
 
     public void EliminarConsultasRegistradas() {
         for (int i = 0; i < _registroConsulta.getRegistroConsulta().size(); i++) {

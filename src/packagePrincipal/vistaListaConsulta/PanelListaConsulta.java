@@ -1,6 +1,5 @@
 package packagePrincipal.vistaListaConsulta;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -34,12 +33,10 @@ public class PanelListaConsulta extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         LlenarTablaFechaFiltrada();
-                        _frameFiltrarFecha.dispose();
                     }
                 } else if (evento.getSource() == _frameFiltrarCedula.getBotonObtenerCedula()) {
                     _cedulaFiltrada = _frameFiltrarCedula.getCedula();
                     LlenarTablaCedulaFiltrada();
-                    _frameFiltrarCedula.dispose();
                 }
 
             } catch (Error e) {
@@ -47,6 +44,33 @@ public class PanelListaConsulta extends javax.swing.JPanel {
             }
         }
 
+    }
+
+    public int ObtenerIndicePorCedula(String cedulaFiltrada) {
+        int posicion = 0;
+        for (int i = 0; i < _listaCita.size(); i++) {
+            if (_listaCita.get(i).getCedulaPaciente().equals(cedulaFiltrada)) {
+                posicion = i;
+                break;
+            }
+        }
+
+        return posicion;
+    }
+
+    public void ObtenerCedulaEliminarCita(ActionListener listener) {
+        _frameFiltrarCedula = new FrameFiltroCedula();
+        _frameFiltrarCedula.setVisible(true);
+        _frameFiltrarCedula.LlenaComboBoxCedulas(_listaCita);
+        _frameFiltrarCedula.AddActionListener(listener);
+    }
+    
+    public void PopUpEliminarCita(String cedulaFiltrada) {
+        int posicion = ObtenerIndicePorCedula(cedulaFiltrada);
+        _frameEliminarCita = new FrameEliminarCita();
+        _frameEliminarCita.LlenarTabla(_listaCita, posicion);
+        _frameEliminarCita.setVisible(true);
+        _posionCitaEliminada = posicion;
     }
 
     public void PopUpFiltrarFecha() {
@@ -92,7 +116,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
 
     public void LlenarTablaCitasDeHoy() {
         ObtenerCitasDeHoy();
-        if (_posiciones.size() == 0) {
+        if (_posiciones.isEmpty()) {
             JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
         } else {
             _model = new DefaultTableModel();
@@ -141,9 +165,10 @@ public class PanelListaConsulta extends javax.swing.JPanel {
 
     public void LlenarTablaCedulaFiltrada() {
         ObtenerCitasFechaFiltrada();
-        if (_posiciones.size() == 0) {
+        if (_posiciones.isEmpty()) {
             JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
         } else {
+            _frameFiltrarCedula.dispose();
             _model = new DefaultTableModel();
             ObtenerTablaPersonalizada();
             _jTConsultasRegistradas.setEnabled(true);
@@ -190,9 +215,10 @@ public class PanelListaConsulta extends javax.swing.JPanel {
 
     public void LlenarTablaFechaFiltrada() {
         ObtenerCitasFechaFiltrada();
-        if (_posiciones.size() == 0) {
+        if (_posiciones.isEmpty()) {
             JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
         } else {
+            _frameFiltrarFecha.dispose();
             _model = new DefaultTableModel();
             ObtenerTablaPersonalizada();
             _jTConsultasRegistradas.setEnabled(true);
@@ -303,6 +329,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFHoy = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         _botonFTodasCitas = new javax.swing.JButton();
+        _botonEliminarCita = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(38, 166, 154));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -348,7 +375,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFFecha.setText("FILTRAR POR FECHA");
         _botonFFecha.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         _botonFFecha.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(_botonFFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 230, 40));
+        add(_botonFFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 230, 40));
         add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 1200, -1));
 
         _botonFCedula.setBackground(new java.awt.Color(54, 203, 167));
@@ -357,7 +384,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFCedula.setText("FILTRAR POR CÉDULA");
         _botonFCedula.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         _botonFCedula.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(_botonFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 230, 40));
+        add(_botonFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 230, 40));
 
         _botonFHoy.setBackground(new java.awt.Color(54, 203, 167));
         _botonFHoy.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
@@ -365,7 +392,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFHoy.setText("CITAS DE HOY");
         _botonFHoy.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
         _botonFHoy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        add(_botonFHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 140, 230, 40));
+        add(_botonFHoy, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 110, 230, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/filtros.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
@@ -375,7 +402,14 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFTodasCitas.setForeground(new java.awt.Color(255, 255, 255));
         _botonFTodasCitas.setText("TODAS LAS CITAS");
         _botonFTodasCitas.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
-        add(_botonFTodasCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 140, 230, 40));
+        add(_botonFTodasCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, 230, 40));
+
+        _botonEliminarCita.setBackground(new java.awt.Color(54, 203, 167));
+        _botonEliminarCita.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
+        _botonEliminarCita.setForeground(new java.awt.Color(255, 255, 255));
+        _botonEliminarCita.setText("ELIMINAR CITA");
+        _botonEliminarCita.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 255, 255)));
+        add(_botonEliminarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 180, 230, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     public void AddActionListener(ActionListener listener) {
@@ -384,9 +418,11 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _botonFCedula.addActionListener(listener);
         _botonFHoy.addActionListener(listener);
         _botonFTodasCitas.addActionListener(listener);
+        _botonEliminarCita.addActionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    javax.swing.JButton _botonEliminarCita;
     javax.swing.JButton _botonFCedula;
     javax.swing.JButton _botonFFecha;
     javax.swing.JButton _botonFHoy;
@@ -408,9 +444,34 @@ public class PanelListaConsulta extends javax.swing.JPanel {
     private String _fechaFiltrada = "";
     private ArrayList<Integer> _posiciones;
     private String _fechaActual;
+    private FrameEliminarCita _frameEliminarCita;
+    private int _posionCitaEliminada;
+    private boolean _ventanaCreada;
 
+    public FrameFiltroCedula getFrameFiltrarCedula() {
+        return _frameFiltrarCedula;
+    }
+
+    
     public JButton getBotonVolver() {
         return _botonVolver;
+    }
+
+    public boolean isVentanaCreada() {
+        return _ventanaCreada;
+    }
+    
+
+    public FrameEliminarCita getFrameEliminarCita() {
+        return _frameEliminarCita;
+    }
+
+    public JButton getBotonEliminarCita() {
+        return _botonEliminarCita;
+    }
+
+    public int getPosionCitaEliminada() {
+        return _posionCitaEliminada;
     }
 
     public JButton getBotonFFecha() {
