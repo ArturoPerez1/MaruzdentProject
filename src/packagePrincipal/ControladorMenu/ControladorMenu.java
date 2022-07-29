@@ -51,7 +51,7 @@ public class ControladorMenu {
                     _panelContenedorMenu.setLabelAvisos();
                     _frameContenedor.setVisible(false);
                     _controladorDatosClinica = new ControladorDatosClinica(_frameContenedor, _controladorArrayList);
-                } else if (evento.getSource() == _panelMenu.getBotonListaC() && _controladorArrayList.isPrimerConsulta() == false) {
+                } else if (evento.getSource() == _panelMenu.getBotonListaC() /*&& _controladorArrayList.isPrimerConsulta() == false*/) {
                     _panelContenedorMenu.setLabelAvisos();
                     _frameContenedor.setVisible(false);
                     _controladorConsultas = new ControladorListaCita(_frameContenedor, _controladorArrayList);
