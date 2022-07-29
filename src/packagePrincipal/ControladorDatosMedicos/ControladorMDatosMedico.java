@@ -35,15 +35,21 @@ public class ControladorMDatosMedico {
 
     public ControladorMDatosMedico(FrameMDatosClinica frameMDatosClinica, ControladorArraysList controladorArrayList) {
         this._controladorArrayList = controladorArrayList;
-        this._frameMDatosClinica = frameMDatosClinica;
-        this._frameMDatosMedicos = new FrameMDatosMedicos();
-        this._verificarDatosMedicos = new VerificarDatosMedico();
-        _frameMDatosMedicos.setVisible(true);
-        _frameMDatosMedicos.AgregarPanelListaMedicos();
-        this._panelListaMedicos = _frameMDatosMedicos.getPanelListaMedicos();
-        _panelListaMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
-        _panelListaMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
-        _panelListaMedicos.AddActionListener(new AddActionListenerVentanaMDatosMedicos());
+        if (controladorArrayList.getRegistroMedicos().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "AGREGUE UN MÉDICO ANTES", "AGREGAR MÉDICO", JOptionPane.WARNING_MESSAGE);
+            frameMDatosClinica.setVisible(true);
+        } else {
+            this._frameMDatosClinica = frameMDatosClinica;
+            _frameMDatosClinica.setVisible(false);
+            this._frameMDatosMedicos = new FrameMDatosMedicos();
+            this._verificarDatosMedicos = new VerificarDatosMedico();
+            _frameMDatosMedicos.setVisible(true);
+            _frameMDatosMedicos.AgregarPanelListaMedicos();
+            this._panelListaMedicos = _frameMDatosMedicos.getPanelListaMedicos();
+            _panelListaMedicos.LlenaComboBoxCedulas(_controladorArrayList.getRegistroMedicos());
+            _panelListaMedicos.LlenarTable(_controladorArrayList.getRegistroMedicos());
+            _panelListaMedicos.AddActionListener(new AddActionListenerVentanaMDatosMedicos());
+        }
     }
 
     public class AddActionListenerVentanaMDatosMedicos implements ActionListener {

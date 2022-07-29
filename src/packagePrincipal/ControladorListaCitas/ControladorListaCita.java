@@ -7,6 +7,7 @@ import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.modelo.FechaActual;
 import packagePrincipal.modelo.VerificarDatosMedico;
 import packagePrincipal.vistaListaConsulta.FrameEliminarCita;
+import packagePrincipal.vistaListaConsulta.FrameFiltroCedula;
 import packagePrincipal.vistaListaConsulta.FrameListaConsulta;
 import packagePrincipal.vistaListaConsulta.PanelListaConsulta;
 import packagePrincipal.vistaMenu.FrameContenedorMenu;
@@ -20,20 +21,27 @@ public class ControladorListaCita {
     private FrameContenedorMenu _frameContenedorMenu;
     private FrameListaConsulta _frameLsitaConsulta;
     private FrameEliminarCita _frameEliminarCita;
+    private FrameFiltroCedula _frameFiltroCedula;
 
     public ControladorListaCita(FrameContenedorMenu frameContenedorMenu, ControladorArraysList controladorArrayList) {
         this._controladorArrayList = controladorArrayList;
-        this._frameContenedorMenu = frameContenedorMenu;
-        this._fechaActual = new FechaActual();
-        this._frameLsitaConsulta = new FrameListaConsulta();
-        this._verificarDatos = new VerificarDatosMedico();
-        _frameLsitaConsulta.setVisible(true);
-        _frameLsitaConsulta.AgregarVentanaListaConsultas();
-        this._panelListaConsulta = _frameLsitaConsulta.getPanelListaConsultas();
-        _panelListaConsulta.ObtenerArrays(_controladorArrayList.getRegistroDatosConsulta(), _controladorArrayList.getRegistroHistorial());
-        _panelListaConsulta.LlenarTableConsultas(_controladorArrayList.getRegistroDatosConsulta(), _controladorArrayList.getRegistroHistorial());
-        _panelListaConsulta.setFechaActual(_fechaActual.ObtenerFechaActual());
-        _panelListaConsulta.AddActionListener(new AddActionlistenerVentanaListaConsultas());
+        if (controladorArrayList.getRegistroDatosConsulta().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "AGREGUE UNA CITA ANTES", "AGREGAR CITA", JOptionPane.WARNING_MESSAGE);
+            frameContenedorMenu.setVisible(true);
+        } else {
+            this._frameContenedorMenu = frameContenedorMenu;
+            _frameContenedorMenu.setVisible(false);
+            this._fechaActual = new FechaActual();
+            this._frameLsitaConsulta = new FrameListaConsulta();
+            this._verificarDatos = new VerificarDatosMedico();
+            _frameLsitaConsulta.setVisible(true);
+            _frameLsitaConsulta.AgregarVentanaListaConsultas();
+            this._panelListaConsulta = _frameLsitaConsulta.getPanelListaConsultas();
+            _panelListaConsulta.ObtenerArrays(_controladorArrayList.getRegistroDatosConsulta(), _controladorArrayList.getRegistroHistorial());
+            _panelListaConsulta.LlenarTableConsultas(_controladorArrayList.getRegistroDatosConsulta(), _controladorArrayList.getRegistroHistorial());
+            _panelListaConsulta.setFechaActual(_fechaActual.ObtenerFechaActual());
+            _panelListaConsulta.AddActionListener(new AddActionlistenerVentanaListaConsultas());
+        }
     }
 
     public class AddActionlistenerVentanaListaConsultas implements ActionListener {
@@ -71,10 +79,17 @@ public class ControladorListaCita {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try {
-                String cedulaFiltrada = _panelListaConsulta.getFrameFiltrarCedula().getCedula();
-                _panelListaConsulta.PopUpEliminarCita(cedulaFiltrada);
-                _frameEliminarCita = _panelListaConsulta.getFrameEliminarCita();
-                _frameEliminarCita.AddActionListener(new AgregarActionListenerVentanaEliminarCita());
+                _frameFiltroCedula = _panelListaConsulta.getFrameFiltrarCedula();
+                if (evento.getSource() == _frameFiltroCedula.getBotonObtenerCedula()) {
+                    String cedulaFiltrada = _panelListaConsulta.getFrameFiltrarCedula().getCedula();
+                    if (cedulaFiltrada.isEmpty() == false) {
+                        _panelListaConsulta.PopUpEliminarCita(cedulaFiltrada);
+                        _frameEliminarCita = _panelListaConsulta.getFrameEliminarCita();
+                        _frameEliminarCita.AddActionListener(new AgregarActionListenerVentanaEliminarCita());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "SELECCIONE UNA CÉDULA", "SELECCIÓN CÉDULA", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
 
             } catch (Error e) {
                 System.out.println("Error = " + e);

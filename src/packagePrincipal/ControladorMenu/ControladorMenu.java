@@ -41,7 +41,7 @@ public class ControladorMenu {
         @Override
         public void actionPerformed(ActionEvent evento) {
             try {
-                if (evento.getSource() == _panelMenu.getBotonPaciente() /*&& _controladorArrayList.isPrimerMedico() == false*/) {
+                if (evento.getSource() == _panelMenu.getBotonPaciente() && _controladorArrayList.isPrimerMedico() == false) {
                     _panelContenedorMenu.setLabelAvisos();
                     _frameContenedor.setVisible(false);
                     _controladorRPaciente = new ControladorRegistroPaciente(_frameContenedor, _controladorArrayList);
@@ -51,23 +51,20 @@ public class ControladorMenu {
                     _panelContenedorMenu.setLabelAvisos();
                     _frameContenedor.setVisible(false);
                     _controladorDatosClinica = new ControladorDatosClinica(_frameContenedor, _controladorArrayList);
-                } else if (evento.getSource() == _panelMenu.getBotonListaC() /*&& _controladorArrayList.isPrimerConsulta() == false*/) {
+                } else if (evento.getSource() == _panelMenu.getBotonListaC() && _controladorArrayList.isPrimerConsulta() == false) {
                     _panelContenedorMenu.setLabelAvisos();
-                    _frameContenedor.setVisible(false);
                     _controladorConsultas = new ControladorListaCita(_frameContenedor, _controladorArrayList);
                 } else if (evento.getSource() == _panelMenu.getBotonListaC() && _controladorArrayList.isPrimerConsulta() == true) {
                     _panelContenedorMenu.setLabelAvisos();
                     _panelContenedorMenu.AvisoListaConsulta2();
                 } else if (evento.getSource() == _panelMenu.getBotonListaP() && _controladorArrayList.isPrimerPaciente() == false) {
                     _panelContenedorMenu.setLabelAvisos();
-                    _frameContenedor.setVisible(false);
                     _controladorListaPaciente = new ControladorListaPaciente(_frameContenedor, _controladorArrayList);
                 } else if (evento.getSource() == _panelMenu.getBotonListaP() && _controladorArrayList.isPrimerPaciente() == true) {
                     _panelContenedorMenu.setLabelAvisos();
                     _panelContenedorMenu.AvisoListaPaciente1();
                 } else if (evento.getSource() == _panelMenu.getBotonPagos() && _controladorArrayList.isPrimerCuenta() == false) {
                     _panelContenedorMenu.setLabelAvisos();
-                    _frameContenedor.setVisible(false);
                     _controladorPagos = new ControladorPagos(_frameContenedor, _controladorArrayList);
                 } else if (evento.getSource() == _panelMenu.getBotonPagos() && _controladorArrayList.isPrimerCuenta() == true) {
                     _panelContenedorMenu.setLabelAvisos();

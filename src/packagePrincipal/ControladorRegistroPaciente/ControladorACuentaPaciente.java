@@ -55,7 +55,7 @@ public class ControladorACuentaPaciente {
                     } else {
                         if (_botonAgregarPulsado == true && _cuentaAgregada == true) {
                             _controladorArrayList.AgregarCuentaPaciente(_costoTratamiento, _cedulaAsociada, _presupuestoPaciente, _tipoTratamiento, _tratamientoUnico);
-                            if (_controladorArrayList.CedulaCuentaPacienteRepetida(_cedulaAsociada) == true) {
+                            if (_controladorArrayList.isCedulaRepetida() == true) {
                                 _panellistaPacienteCuenta.ErrorCedulaAsociada(true);
                                 _panellistaPacienteCuenta.setLabelErrorCedula();
                             } else {

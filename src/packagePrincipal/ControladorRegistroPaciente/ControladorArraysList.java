@@ -334,6 +334,10 @@ public class ControladorArraysList {
     public void EliminarCitaRegistrada(int i){
         _registroConsulta.getRegistroConsulta().remove(i);
     }
+    
+    public void EliminarCuenta(int i){
+        _registroCuenta.getRegistroCuenta().remove(i);
+    }
 
     public void EliminarConsultasRegistradas() {
         for (int i = 0; i < _registroConsulta.getRegistroConsulta().size(); i++) {

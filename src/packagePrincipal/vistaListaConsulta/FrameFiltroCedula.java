@@ -4,8 +4,8 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import packagePrincipal.modelo.CuentaPaciente;
 import packagePrincipal.modelo.DatosConsulta;
-import packagePrincipal.modelo.DatosMedicos;
 
 public class FrameFiltroCedula extends javax.swing.JFrame {
 
@@ -16,6 +16,12 @@ public class FrameFiltroCedula extends javax.swing.JFrame {
     public void LlenaComboBoxCedulas(ArrayList<DatosConsulta> citas) {
         for (int i = 0; i < citas.size(); i++) {
             _cbCedula.addItem(citas.get(i).getCedulaPaciente());
+        }
+    }
+
+    public void LlenaComboBoxCedulasCuenta(ArrayList<CuentaPaciente> cuenta) {
+        for (int i = 0; i < cuenta.size(); i++) {
+            _cbCedula.addItem(cuenta.get(i).getCedulaAsociada());
         }
     }
 
@@ -76,8 +82,8 @@ public class FrameFiltroCedula extends javax.swing.JFrame {
     private void _cbCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbCedulaActionPerformed
         _cedula = _cbCedula.getSelectedItem().toString();
     }//GEN-LAST:event__cbCedulaActionPerformed
-    
-    public void AddActionListener(ActionListener listener){
+
+    public void AddActionListener(ActionListener listener) {
         _botonObtenerCedula.addActionListener(listener);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

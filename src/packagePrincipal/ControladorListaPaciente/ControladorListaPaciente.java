@@ -62,20 +62,26 @@ public class ControladorListaPaciente {
 
     public ControladorListaPaciente(FrameContenedorMenu frameContenedor, ControladorArraysList controladorArrayList) {
         this._controladorArrayList = controladorArrayList;
-        this._obtenerFechaActual = new FechaActual();
-        this._menorDeEdad = false;
-        _obtenerFechaActual.GenerarAnoActual();
-        this._yearActual = _obtenerFechaActual.getObtenerAno();
-        this._frameContenedor = frameContenedor;
-        this._frameListaPaciente = new FrameListaPaciente();
-        this._verificarDatosHistorial = new VerificarDatosHistorial();
-        this._verificarModificaciones = new VerificarDatosPaciente();
-        _frameListaPaciente.setVisible(true);
-        _frameListaPaciente.AgregarVentaListaPaciente();
-        _panelListaPaciente = _frameListaPaciente.getPanelListaPaciente();
-        _panelListaPaciente.LlenarCedula(_controladorArrayList.getRegistroPaciente1());
-        _panelListaPaciente.LlenarTablaPacientes(_controladorArrayList.getRegistroPaciente1());
-        _panelListaPaciente.AddActionListener(new AgregarListenerVentanaListaPacientes());
+        if (controladorArrayList.getRegistroPaciente1().isEmpty() == true) {
+            JOptionPane.showMessageDialog(null, "AGREGUE UN PACIENTE ANTES", "AGREGAR PACIENTE", JOptionPane.WARNING_MESSAGE);
+            frameContenedor.setVisible(true);
+        } else {
+            this._obtenerFechaActual = new FechaActual();
+            this._menorDeEdad = false;
+            _obtenerFechaActual.GenerarAnoActual();
+            this._yearActual = _obtenerFechaActual.getObtenerAno();
+            this._frameContenedor = frameContenedor;
+            _frameContenedor.setVisible(false);
+            this._frameListaPaciente = new FrameListaPaciente();
+            this._verificarDatosHistorial = new VerificarDatosHistorial();
+            this._verificarModificaciones = new VerificarDatosPaciente();
+            _frameListaPaciente.setVisible(true);
+            _frameListaPaciente.AgregarVentaListaPaciente();
+            _panelListaPaciente = _frameListaPaciente.getPanelListaPaciente();
+            _panelListaPaciente.LlenarCedula(_controladorArrayList.getRegistroPaciente1());
+            _panelListaPaciente.LlenarTablaPacientes(_controladorArrayList.getRegistroPaciente1());
+            _panelListaPaciente.AddActionListener(new AgregarListenerVentanaListaPacientes());
+        }
     }
 
     public class AgregarListenerVentanaListaPacientes implements ActionListener {

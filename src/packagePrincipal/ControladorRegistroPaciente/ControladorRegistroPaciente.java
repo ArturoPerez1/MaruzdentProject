@@ -43,16 +43,18 @@ public class ControladorRegistroPaciente {
                 } else if (evento.getSource() == _panelPaciente.getBotonAHistoriaClinica() && _controladorArrayList.isPrimerPaciente() == true) {
                     _panelPaciente.setLabelAviso();
                     _panelPaciente.AvisoAgregarPaciente();
-                } else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == false && _controladorArrayList.isPrimerConsulta() == false) {
+                }
+                
+                else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == false && _controladorArrayList.isPrimerHistorial() == false) {
                     _panelPaciente.setLabelAviso();
                     _frameContenedor.setVisible(false);
                     _controladorACuenta = new ControladorACuentaPaciente(_frameContenedor, _controladorArrayList);
-                } else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == true && _controladorArrayList.isPrimerConsulta() == true) {
+                } else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == true && _controladorArrayList.isPrimerHistorial() == true) {
                     _panelPaciente.setLabelAviso();
                     _panelPaciente.Aviso1();
-                } else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == false && _controladorArrayList.isPrimerConsulta() == true) {
+                } else if (evento.getSource() == _panelPaciente.getBotonACuentaPaciente() && _controladorArrayList.isPrimerPaciente() == false && _controladorArrayList.isPrimerHistorial() == true) {
                     _panelPaciente.setLabelAviso();
-                    _panelPaciente.AvisoFaltaConsulta();
+                    _panelPaciente.AvisoFaltaHistorial();
                 } else if (evento.getSource() == _panelPaciente.getBotonAConsulta() && _controladorArrayList.isPrimerPaciente() == false) {
                     _panelPaciente.setLabelAviso();
                     _frameContenedor.setVisible(false);

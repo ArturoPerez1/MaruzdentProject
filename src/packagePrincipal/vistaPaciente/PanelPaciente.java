@@ -197,12 +197,12 @@ public class PanelPaciente extends javax.swing.JPanel {
         this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE ANTES ");
     }
 
-    public void AvisoFaltaConsulta() {
-        this._labelAvisos.setText("AGREGUE UNA CITA ANTES");
+    public void AvisoFaltaHistorial() {
+        this._labelAvisos.setText("AGREGUE UN HISTORIAL CLÍNICO ANTES");
     }
 
     public void Aviso1() {
-        this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE Y UNA CITA ANTES");
+        this._labelAvisos.setText("POR FAVOR AGREGUE UN PACIENTE Y UN HISTORIAL ANTES");
     }
 
     public void Aviso2() {

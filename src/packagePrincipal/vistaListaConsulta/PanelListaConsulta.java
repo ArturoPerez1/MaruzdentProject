@@ -36,7 +36,11 @@ public class PanelListaConsulta extends javax.swing.JPanel {
                     }
                 } else if (evento.getSource() == _frameFiltrarCedula.getBotonObtenerCedula()) {
                     _cedulaFiltrada = _frameFiltrarCedula.getCedula();
-                    LlenarTablaCedulaFiltrada();
+                    if (_cedulaFiltrada.isEmpty() == false) {
+                        LlenarTablaCedulaFiltrada();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "SELECCIONE UNA CÉDULA", "SELECCIÓN CÉDULA", JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
 
             } catch (Error e) {
@@ -64,7 +68,7 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _frameFiltrarCedula.LlenaComboBoxCedulas(_listaCita);
         _frameFiltrarCedula.AddActionListener(listener);
     }
-    
+
     public void PopUpEliminarCita(String cedulaFiltrada) {
         int posicion = ObtenerIndicePorCedula(cedulaFiltrada);
         _frameEliminarCita = new FrameEliminarCita();
@@ -452,7 +456,6 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         return _frameFiltrarCedula;
     }
 
-    
     public JButton getBotonVolver() {
         return _botonVolver;
     }
@@ -460,7 +463,6 @@ public class PanelListaConsulta extends javax.swing.JPanel {
     public boolean isVentanaCreada() {
         return _ventanaCreada;
     }
-    
 
     public FrameEliminarCita getFrameEliminarCita() {
         return _frameEliminarCita;

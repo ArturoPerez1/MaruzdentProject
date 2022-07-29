@@ -80,7 +80,7 @@ public class ControladorCitasPaciente {
                                 _registroMedicos.get(_posicionMedicoAsociado).getCedulaMedico(), _registroMedicos.get(_posicionMedicoAsociado).getEspecialidad(),
                                 _registroMedicos.get(_posicionMedicoAsociado).getNumeroTelefonico(), _registroMedicos.get(_posicionMedicoAsociado).getRutaImagen());
 
-                        _controladorArrayList.AgregarConsulta("", _datosDatosMedicos, _registroPaciente.get(_posicionPacienteAsociado).getNombre(), _panelADatosConsulta.getTextoCedulaP(), _fechaCita, _horaCita);
+                        _controladorArrayList.AgregarConsulta("", _datosDatosMedicos, _registroPaciente.get(_posicionPacienteAsociado).getNombre()+" "+_registroPaciente.get(_posicionPacienteAsociado).getApellidos(), _panelADatosConsulta.getTextoCedulaP(), _fechaCita, _horaCita);
                         if (_controladorArrayList.isCedulaPacienteRepetida() == true) {
                             _panelADatosConsulta.ErrorCedulaPaciente(true);
                             _panelADatosConsulta.AvisoCedulaAsociada();

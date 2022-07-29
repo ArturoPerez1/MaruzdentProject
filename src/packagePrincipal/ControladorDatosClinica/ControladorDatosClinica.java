@@ -39,7 +39,6 @@ public class ControladorDatosClinica {
                     _controladorDatosMedicos = new ControladorDatosMedicos(_frameMClinica, _controladorArrayList);
                 } else if (evento.getSource() == _panelMClinica.getBotonMDatosMedico() && _controladorArrayList.isPrimerMedico() == false) {
                     _panelMClinica.setAviso1();
-                    _frameMClinica.setVisible(false);
                     _controladorMDatosMedico = new ControladorMDatosMedico(_frameMClinica, _controladorArrayList);
                 } else if (evento.getSource() == _panelMClinica.getBotonMDatosMedico() && _controladorArrayList.isPrimerMedico() == true) {
                     _panelMClinica.AvisoFaltaMedico();
