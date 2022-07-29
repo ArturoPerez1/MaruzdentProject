@@ -38,7 +38,7 @@ public class PanelDatosPaciente extends javax.swing.JPanel {
         _labelNombreApellido.setText("NOMBRE Y APELLIDO");
         add(_labelNombreApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, -1, -1));
 
-        _lbINFNombreApellido.setFont(new java.awt.Font("Metropolis Black", 1, 20)); // NOI18N
+        _lbINFNombreApellido.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
         _lbINFNombreApellido.setForeground(new java.awt.Color(255, 255, 255));
         _lbINFNombreApellido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         _lbINFNombreApellido.setToolTipText("");
@@ -62,7 +62,7 @@ public class PanelDatosPaciente extends javax.swing.JPanel {
         _lbINFCedula.setFont(new java.awt.Font("Metropolis Black", 1, 20)); // NOI18N
         _lbINFCedula.setForeground(new java.awt.Color(255, 255, 255));
         _lbINFCedula.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        add(_lbINFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 190, 30));
+        add(_lbINFCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 240, 30));
     }// </editor-fold>//GEN-END:initComponents
 
 
