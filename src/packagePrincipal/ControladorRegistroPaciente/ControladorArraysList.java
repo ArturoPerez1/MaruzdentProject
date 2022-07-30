@@ -330,12 +330,12 @@ public class ControladorArraysList {
     public void ModificarRutaImagenPaciente(int posicion, String ruta) {
         _registroPaciente.getRegistroPacientes().get(posicion).setRutaImagen(ruta);
     }
-    
-    public void EliminarCitaRegistrada(int i){
+
+    public void EliminarCitaRegistrada(int i) {
         _registroConsulta.getRegistroConsulta().remove(i);
     }
-    
-    public void EliminarCuenta(int i){
+
+    public void EliminarCuenta(int i) {
         _registroCuenta.getRegistroCuenta().remove(i);
     }
 
@@ -375,8 +375,16 @@ public class ControladorArraysList {
         return _primerMedico;
     }
 
+    public void setPrimerMedico() {
+        this._primerMedico = false;
+    }
+
     public void setPrimerConsulta() {
         this._primerConsulta = true;
+    }
+
+    public void setPrimerPaciente() {
+        this._primerPaciente = false;
     }
 
     public RegistroPaciente getRegistroPaciente() {
@@ -391,16 +399,64 @@ public class ControladorArraysList {
         return _registroConsulta.getRegistroConsulta();
     }
 
+    public RegistroDatosConsulta getRegistroDatosConsulta1() {
+        return _registroConsulta;
+    }
+
+    public void setRegistroConsulta(RegistroDatosConsulta _registroConsulta) {
+        this._registroConsulta = _registroConsulta;
+    }
+
+    public void setPrimerConsulta1() {
+        this._primerConsulta = false;
+    }
+
     public ArrayList<HistorialClinico> getRegistroHistorial() {
         return _registroHistorial.getRegistroHistorial();
+    }
+
+    public RegistroHistorialClinico getRegistroHistorial1() {
+        return _registroHistorial;
+    }
+
+    public void setRegistroHistorial(RegistroHistorialClinico _registroHistorial) {
+        this._registroHistorial = _registroHistorial;
+    }
+
+    public void setPrimerHistorial() {
+        this._primerHistorial = false;
     }
 
     public ArrayList<DatosMedicos> getRegistroMedicos() {
         return _registroMedicos.getRegistroMedicos();
     }
 
+    public void setRegistroMedicos(RegistroMedicos _registroMedicos) {
+        this._registroMedicos = _registroMedicos;
+    }
+
+    public RegistroMedicos getRegistroMedicos1() {
+        return _registroMedicos;
+    }
+
     public ArrayList<CuentaPaciente> getRegistroCuenta() {
         return _registroCuenta.getRegistroCuenta();
+    }
+
+    public RegistroCuentaPaciente getRegistroCuenta1() {
+        return _registroCuenta;
+    }
+
+    public void setPrimerCuenta() {
+        this._primerCuenta = false;
+    }
+
+    public void setRegistroCuenta(RegistroCuentaPaciente _registroCuenta) {
+        this._registroCuenta = _registroCuenta;
+    }
+
+    public void setRegistroPaciente(RegistroPaciente _registroPaciente) {
+        this._registroPaciente = _registroPaciente;
     }
 
 }

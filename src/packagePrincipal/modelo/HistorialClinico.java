@@ -1,77 +1,134 @@
 package packagePrincipal.modelo;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "historial")
+@XmlType(propOrder = {"cedulaAsociada", "razonConsulta", "enfermedadActual", "antecedentesPersonales", "antecedentesFamiliares",
+    "antecedentesPatologicos", "antecedentesFarmacologicos", "examenFisico", "tipoDeConsulta", "diagnostico", "planTratamiento"})
 public class HistorialClinico {
 
-    private String _razonConsulta;
-    private String _enfermedadActual;
-    private String _antecedentesPersonales;
-    private String _antecedentesFamiliares;
-    private String _antecedentesPatologicos;
-    private String _antecedentesFarmacologicos;
-    private String _examenFisico;
-    private String _tipoDeConsulta;
-    private String _diagnostico;
-    private String _planTratamiento;
-    private String _cedulaAsociada;
+    private String cedulaAsociada;
+    private String razonConsulta;
+    private String enfermedadActual;
+    private String antecedentesPersonales;
+    private String antecedentesFamiliares;
+    private String antecedentesPatologicos;
+    private String antecedentesFarmacologicos;
+    private String examenFisico;
+    private String tipoDeConsulta;
+    private String diagnostico;
+    private String planTratamiento;
+
+    public HistorialClinico() {
+    }
 
     public HistorialClinico(String razonConsulta, String enfermedadActual, String antecedentesPersonales, String antecedentesFamiliares,
             String antecedentesPatologicos, String antecedentesFarmacologicos, String examenFisico, String tipoDeConsulta,
             String diagnostico, String planTratamiento, String cedulaAsociada) {
-        this._razonConsulta = razonConsulta;
-        this._enfermedadActual = enfermedadActual;
-        this._antecedentesPersonales = antecedentesPersonales;
-        this._antecedentesFamiliares = antecedentesFamiliares;
-        this._antecedentesPatologicos = antecedentesPatologicos;
-        this._antecedentesFarmacologicos = antecedentesFarmacologicos;
-        this._examenFisico = examenFisico;
-        this._tipoDeConsulta = tipoDeConsulta;
-        this._diagnostico = diagnostico;
-        this._planTratamiento = planTratamiento;
-        this._cedulaAsociada = cedulaAsociada;
+        this.cedulaAsociada = cedulaAsociada;
+        this.razonConsulta = razonConsulta;
+        this.enfermedadActual = enfermedadActual;
+        this.antecedentesPersonales = antecedentesPersonales;
+        this.antecedentesFamiliares = antecedentesFamiliares;
+        this.antecedentesPatologicos = antecedentesPatologicos;
+        this.antecedentesFarmacologicos = antecedentesFarmacologicos;
+        this.examenFisico = examenFisico;
+        this.tipoDeConsulta = tipoDeConsulta;
+        this.diagnostico = diagnostico;
+        this.planTratamiento = planTratamiento;
+    }
+
+    @XmlAttribute(name = "cedulaAsociada")
+
+    public String getCedulaAsociada() {
+        return cedulaAsociada;
+    }
+
+    public void setCedulaAsociada(String cedulaAsociada) {
+        this.cedulaAsociada = cedulaAsociada;
     }
 
     public String getRazonConsulta() {
-        return _razonConsulta;
+        return razonConsulta;
+    }
+
+    public void setRazonConsulta(String razonConsulta) {
+        this.razonConsulta = razonConsulta;
     }
 
     public String getEnfermedadActual() {
-        return _enfermedadActual;
+        return enfermedadActual;
+    }
+
+    public void setEnfermedadActual(String enfermedadActual) {
+        this.enfermedadActual = enfermedadActual;
     }
 
     public String getAntecedentesPersonales() {
-        return _antecedentesPersonales;
+        return antecedentesPersonales;
+    }
+
+    public void setAntecedentesPersonales(String antecedentesPersonales) {
+        this.antecedentesPersonales = antecedentesPersonales;
     }
 
     public String getAntecedentesFamiliares() {
-        return _antecedentesFamiliares;
+        return antecedentesFamiliares;
+    }
+
+    public void setAntecedentesFamiliares(String antecedentesFamiliares) {
+        this.antecedentesFamiliares = antecedentesFamiliares;
     }
 
     public String getAntecedentesPatologicos() {
-        return _antecedentesPatologicos;
+        return antecedentesPatologicos;
+    }
+
+    public void setAntecedentesPatologicos(String antecedentesPatologicos) {
+        this.antecedentesPatologicos = antecedentesPatologicos;
     }
 
     public String getAntecedentesFarmacologicos() {
-        return _antecedentesFarmacologicos;
+        return antecedentesFarmacologicos;
+    }
+
+    public void setAntecedentesFarmacologicos(String antecedentesFarmacologicos) {
+        this.antecedentesFarmacologicos = antecedentesFarmacologicos;
     }
 
     public String getExamenFisico() {
-        return _examenFisico;
+        return examenFisico;
+    }
+
+    public void setExamenFisico(String examenFisico) {
+        this.examenFisico = examenFisico;
     }
 
     public String getTipoDeConsulta() {
-        return _tipoDeConsulta;
+        return tipoDeConsulta;
+    }
+
+    public void setTipoDeConsulta(String tipoDeConsulta) {
+        this.tipoDeConsulta = tipoDeConsulta;
     }
 
     public String getDiagnostico() {
-        return _diagnostico;
+        return diagnostico;
+    }
+
+    public void setDiagnostico(String diagnostico) {
+        this.diagnostico = diagnostico;
     }
 
     public String getPlanTratamiento() {
-        return _planTratamiento;
+        return planTratamiento;
     }
 
-    public String getCedulaAsociada() {
-        return _cedulaAsociada;
+    public void setPlanTratamiento(String planTratamiento) {
+        this.planTratamiento = planTratamiento;
     }
+
 
 }

@@ -52,11 +52,6 @@ public class PanelMenuCompleto extends javax.swing.JPanel {
         _botonClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/.png"))); // NOI18N
         _botonClose.setBorder(null);
         _botonClose.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        _botonClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                _botonCloseActionPerformed(evt);
-            }
-        });
         add(_botonClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 0, 60, 50));
 
         _labelAviso.setFont(new java.awt.Font("Metropolis Black", 1, 14)); // NOI18N
@@ -73,9 +68,9 @@ public class PanelMenuCompleto extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void _botonCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__botonCloseActionPerformed
-        System.exit(1);
-    }//GEN-LAST:event__botonCloseActionPerformed
+    public void AddActionListener(ActionListener listener) {
+        _botonClose.addActionListener(listener);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     javax.swing.JButton _botonClose;
@@ -89,6 +84,10 @@ public class PanelMenuCompleto extends javax.swing.JPanel {
 
     public PanelBotonesMenu getPanelMenu() {
         return _panelMenu;
+    }
+
+    public JButton getBotonClose() {
+        return _botonClose;
     }
 
     public void AvisoFaltaMedico() {

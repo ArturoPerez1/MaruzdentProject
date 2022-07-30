@@ -1,21 +1,29 @@
 package packagePrincipal.modelo;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement(name = "AlmacenamientoCuenta")
+@XmlType(propOrder = {"registroCuenta"})
 public class RegistroCuentaPaciente {
 
-    private ArrayList<CuentaPaciente> _registroCuenta;
-    
+    private ArrayList<CuentaPaciente> registroCuenta;
+
     public RegistroCuentaPaciente() {
-        this._registroCuenta = new ArrayList<>();
+        this.registroCuenta = new ArrayList<>();
     }
-    
+
     public void AgregarCuenta(CuentaPaciente cuenta) {
-        _registroCuenta.add(cuenta);
+        registroCuenta.add(cuenta);
     }
-    
+
+    @XmlElementWrapper(name = "registroCuenta")
+    @XmlElement(name = "cuenta")
     public ArrayList<CuentaPaciente> getRegistroCuenta() {
-        return _registroCuenta;
+        return registroCuenta;
     }
-    
+
 }

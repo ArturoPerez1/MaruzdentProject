@@ -1,164 +1,173 @@
 package packagePrincipal.modelo;
 //Id = documento de identificacion
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
+
+@XmlRootElement(name = "paciente")
+@XmlType(propOrder = {"nombre", "apellidos", "cedula", "correoElectronico",
+    "numeroTelefonico", "fechaNacimiento", "edad", "genero", "estadoCivil", "ocupacion", "direccionResidencia",
+    "nombreResponsable", "apellidoResponsable", "numeroTelefonicoR", "rutaImagen"})
 public class DatosPaciente {
 
-    private String _nombre;
-    private String _apellidos;
-    private String _cedula;
-    private String _fechaNacimiento;
-    private String _edad;
-    private String _genero;
-    private String _numeroTelefonico;
-    private String _estadoCivil;
-    private String _ocupacion;
-    private String _direccionResidencia;
-    private String _correoElectronico;
-    private String _nombreResponsable;
-    private String _numeroTelefonicoR;
-    private String _ApellidoResponsable;
-    private String _rutaImagen;
+    private String nombre;
+    private String apellidos;
+    private String cedula;
+    private String fechaNacimiento;
+    private String edad;
+    private String genero;
+    private String numeroTelefonico;
+    private String estadoCivil;
+    private String ocupacion;
+    private String direccionResidencia;
+    private String correoElectronico;
+    private String nombreResponsable;
+    private String numeroTelefonicoR;
+    private String apellidoResponsable;
+    private String rutaImagen;
+
+    public DatosPaciente() {
+    }
 
     public DatosPaciente(String nombre, String apellidos, String Id, String fechaNacimiento, String edad, String genero, String numeroTelefonico, String estadoCivil, String ocupacion,
             String direccionResidencia, String correoElectronico, String nombreResponsable, String numeroTelefonicoR, String apellidosResponsable, String rutaImagen) {
-        this._nombre = nombre;
-        this._apellidos = apellidos;
-        this._cedula = Id;
-        this._fechaNacimiento = fechaNacimiento;
-        this._edad = edad;
-        this._genero = genero;
-        this._numeroTelefonico = numeroTelefonico;
-        this._estadoCivil = estadoCivil;
-        this._ocupacion = ocupacion;
-        this._direccionResidencia = direccionResidencia;
-        this._correoElectronico = correoElectronico;
-        this._nombreResponsable = nombreResponsable;
-        this._numeroTelefonicoR = numeroTelefonicoR;
-        this._ApellidoResponsable = apellidosResponsable;
-        this._rutaImagen = rutaImagen;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.cedula = Id;
+        this.fechaNacimiento = fechaNacimiento;
+        this.edad = edad;
+        this.genero = genero;
+        this.numeroTelefonico = numeroTelefonico;
+        this.estadoCivil = estadoCivil;
+        this.ocupacion = ocupacion;
+        this.direccionResidencia = direccionResidencia;
+        this.correoElectronico = correoElectronico;
+        this.nombreResponsable = nombreResponsable;
+        this.numeroTelefonicoR = numeroTelefonicoR;
+        this.apellidoResponsable = apellidosResponsable;
+        this.rutaImagen = rutaImagen;
     }
 
+    @XmlAttribute(name = "nombre")
     public String getNombre() {
-        return _nombre;
+        return nombre;
     }
 
     public String getApellidos() {
-        return _apellidos;
+        return apellidos;
     }
 
     public String getCedula() {
-        return _cedula;
-    }
-
-    public String getFechaNacimiento() {
-        return _fechaNacimiento;
-    }
-
-    public String getEdad() {
-        return _edad;
-    }
-
-    public String getGenero() {
-        return _genero;
-    }
-
-    public String getNumeroTelefonico() {
-        return _numeroTelefonico;
-    }
-
-    public String getEstadoCivil() {
-        return _estadoCivil;
-    }
-
-    public String getOcupacion() {
-        return _ocupacion;
-    }
-
-    public String getDireccionResidencia() {
-        return _direccionResidencia;
+        return cedula;
     }
 
     public String getCorreoElectronico() {
-        return _correoElectronico;
+        return correoElectronico;
+    }
+
+    public String getNumeroTelefonico() {
+        return numeroTelefonico;
+    }
+
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    public String getEdad() {
+        return edad;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public String getEstadoCivil() {
+        return estadoCivil;
+    }
+
+    public String getOcupacion() {
+        return ocupacion;
+    }
+
+    public String getDireccionResidencia() {
+        return direccionResidencia;
     }
 
     public String getNombreResponsable() {
-        return _nombreResponsable;
-    }
-
-    public String getNumeroTelefonicoR() {
-        return _numeroTelefonicoR;
+        return nombreResponsable;
     }
 
     public String getApellidoResponsable() {
-        return _ApellidoResponsable;
+        return apellidoResponsable;
+    }
+
+    public String getNumeroTelefonicoR() {
+        return numeroTelefonicoR;
     }
 
     public String getRutaImagen() {
-        return _rutaImagen;
+        return rutaImagen;
     }
 
     public void setNombre(String _nombre) {
-        this._nombre = _nombre;
+        this.nombre = _nombre;
     }
 
     public void setApellidos(String _apellidos) {
-        this._apellidos = _apellidos;
+        this.apellidos = _apellidos;
     }
 
     public void setCedula(String _cedula) {
-        this._cedula = _cedula;
+        this.cedula = _cedula;
     }
 
     public void setFechaNacimiento(String _fechaNacimiento) {
-        this._fechaNacimiento = _fechaNacimiento;
+        this.fechaNacimiento = _fechaNacimiento;
     }
 
     public void setEdad(String _edad) {
-        this._edad = _edad;
+        this.edad = _edad;
     }
 
     public void setGenero(String _genero) {
-        this._genero = _genero;
+        this.genero = _genero;
     }
 
     public void setNumeroTelefonico(String _numeroTelefonico) {
-        this._numeroTelefonico = _numeroTelefonico;
+        this.numeroTelefonico = _numeroTelefonico;
     }
 
     public void setEstadoCivil(String _estadoCivil) {
-        this._estadoCivil = _estadoCivil;
+        this.estadoCivil = _estadoCivil;
     }
 
     public void setOcupacion(String _ocupacion) {
-        this._ocupacion = _ocupacion;
+        this.ocupacion = _ocupacion;
     }
 
     public void setDireccionResidencia(String _direccionResidencia) {
-        this._direccionResidencia = _direccionResidencia;
+        this.direccionResidencia = _direccionResidencia;
     }
 
     public void setCorreoElectronico(String _correoElectronico) {
-        this._correoElectronico = _correoElectronico;
+        this.correoElectronico = _correoElectronico;
     }
 
     public void setNombreResponsable(String _nombreResponsable) {
-        this._nombreResponsable = _nombreResponsable;
+        this.nombreResponsable = _nombreResponsable;
     }
 
     public void setNumeroTelefonicoR(String _numeroTelefonicoR) {
-        this._numeroTelefonicoR = _numeroTelefonicoR;
+        this.numeroTelefonicoR = _numeroTelefonicoR;
     }
 
     public void setApellidoResponsable(String _ApellidoResponsable) {
-        this._ApellidoResponsable = _ApellidoResponsable;
+        this.apellidoResponsable = _ApellidoResponsable;
     }
 
     public void setRutaImagen(String _rutaImagen) {
-        this._rutaImagen = _rutaImagen;
+        this.rutaImagen = _rutaImagen;
     }
-    
-    
-    
 
 }

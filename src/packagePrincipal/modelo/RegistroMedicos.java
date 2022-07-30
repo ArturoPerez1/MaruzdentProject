@@ -1,21 +1,29 @@
 package packagePrincipal.modelo;
 
 import java.util.ArrayList;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlType;
 
+@XmlRootElement(name = "AlmacenamientoMedicos")
+@XmlType(propOrder = {"registroMedicos"})
 public class RegistroMedicos {
 
-    private ArrayList<DatosMedicos> _registroMedicos;
+    private ArrayList<DatosMedicos> registroMedicos;
 
     public RegistroMedicos() {
-        this._registroMedicos = new ArrayList<>();
+        this.registroMedicos = new ArrayList<>();
     }
-    
-    public void AgregarMedico(DatosMedicos medico){
-        _registroMedicos.add(medico);
+
+    public void AgregarMedico(DatosMedicos medico) {
+        registroMedicos.add(medico);
     }
-    
+
+    @XmlElementWrapper(name = "registroMedicos")
+    @XmlElement(name = "medico")
     public ArrayList<DatosMedicos> getRegistroMedicos() {
-        return _registroMedicos;
+        return registroMedicos;
     }
 
 }
