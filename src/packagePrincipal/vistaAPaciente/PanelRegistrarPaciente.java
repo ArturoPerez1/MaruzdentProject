@@ -2,19 +2,16 @@ package packagePrincipal.vistaAPaciente;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import packagePrincipal.modelo.DatosPaciente;
-import packagePrincipal.vistaListaPaciente.FrameModificarDatosPaciente;
 import vista.PlaceHolder;
 
 public class PanelRegistrarPaciente extends javax.swing.JPanel {
 
     public PanelRegistrarPaciente() {
         initComponents();
-        _lbIFNImagen.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+        _lbIFNImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
         _placeHolders = new PlaceHolder("       INGRESAR NOMBRE", _textNombreP);
         _placeHolders = new PlaceHolder("       INGRESAR APELLIDO", _textApellidoP);
         _placeHolders = new PlaceHolder("       INGRESAR TELÉFONO", _textTelefonoP);
@@ -30,7 +27,7 @@ public class PanelRegistrarPaciente extends javax.swing.JPanel {
     }
 
     public void Resetearimagen() {
-        _lbIFNImagen.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+        _lbIFNImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
     }
 
     public boolean FiltrarExtensionesFileChooser(String path) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package packagePrincipal.vistaADatosMedicos;
 
 import java.awt.Color;
@@ -17,7 +12,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
 
     public PanelADatosMedico() {
         initComponents();
-        _labelImagenMedico.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
         _placeHolders = new PlaceHolder("                    INTRODUCIR NOMBRE DEL MÉDICO", _ftNombreMedico);
         _placeHolders = new PlaceHolder("   INTRODUCIR CÉDULA DEL MÉDICO", _ftCedulaP1);
         _placeHolders = new PlaceHolder("   0", _ftCedulaP2);
@@ -25,7 +20,7 @@ public class PanelADatosMedico extends javax.swing.JPanel {
     }
 
     public void Resetearimagen() {
-        _labelImagenMedico.setIcon(new javax.swing.ImageIcon("C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg"));
+        _labelImagenMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
     }
 
     public boolean FiltrarExtensionesFileChooser(String path) {
