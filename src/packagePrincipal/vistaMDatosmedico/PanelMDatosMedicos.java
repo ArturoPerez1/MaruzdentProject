@@ -65,7 +65,13 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _lbINFCedula.setText(medico.get(i).getCedulaMedico());
         _lbINFTelefono.setText(medico.get(i).getNumeroTelefonico());
         _lbINFEspecialidad.setText(medico.get(i).getEspecialidad());
-        _labelImagen.setIcon(new javax.swing.ImageIcon(medico.get(i).getRutaImagen()));
+        String ruta = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
+        if (medico.get(i).getRutaImagen().equals(ruta)) {
+            _labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+
+        } else {
+            _labelImagen.setIcon(new javax.swing.ImageIcon(medico.get(i).getRutaImagen()));
+        }
     }
 
     @SuppressWarnings("unchecked")

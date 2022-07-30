@@ -319,7 +319,7 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
     public void AddActionListener(ActionListener listener) {
         _botonVerHistorial.addActionListener(listener);
         _botonVolver.addActionListener(listener);
-        _botonModificar.addActionListener(listener);    
+        _botonModificar.addActionListener(listener);
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -387,7 +387,12 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
     }
 
     public void setLbImagen(String ruta) {
-        this._lbImagen.setIcon(new javax.swing.ImageIcon(ruta));
+        String rutaDefecto = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
+        if (ruta.equals(rutaDefecto)) {
+            this._lbImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+        }else{
+            this._lbImagen.setIcon(new javax.swing.ImageIcon(ruta));
+        }
     }
 
     public JButton getBotonVolver() {

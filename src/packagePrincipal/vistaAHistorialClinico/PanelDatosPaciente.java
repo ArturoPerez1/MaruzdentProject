@@ -9,14 +9,24 @@ public class PanelDatosPaciente extends javax.swing.JPanel {
     public PanelDatosPaciente() {
         initComponents();
     }
-    
-    public void LlenarDatosPaciente(ArrayList<DatosPaciente> paciente, int i){
-        _lbImagen.setIcon(new javax.swing.ImageIcon(paciente.get(i).getRutaImagen()));
-        _lbINFNombreApellido.setText(paciente.get(i).getNombre() + " " + paciente.get(i).getApellidos());
-        _lbINFEdad.setText(paciente.get(i).getEdad());
-        _lbINFCedula.setText(paciente.get(i).getCedula());
+
+    public void LlenarDatosPaciente(ArrayList<DatosPaciente> paciente, int i) {
+        String ruta = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
+
+        if (paciente.get(i).getRutaImagen().equals(ruta)) {
+            _lbImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+            _lbINFNombreApellido.setText(paciente.get(i).getNombre() + " " + paciente.get(i).getApellidos());
+            _lbINFEdad.setText(paciente.get(i).getEdad());
+            _lbINFCedula.setText(paciente.get(i).getCedula());
+        }else{
+            _lbImagen.setIcon(new javax.swing.ImageIcon(paciente.get(i).getRutaImagen()));
+            _lbINFNombreApellido.setText(paciente.get(i).getNombre() + " " + paciente.get(i).getApellidos());
+            _lbINFEdad.setText(paciente.get(i).getEdad());
+            _lbINFCedula.setText(paciente.get(i).getCedula());            
+        }
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

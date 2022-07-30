@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JButton;
-import javax.swing.JTextField;
 import packagePrincipal.modelo.DatosPaciente;
 import packagePrincipal.modelo.HistorialClinico;
 
@@ -16,10 +15,18 @@ public class FrameAgregarCuenta extends javax.swing.JFrame {
     }
 
     public void LlenarDatosPaciente(ArrayList<DatosPaciente> registroPaciente, int i, ArrayList<HistorialClinico> historial, int j) {
-        _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(registroPaciente.get(i).getRutaImagen()));
-        _lbINFNombre.setText(registroPaciente.get(i).getNombre());
-        _lbINFCedula.setText(registroPaciente.get(i).getCedula());
-        _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+        String ruta = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
+        if (registroPaciente.get(i).getRutaImagen().equals(ruta)) {
+            _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+            _lbINFNombre.setText(registroPaciente.get(i).getNombre());
+            _lbINFCedula.setText(registroPaciente.get(i).getCedula());
+            _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+        } else {
+            _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(registroPaciente.get(i).getRutaImagen()));
+            _lbINFNombre.setText(registroPaciente.get(i).getNombre());
+            _lbINFCedula.setText(registroPaciente.get(i).getCedula());
+            _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+        }
     }
 
     public void ErrorPresupuesto(boolean error) {
@@ -251,7 +258,7 @@ public class FrameAgregarCuenta extends javax.swing.JFrame {
 
     private void _cbTipoTratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event__cbTipoTratamientoActionPerformed
         _textoTipoTratamiento = _cbTipoTratamiento.getSelectedItem().toString();
-        if(_textoTipoTratamiento.equals("TRATAMIENTO ÚNICO")){
+        if (_textoTipoTratamiento.equals("TRATAMIENTO ÚNICO")) {
             QuitarAvisoPresupuesto();
         }
     }//GEN-LAST:event__cbTipoTratamientoActionPerformed
@@ -340,7 +347,7 @@ public class FrameAgregarCuenta extends javax.swing.JFrame {
     public String getTfPresupuesto() {
         return _tfPresupuesto.getText();
     }
-    
+
     public String getTextoTipoTratamiento() {
         return _textoTipoTratamiento;
     }
