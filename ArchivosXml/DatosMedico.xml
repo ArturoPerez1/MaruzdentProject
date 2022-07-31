@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AlmacenamientoMedicos>
     <registroMedicos>
-        <medico nombreMedico="ARTURO">
+        <medico nombreMedico="GFDGDGDG">
             <cedulaMedico>175765491-6</cedulaMedico>
-            <especialidad>Ortodoncista</especialidad>
-            <numeroTelefonico>+593999639696</numeroTelefonico>
-            <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>
-        </medico>
-        <medico nombreMedico="CHOLO">
-            <cedulaMedico>175765492-6</cedulaMedico>
             <especialidad>Odontólogo general</especialidad>
             <numeroTelefonico>+593999639696</numeroTelefonico>
             <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>

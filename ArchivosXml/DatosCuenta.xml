@@ -2,7 +2,7 @@
 <AlmacenamientoCuenta>
     <registroCuenta>
         <cuenta cedulaAsociada="175765491-6">
-            <costoTratamiento>1506</costoTratamiento>
+            <costoTratamiento>1500</costoTratamiento>
             <presupuestoPaciente></presupuestoPaciente>
             <tipoTratamiento>TRATAMIENTO ÚNICO</tipoTratamiento>
             <tratamientoUnico>true</tratamientoUnico>

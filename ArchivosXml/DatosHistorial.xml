@@ -2,16 +2,40 @@
 <AlmacenamientoHistorial>
     <registroHistorial>
         <historial cedulaAsociada="175765491-6">
-            <razonConsulta>VBVBC</razonConsulta>
-            <enfermedadActual>BVCB</enfermedadActual>
-            <antecedentesPersonales>CVBCVBCV</antecedentesPersonales>
-            <antecedentesFamiliares>VCBCVB</antecedentesFamiliares>
-            <antecedentesPatologicos>BVBCVB</antecedentesPatologicos>
-            <antecedentesFarmacologicos>CVBCVB</antecedentesFarmacologicos>
-            <examenFisico>VBCVBCB</examenFisico>
-            <tipoDeConsulta>BCVBCV</tipoDeConsulta>
-            <diagnostico>BCVBCVBB</diagnostico>
-            <planTratamiento>VCBVBVCBCV</planTratamiento>
+            <razonConsulta>GDFG</razonConsulta>
+            <enfermedadActual>FDGDFG</enfermedadActual>
+            <antecedentesPersonales>GFDFG</antecedentesPersonales>
+            <antecedentesFamiliares>GDFGDFGFDG</antecedentesFamiliares>
+            <antecedentesPatologicos>BVCBCVBC</antecedentesPatologicos>
+            <antecedentesFarmacologicos>BCBCVBCV</antecedentesFarmacologicos>
+            <examenFisico>DFGDFGDF</examenFisico>
+            <tipoDeConsulta>DFGDFGDF</tipoDeConsulta>
+            <diagnostico>GDFGF</diagnostico>
+            <planTratamiento>DGDFG</planTratamiento>
+        </historial>
+        <historial cedulaAsociada="175765496-6">
+            <razonConsulta> </razonConsulta>
+            <enfermedadActual>FGFGHGHG</enfermedadActual>
+            <antecedentesPersonales>HFGHFHF</antecedentesPersonales>
+            <antecedentesFamiliares>HFGH</antecedentesFamiliares>
+            <antecedentesPatologicos>HHFGH</antecedentesPatologicos>
+            <antecedentesFarmacologicos>FHGFH</antecedentesFarmacologicos>
+            <examenFisico>GHFGHFHFG</examenFisico>
+            <tipoDeConsulta>HFGHFH</tipoDeConsulta>
+            <diagnostico>HGFHF</diagnostico>
+            <planTratamiento>HFGHFH</planTratamiento>
+        </historial>
+        <historial cedulaAsociada="175765499-6">
+            <razonConsulta> </razonConsulta>
+            <enfermedadActual>FSDFDS</enfermedadActual>
+            <antecedentesPersonales>DFSFDF</antecedentesPersonales>
+            <antecedentesFamiliares>SFDSD</antecedentesFamiliares>
+            <antecedentesPatologicos>DFDS</antecedentesPatologicos>
+            <antecedentesFarmacologicos>SDFSDFSDF</antecedentesFarmacologicos>
+            <examenFisico>DFSDF</examenFisico>
+            <tipoDeConsulta>DFDSFSD</tipoDeConsulta>
+            <diagnostico>FDSFDSFD</diagnostico>
+            <planTratamiento>FSDFDF</planTratamiento>
         </historial>
     </registroHistorial>
 </AlmacenamientoHistorial>

@@ -1,6 +1,7 @@
 package packagePrincipal.ManejadoresXml;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -38,7 +39,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(pacientes, new FileWriter(file));
+                marshaller.marshal(pacientes, new FileOutputStream(file));
                 _pacienteGuardado = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,7 +62,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(medicos, new FileWriter(file));
+                marshaller.marshal(medicos, new FileOutputStream(file));
                 _medicoGuardado = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -83,7 +84,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(historial, new FileWriter(file));
+                marshaller.marshal(historial, new FileOutputStream(file));
                 _historialGuardado = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -105,7 +106,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(citas, new FileWriter(file));
+                marshaller.marshal(citas, new FileOutputStream(file));
                 _citaGuardado = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -127,7 +128,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(cuenta, new FileWriter(file));
+                marshaller.marshal(cuenta, new FileOutputStream(file));
                 _cuentaGuardado = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
@@ -149,7 +150,7 @@ public class EscrituraDeDatos {
                 if (!carpeta.exists()) {
                     carpeta.mkdirs();
                 }
-                marshaller.marshal(sizes, new FileWriter(file));
+                marshaller.marshal(sizes, new FileOutputStream(file));
                 _sizeRegistrosGuardados = true;
             } catch (IOException ex) {
                 Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);

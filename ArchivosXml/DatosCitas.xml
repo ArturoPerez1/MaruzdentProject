@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <AlmacenamientoCitas>
-    <registroConsulta/>
+    <registroConsulta>
+        <citas nombrePaciente="ARTURO PÉREZ">
+            <estadoConsulta></estadoConsulta>
+            <medicoAsociado nombreMedico="GFDGDGDG">
+                <cedulaMedico>175765491-6</cedulaMedico>
+                <especialidad>Odontólogo general</especialidad>
+                <numeroTelefonico>+593999639696</numeroTelefonico>
+                <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>
+            </medicoAsociado>
+            <cedulaPaciente>175765496-6</cedulaPaciente>
+            <fechaCita>26/08/2022</fechaCita>
+            <horaCita>02:05 PM</horaCita>
+        </citas>
+        <citas nombrePaciente="VXDD GFGDG">
+            <estadoConsulta></estadoConsulta>
+            <medicoAsociado nombreMedico="GFDGDGDG">
+                <cedulaMedico>175765491-6</cedulaMedico>
+                <especialidad>Odontólogo general</especialidad>
+                <numeroTelefonico>+593999639696</numeroTelefonico>
+                <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>
+            </medicoAsociado>
+            <cedulaPaciente>175765491-6</cedulaPaciente>
+            <fechaCita>31/07/2022</fechaCita>
+            <horaCita>04:04 PM</horaCita>
+        </citas>
+        <citas nombrePaciente="GFHFGHF HGFHFH">
+            <estadoConsulta></estadoConsulta>
+            <medicoAsociado nombreMedico="GFDGDGDG">
+                <cedulaMedico>175765491-6</cedulaMedico>
+                <especialidad>Odontólogo general</especialidad>
+                <numeroTelefonico>+593999639696</numeroTelefonico>
+                <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>
+            </medicoAsociado>
+            <cedulaPaciente>175765499-6</cedulaPaciente>
+            <fechaCita>27/08/2022</fechaCita>
+            <horaCita>03:04 PM</horaCita>
+        </citas>
+    </registroConsulta>
 </AlmacenamientoCitas>

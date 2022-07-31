@@ -22,23 +22,38 @@ public class PanelListaConsulta extends javax.swing.JPanel {
         _historial = historial;
     }
 
-    public class AgregarListenerFiltros implements ActionListener {
+    public class AgregarListenerFiltroFecha implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent evento) {
             try {
                 if (evento.getSource() == _frameFiltrarFecha.getBotonObtenerFecha()) {
+
                     _fechaFiltrada = _frameFiltrarFecha.getFecha();
                     if (_fechaFiltrada.equals("")) {
                         JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         LlenarTablaFechaFiltrada();
                     }
-                } else if (evento.getSource() == _frameFiltrarCedula.getBotonObtenerCedula()) {
+                }
+
+            } catch (Error e) {
+                System.out.println("Error = " + e);
+            }
+        }
+
+    }
+
+    public class AgregarListenerFiltroCedula implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent evento) {
+            try {
+                if (evento.getSource() == _frameFiltrarCedula.getBotonObtenerCedula()) {
                     _cedulaFiltrada = _frameFiltrarCedula.getCedula();
                     if (_cedulaFiltrada.isEmpty() == false) {
                         LlenarTablaCedulaFiltrada();
-                    }else{
+                    } else {
                         JOptionPane.showMessageDialog(null, "SELECCIONE UNA CÉDULA", "SELECCIÓN CÉDULA", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
@@ -80,14 +95,14 @@ public class PanelListaConsulta extends javax.swing.JPanel {
     public void PopUpFiltrarFecha() {
         _frameFiltrarFecha = new FrameFiltroFecha();
         _frameFiltrarFecha.setVisible(true);
-        _frameFiltrarFecha.AddActionListenener(new AgregarListenerFiltros());
+        _frameFiltrarFecha.AddActionListenener(new AgregarListenerFiltroFecha());
     }
 
     public void PopUpFiltrarCedula() {
         _frameFiltrarCedula = new FrameFiltroCedula();
         _frameFiltrarCedula.setVisible(true);
         _frameFiltrarCedula.LlenaComboBoxCedulas(_listaCita);
-        _frameFiltrarCedula.AddActionListener(new AgregarListenerFiltros());
+        _frameFiltrarCedula.AddActionListener(new AgregarListenerFiltroCedula());
     }
 
     public void ObtenerCitasFechaFiltrada() {
@@ -156,7 +171,15 @@ public class PanelListaConsulta extends javax.swing.JPanel {
                 for (HistorialClinico historial : _historial) {
                     cedulaAux = _listaCita.get(_posiciones.get(i)).getCedulaPaciente();
                     if (historial.getCedulaAsociada().equals(cedulaAux)) {
-                        _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                        if (historial.getRazonConsulta().equals(" ") && _listaCita.size() == 1) {
+                            _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                        } else {
+                            if (historial.getRazonConsulta().equals(" ") && _listaCita.size() > 1) {
+                                _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                            } else {
+                                _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                            }
+                        }
                     }
                 }
                 cont++;
@@ -168,9 +191,9 @@ public class PanelListaConsulta extends javax.swing.JPanel {
     }
 
     public void LlenarTablaCedulaFiltrada() {
-        ObtenerCitasFechaFiltrada();
+        ObtenerCitasCedulaFiltrada();
         if (_posiciones.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "NO HAY CITA PROGRAMADA PARA ESTE DÍA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ESTA CEDULA NO TIENE CITA PROGRAMADA", "CITAS PROGRAMADA", JOptionPane.INFORMATION_MESSAGE);
         } else {
             _frameFiltrarCedula.dispose();
             _model = new DefaultTableModel();
@@ -206,7 +229,15 @@ public class PanelListaConsulta extends javax.swing.JPanel {
                 for (HistorialClinico historial : _historial) {
                     cedulaAux = _listaCita.get(_posiciones.get(i)).getCedulaPaciente();
                     if (historial.getCedulaAsociada().equals(cedulaAux)) {
-                        _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                        if (historial.getRazonConsulta().equals(" ") && _listaCita.size() == 1) {
+                            _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                        } else {
+                            if (historial.getRazonConsulta().equals(" ") && _listaCita.size() > 1) {
+                                _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                            } else {
+                                _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                            }
+                        }
                     }
                 }
                 cont++;
@@ -256,7 +287,15 @@ public class PanelListaConsulta extends javax.swing.JPanel {
                 for (HistorialClinico historial : _historial) {
                     cedulaAux = _listaCita.get(_posiciones.get(i)).getCedulaPaciente();
                     if (historial.getCedulaAsociada().equals(cedulaAux)) {
-                        _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                        if (historial.getRazonConsulta().equals(" ") && _listaCita.size() == 1) {
+                            _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", 0, 6);
+                        } else {
+                            if (historial.getRazonConsulta().equals(" ") && _listaCita.size() > 1) {
+                                _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                            } else {
+                                _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                            }
+                        }
                     }
                 }
                 cont++;
@@ -309,7 +348,15 @@ public class PanelListaConsulta extends javax.swing.JPanel {
             for (DatosConsulta consulta : registroConsulta) {
                 cedulaAux = consulta.getCedulaPaciente();
                 if (historial.getCedulaAsociada().equals(cedulaAux)) {
-                    _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                    if (historial.getRazonConsulta().equals(" ") && registroConsulta.size() == 1) {
+                        _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", 0, 6);
+                    } else {
+                        if (historial.getRazonConsulta().equals(" ") && registroConsulta.size() > 1) {
+                            _jTConsultasRegistradas.setValueAt("RAZÓN DE CITA", cont, 6);
+                        } else {
+                            _jTConsultasRegistradas.setValueAt(historial.getRazonConsulta(), cont, 6);
+                        }
+                    }
                 }
             }
             cont++;

@@ -1,6 +1,8 @@
 package packagePrincipal.ManejadoresXml;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
@@ -21,7 +23,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(RegistroPaciente.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            pacientes = (RegistroPaciente) unmarshaller.unmarshal(new File("ArchivosXml/DatosPaciente.xml"));
+            try {
+                pacientes = (RegistroPaciente) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/DatosPaciente.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -35,7 +41,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(RegistroMedicos.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            medicos = (RegistroMedicos) unmarshaller.unmarshal(new File("ArchivosXml/DatosMedico.xml"));
+            try {
+                medicos = (RegistroMedicos) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/DatosMedico.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -49,7 +59,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(RegistroHistorialClinico.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            historial = (RegistroHistorialClinico) unmarshaller.unmarshal(new File("ArchivosXml/DatosHistorial.xml"));
+            try {
+                historial = (RegistroHistorialClinico) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/DatosHistorial.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -63,7 +77,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(RegistroDatosConsulta.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            citas = (RegistroDatosConsulta) unmarshaller.unmarshal(new File("ArchivosXml/DatosCitas.xml"));
+            try {
+                citas = (RegistroDatosConsulta) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/DatosCitas.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -77,7 +95,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(RegistroCuentaPaciente.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            cuenta = (RegistroCuentaPaciente) unmarshaller.unmarshal(new File("ArchivosXml/DatosCuenta.xml"));
+            try {
+                cuenta = (RegistroCuentaPaciente) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/DatosCuenta.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -91,7 +113,11 @@ public class LecturaDeDatos {
         try {
             JAXBContext context = JAXBContext.newInstance(ContenedorSizeRegistros.class);
             Unmarshaller unmarshaller = context.createUnmarshaller();
-            sizeRegistros = (ContenedorSizeRegistros) unmarshaller.unmarshal(new File("ArchivosXml/SizeRegistros.xml"));
+            try {
+                sizeRegistros = (ContenedorSizeRegistros) unmarshaller.unmarshal(new FileInputStream("ArchivosXml/SizeRegistros.xml"));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } catch (JAXBException ex) {
             Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
         }

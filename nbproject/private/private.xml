@@ -4,10 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/MainClass.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/manifest.mf</file>
             <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorMenu/ControladorMenu.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/ComparadorDeSizeRegistros.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/CuentaPaciente.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/ContenedorSizeRegistros.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ManejadoresXml/LecturaDeDatos.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ManejadoresXml/EscrituraDeDatos.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/ArchivosXml/DatosCitas.xml</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaACuenta/FrameAgregarCuenta.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/RegistroCuentaPaciente.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaACuenta/PanelListaPacienteCuenta.java</file>
         </group>
     </open-files>
 </project-private>
