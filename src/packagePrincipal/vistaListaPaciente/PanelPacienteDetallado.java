@@ -1,7 +1,11 @@
 package packagePrincipal.vistaListaPaciente;
 
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -387,12 +391,21 @@ public class PanelPacienteDetallado extends javax.swing.JPanel {
     }
 
     public void setLbImagen(String ruta) {
-        String rutaDefecto = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
-        if (ruta.equals(rutaDefecto)) {
-            this._lbImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
-        }else{
-            this._lbImagen.setIcon(new javax.swing.ImageIcon(ruta));
+        URL imagenRegistro;
+        URL defecto;
+
+        try {
+            imagenRegistro = new URL(ruta);
+            defecto = getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg");
+            if (imagenRegistro.equals(defecto)) {
+                this._lbImagen.setIcon(new javax.swing.ImageIcon(defecto));
+            } else {
+                this._lbImagen.setIcon(new javax.swing.ImageIcon(imagenRegistro));
+            }
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(PanelPacienteDetallado.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     public JButton getBotonVolver() {

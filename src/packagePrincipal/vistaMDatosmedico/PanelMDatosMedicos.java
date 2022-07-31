@@ -2,7 +2,11 @@ package packagePrincipal.vistaMDatosmedico;
 
 import java.awt.BorderLayout;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -65,13 +69,22 @@ public class PanelMDatosMedicos extends javax.swing.JPanel {
         _lbINFCedula.setText(medico.get(i).getCedulaMedico());
         _lbINFTelefono.setText(medico.get(i).getNumeroTelefonico());
         _lbINFEspecialidad.setText(medico.get(i).getEspecialidad());
-        String ruta = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
-        if (medico.get(i).getRutaImagen().equals(ruta)) {
-            _labelImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
+        URL imagenRegistro;
+        URL defecto;
+        try {
+            imagenRegistro = new URL(medico.get(i).getRutaImagen());
+            defecto = getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg");
+            if (imagenRegistro.equals(defecto)) {
+                _labelImagen.setIcon(new javax.swing.ImageIcon(defecto));
 
-        } else {
-            _labelImagen.setIcon(new javax.swing.ImageIcon(medico.get(i).getRutaImagen()));
+            } else {
+                _labelImagen.setIcon(new javax.swing.ImageIcon(imagenRegistro));
+            }
+
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(PanelMDatosMedicos.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     @SuppressWarnings("unchecked")

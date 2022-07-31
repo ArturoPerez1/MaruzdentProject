@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import packagePrincipal.modelo.ContenedorSizeRegistros;
 import packagePrincipal.modelo.RegistroCuentaPaciente;
 import packagePrincipal.modelo.RegistroDatosConsulta;
 import packagePrincipal.modelo.RegistroHistorialClinico;
@@ -21,6 +22,7 @@ public class EscrituraDeDatos {
     private boolean _historialGuardado;
     private boolean _citaGuardado;
     private boolean _cuentaGuardado;
+    private boolean _sizeRegistrosGuardados;
 
     public EscrituraDeDatos() {
     }
@@ -136,6 +138,28 @@ public class EscrituraDeDatos {
         }
     }
 
+    public void InsertarDatosSizeRegistros(ContenedorSizeRegistros sizes) {
+        try {
+            JAXBContext context = JAXBContext.newInstance(ContenedorSizeRegistros.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            try {
+                File file = new File("ArchivosXml/SizeRegistros.xml");
+                File carpeta = file.getParentFile();
+                if (!carpeta.exists()) {
+                    carpeta.mkdirs();
+                }
+                marshaller.marshal(sizes, new FileWriter(file));
+                _sizeRegistrosGuardados = true;
+            } catch (IOException ex) {
+                Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+                _sizeRegistrosGuardados = false;
+            }
+        } catch (JAXBException ex) {
+            Logger.getLogger(EscrituraDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     public boolean isPacienteGuardado() {
         return _pacienteGuardado;
     }
@@ -154,6 +178,10 @@ public class EscrituraDeDatos {
 
     public boolean isCuentaGuardado() {
         return _cuentaGuardado;
+    }
+
+    public boolean isSizeRegistrosGuardados() {
+        return _sizeRegistrosGuardados;
     }
 
 }

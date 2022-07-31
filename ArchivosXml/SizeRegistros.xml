@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AlmacenamientoSizeRegistros primerGuardado="true">
+    <sizeRegistroPaciente>1</sizeRegistroPaciente>
+    <sizeRegistroHistorial>1</sizeRegistroHistorial>
+    <sizeRegistroCita>0</sizeRegistroCita>
+    <sizeRegistroMedico>2</sizeRegistroMedico>
+    <sizeRegistroCuenta>1</sizeRegistroCuenta>
+</AlmacenamientoSizeRegistros>

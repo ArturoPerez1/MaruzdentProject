@@ -2,7 +2,11 @@ package packagePrincipal.vistaACuenta;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import packagePrincipal.modelo.DatosPaciente;
 import packagePrincipal.modelo.HistorialClinico;
@@ -15,18 +19,27 @@ public class FrameAgregarCuenta extends javax.swing.JFrame {
     }
 
     public void LlenarDatosPaciente(ArrayList<DatosPaciente> registroPaciente, int i, ArrayList<HistorialClinico> historial, int j) {
-        String ruta = "file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg";
-        if (registroPaciente.get(i).getRutaImagen().equals(ruta)) {
-            _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg")));
-            _lbINFNombre.setText(registroPaciente.get(i).getNombre());
-            _lbINFCedula.setText(registroPaciente.get(i).getCedula());
-            _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
-        } else {
-            _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(registroPaciente.get(i).getRutaImagen()));
-            _lbINFNombre.setText(registroPaciente.get(i).getNombre());
-            _lbINFCedula.setText(registroPaciente.get(i).getCedula());
-            _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+        URL imgenRegistro;
+        URL defecto;
+
+        try {
+            imgenRegistro = new URL(registroPaciente.get(i).getRutaImagen());
+            defecto = getClass().getResource("/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg");
+            if (imgenRegistro.equals(defecto)) {
+                _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(defecto));
+                _lbINFNombre.setText(registroPaciente.get(i).getNombre());
+                _lbINFCedula.setText(registroPaciente.get(i).getCedula());
+                _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+            } else {
+                _lbImagenPaciente.setIcon(new javax.swing.ImageIcon(imgenRegistro));
+                _lbINFNombre.setText(registroPaciente.get(i).getNombre());
+                _lbINFCedula.setText(registroPaciente.get(i).getCedula());
+                _lbINFRazon.setText("\"" + historial.get(j).getRazonConsulta() + "\"");
+            }
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(FrameAgregarCuenta.class.getName()).log(Level.SEVERE, null, ex);
         }
+
     }
 
     public void ErrorPresupuesto(boolean error) {

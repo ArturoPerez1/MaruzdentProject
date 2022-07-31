@@ -3,6 +3,7 @@ package packagePrincipal;
 import packagePrincipal.ManejadoresXml.LecturaDeDatos;
 import packagePrincipal.ControladorMenu.ControladorMenu;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
+import packagePrincipal.modelo.ContenedorSizeRegistros;
 import packagePrincipal.modelo.RegistroCuentaPaciente;
 import packagePrincipal.modelo.RegistroDatosConsulta;
 import packagePrincipal.modelo.RegistroHistorialClinico;
@@ -42,6 +43,12 @@ public class MainClass {
         return cuenta;
     }
 
+    public static ContenedorSizeRegistros CargarArchivoSizes(LecturaDeDatos cargarDatos) {
+        ContenedorSizeRegistros size = null;
+        size = cargarDatos.CargarSizeRegistros();
+        return size;
+    }
+
     public static void main(String[] args) {
         LecturaDeDatos cargarDatos = new LecturaDeDatos();
         boolean pacienteE = cargarDatos.ExisteElArchivoPacientes();
@@ -49,11 +56,13 @@ public class MainClass {
         boolean historialE = cargarDatos.ExisteElArchivoHistorial();
         boolean citasE = cargarDatos.ExisteElArchivoCitas();
         boolean cuentaE = cargarDatos.ExisteElArchivoCuenta();
-               
-        if (pacienteE == false && medicoE == false && historialE == false && citasE == false && cuentaE == false) {
+        boolean sizeE = cargarDatos.ExisteElArchivoSize();
+
+        if (pacienteE == false && medicoE == false && historialE == false && citasE == false && cuentaE == false && sizeE == false) {
             FrameContenedorMenu frameContenedorMenu;
             frameContenedorMenu = new FrameContenedorMenu();
             frameContenedorMenu.setVisible(true);
+            ContenedorSizeRegistros sizeRegistros = CargarArchivoSizes(cargarDatos);
             ControladorMenu controladorMenu;
             ControladorArraysList controladorArrayList = new ControladorArraysList();
             controladorArrayList.setRegistroPaciente(CargarArchivoPaciente(cargarDatos));
@@ -66,7 +75,7 @@ public class MainClass {
             controladorArrayList.setPrimerHistorial();
             controladorArrayList.setPrimerConsulta1();
             controladorArrayList.setPrimerCuenta();
-            controladorMenu = new ControladorMenu(frameContenedorMenu, controladorArrayList);
+            controladorMenu = new ControladorMenu(frameContenedorMenu, controladorArrayList, sizeRegistros);
         } else {
 
             FrameContenedorMenu frameContendor;

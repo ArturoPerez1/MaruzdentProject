@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
+import packagePrincipal.modelo.ContenedorSizeRegistros;
 import packagePrincipal.modelo.RegistroCuentaPaciente;
 import packagePrincipal.modelo.RegistroDatosConsulta;
 import packagePrincipal.modelo.RegistroHistorialClinico;
@@ -84,6 +85,20 @@ public class LecturaDeDatos {
         return cuenta;
     }
 
+    public ContenedorSizeRegistros CargarSizeRegistros() {
+        ContenedorSizeRegistros sizeRegistros = null;
+
+        try {
+            JAXBContext context = JAXBContext.newInstance(ContenedorSizeRegistros.class);
+            Unmarshaller unmarshaller = context.createUnmarshaller();
+            sizeRegistros = (ContenedorSizeRegistros) unmarshaller.unmarshal(new File("ArchivosXml/SizeRegistros.xml"));
+        } catch (JAXBException ex) {
+            Logger.getLogger(LecturaDeDatos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return sizeRegistros;
+    }
+
     public boolean ExisteElArchivoPacientes() {
         boolean existe = false;
         File file = new File("ArchivosXml/DatosPaciente.xml");
@@ -123,6 +138,15 @@ public class LecturaDeDatos {
     public boolean ExisteElArchivoCuenta() {
         boolean existe = false;
         File file = new File("ArchivosXml/DatosCuenta.xml");
+
+        existe = (file.length() == 0);
+
+        return existe;
+    }
+
+    public boolean ExisteElArchivoSize() {
+        boolean existe = false;
+        File file = new File("ArchivosXml/SizeRegistros.xml");
 
         existe = (file.length() == 0);
 

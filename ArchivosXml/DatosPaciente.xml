@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AlmacenamientoPacientes>
+    <registroPacientes>
+        <paciente nombre="ARTURO">
+            <apellidos>PÉREZ</apellidos>
+            <cedula>175765491-6</cedula>
+            <correoElectronico>arjperez@gmail.com</correoElectronico>
+            <numeroTelefonico>+593999639696</numeroTelefonico>
+            <fechaNacimiento>11/22/1981</fechaNacimiento>
+            <edad>41</edad>
+            <genero>Masculino</genero>
+            <estadoCivil>Casado</estadoCivil>
+            <ocupacion>DFDSFSDFDF</ocupacion>
+            <direccionResidencia>DSFSDFSDF</direccionResidencia>
+            <nombreResponsable></nombreResponsable>
+            <apellidoResponsable></apellidoResponsable>
+            <numeroTelefonicoR></numeroTelefonicoR>
+            <rutaImagen>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/build/classes/packagePrincipal/assets/imagenesMedicos/IconoPorDefecto.jpg</rutaImagen>
+        </paciente>
+    </registroPacientes>
+</AlmacenamientoPacientes>

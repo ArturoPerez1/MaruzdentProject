@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AlmacenamientoCuenta>
+    <registroCuenta>
+        <cuenta cedulaAsociada="175765491-6">
+            <costoTratamiento>1506</costoTratamiento>
+            <presupuestoPaciente></presupuestoPaciente>
+            <tipoTratamiento>TRATAMIENTO ÚNICO</tipoTratamiento>
+            <tratamientoUnico>true</tratamientoUnico>
+        </cuenta>
+    </registroCuenta>
+</AlmacenamientoCuenta>

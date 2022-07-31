@@ -10,6 +10,8 @@ import packagePrincipal.ControladorListaPaciente.ControladorListaPaciente;
 import packagePrincipal.ControladorPagos.ControladorPagos;
 import packagePrincipal.ControladorRegistroPaciente.ControladorArraysList;
 import packagePrincipal.ControladorRegistroPaciente.ControladorRegistroPaciente;
+import packagePrincipal.modelo.ComparadorDeSizeRegistros;
+import packagePrincipal.modelo.ContenedorSizeRegistros;
 import packagePrincipal.modelo.RegistroCuentaPaciente;
 import packagePrincipal.modelo.RegistroDatosConsulta;
 import packagePrincipal.modelo.RegistroHistorialClinico;
@@ -21,6 +23,7 @@ import packagePrincipal.vistaMenu.PanelBotonesMenu;
 
 public class ControladorMenu {
 
+    private ContenedorSizeRegistros _sizeRegistros;
     private EscrituraDeDatos _escribirDatos;
     private boolean _mostrarBotones;
     private ControladorRegistroPaciente _controladorRPaciente;
@@ -33,7 +36,8 @@ public class ControladorMenu {
     private PanelMenuCompleto _panelContenedorMenu;
     private FrameContenedorMenu _frameContenedor;
 
-    public ControladorMenu(FrameContenedorMenu contenedor, ControladorArraysList controladorArrayList) {
+    public ControladorMenu(FrameContenedorMenu contenedor, ControladorArraysList controladorArrayList, ContenedorSizeRegistros sizeRegistros) {
+        this._sizeRegistros = sizeRegistros;
         this._frameContenedor = contenedor;
         this._controladorArrayList = controladorArrayList;
         this._mostrarBotones = false;
@@ -46,6 +50,8 @@ public class ControladorMenu {
     }
 
     public ControladorMenu(FrameContenedorMenu contenedor) {
+        _sizeRegistros = new ContenedorSizeRegistros();
+        _sizeRegistros.setPrimerGuardado(true);
         this._frameContenedor = contenedor;
         this._controladorArrayList = new ControladorArraysList();
         this._mostrarBotones = false;
@@ -69,32 +75,117 @@ public class ControladorMenu {
                     boolean citasV = _controladorArrayList.getRegistroDatosConsulta().isEmpty();
                     boolean cuentaV = _controladorArrayList.getRegistroCuenta().isEmpty();
                     if (pacientev == false && historialV == false && medicoV == false && citasV == false && cuentaV == false) {
-                        _escribirDatos = new EscrituraDeDatos();
-                        RegistroPaciente pacientes = _controladorArrayList.getRegistroPaciente();
-                        RegistroMedicos medicos = _controladorArrayList.getRegistroMedicos1();
-                        RegistroHistorialClinico historial = _controladorArrayList.getRegistroHistorial1();
-                        RegistroDatosConsulta citas = _controladorArrayList.getRegistroDatosConsulta1();
-                        RegistroCuentaPaciente cuenta = _controladorArrayList.getRegistroCuenta1();
-                        _escribirDatos.InsertarDatosPaciente(pacientes);
-                        _escribirDatos.InsertarDatosMedico(medicos);
-                        _escribirDatos.InsertarDatosHistorial(historial);
-                        _escribirDatos.InsertarDatosCita(citas);
-                        _escribirDatos.InsertarDatosCuenta(cuenta);
-                        boolean pacienteG = _escribirDatos.isPacienteGuardado();
-                        boolean medicoG = _escribirDatos.isMedicoGuardado();
-                        boolean historialG = _escribirDatos.isHistorialGuardado();
-                        boolean citasG = _escribirDatos.isCitaGuardado();
-                        boolean cuentaG = _escribirDatos.isCuentaGuardado();
-                        if (pacienteG == true && medicoG == true && historialG == true && citasG == true && cuentaG == true) {
+                        /*Guardamos el tamaño de los arreglos para poder hacer la comparación de los arreglos*/
+                        int sizePaciente = _controladorArrayList.getRegistroPaciente1().size();
+                        int sizeHistorial = _controladorArrayList.getRegistroHistorial().size();
+                        int sizeCuenta = _controladorArrayList.getRegistroCuenta().size();
+                        int sizeMedico = _controladorArrayList.getRegistroMedicos().size();
+                        int sizeCita = _controladorArrayList.getRegistroDatosConsulta().size();
+                        _sizeRegistros.setSizeRegistroCita(sizeCita);
+                        _sizeRegistros.setSizeRegistroCuenta(sizeCuenta);
+                        _sizeRegistros.setSizeRegistroHistorial(sizeHistorial);
+                        _sizeRegistros.setSizeRegistroMedico(sizeMedico);
+                        _sizeRegistros.setSizeRegistroPaciente(sizePaciente);
+
+                        if (_sizeRegistros.isPrimerGuardado() == true) {
+                            _escribirDatos = new EscrituraDeDatos();
+                            RegistroPaciente pacientes = _controladorArrayList.getRegistroPaciente();
+                            RegistroMedicos medicos = _controladorArrayList.getRegistroMedicos1();
+                            RegistroHistorialClinico historial = _controladorArrayList.getRegistroHistorial1();
+                            RegistroDatosConsulta citas = _controladorArrayList.getRegistroDatosConsulta1();
+                            RegistroCuentaPaciente cuenta = _controladorArrayList.getRegistroCuenta1();
+                            _escribirDatos.InsertarDatosPaciente(pacientes);
+                            _escribirDatos.InsertarDatosMedico(medicos);
+                            _escribirDatos.InsertarDatosHistorial(historial);
+                            _escribirDatos.InsertarDatosCita(citas);
+                            _escribirDatos.InsertarDatosCuenta(cuenta);
+                            _escribirDatos.InsertarDatosSizeRegistros(_sizeRegistros);
+                            _sizeRegistros.setPrimerGuardado(false);
+                            boolean pacienteG = _escribirDatos.isPacienteGuardado();
+                            boolean medicoG = _escribirDatos.isMedicoGuardado();
+                            boolean historialG = _escribirDatos.isHistorialGuardado();
+                            boolean citasG = _escribirDatos.isCitaGuardado();
+                            boolean cuentaG = _escribirDatos.isCuentaGuardado();
+                            if (pacienteG == true && medicoG == true && historialG == true && citasG == true && cuentaG == true) {
+                                JOptionPane.showMessageDialog(null, "DATOS GUARDADOS DE FORMA CORRECTA EN LA BASE DE DATOS\n "
+                                        + "(PRESIONE ACEPTAR PARA TERMINAR DE CERRAR EL PROGRAMA)", "GuardadoCorrecto", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
+                                System.exit(1);
+                            }
+                        } else if (_sizeRegistros.isPrimerGuardado() == false) {
+                            ComparadorDeSizeRegistros comparadorSizes;
+                            RegistroPaciente pacientes = _controladorArrayList.getRegistroPaciente();
+                            RegistroMedicos medicos = _controladorArrayList.getRegistroMedicos1();
+                            RegistroHistorialClinico historial = _controladorArrayList.getRegistroHistorial1();
+                            RegistroDatosConsulta citas = _controladorArrayList.getRegistroDatosConsulta1();
+                            RegistroCuentaPaciente cuenta = _controladorArrayList.getRegistroCuenta1();
+                            comparadorSizes = new ComparadorDeSizeRegistros(cuenta, medicos, historial, pacientes, citas, _sizeRegistros);
+
+                            if (comparadorSizes.CompararSizeRegistroPaciente() == true) {
+                                _escribirDatos.InsertarDatosPaciente(pacientes);
+                            }
+
+                            if (comparadorSizes.CompararSizeRegistroCuenta() == true) {
+                                _escribirDatos.InsertarDatosCuenta(cuenta);
+                            }
+
+                            if (comparadorSizes.CompararSizeRegistroCita() == true) {
+                                _escribirDatos.InsertarDatosCita(citas);
+                            }
+
+                            if (comparadorSizes.CompararSizeRegistroHistorial() == true) {
+                                _escribirDatos.InsertarDatosHistorial(historial);
+                            }
+
+                            if (comparadorSizes.CompararSizeRegistroMedico() == true) {
+                                _escribirDatos.InsertarDatosMedico(medicos);
+                            }
+
+                            sizePaciente = _controladorArrayList.getRegistroPaciente1().size();
+                            sizeHistorial = _controladorArrayList.getRegistroHistorial().size();
+                            sizeCuenta = _controladorArrayList.getRegistroCuenta().size();
+                            sizeMedico = _controladorArrayList.getRegistroMedicos().size();
+                            sizeCita = _controladorArrayList.getRegistroDatosConsulta().size();
+                            _sizeRegistros.setSizeRegistroCita(sizeCita);
+                            _sizeRegistros.setSizeRegistroCuenta(sizeCuenta);
+                            _sizeRegistros.setSizeRegistroHistorial(sizeHistorial);
+                            _sizeRegistros.setSizeRegistroMedico(sizeMedico);
+                            _sizeRegistros.setSizeRegistroPaciente(sizePaciente);
+                            _escribirDatos.InsertarDatosSizeRegistros(_sizeRegistros);
+                            _sizeRegistros.setPrimerGuardado(false);
+
                             JOptionPane.showMessageDialog(null, "DATOS GUARDADOS DE FORMA CORRECTA EN LA BASE DE DATOS\n "
                                     + "(PRESIONE ACEPTAR PARA TERMINAR DE CERRAR EL PROGRAMA)", "GuardadoCorrecto", JOptionPane.INFORMATION_MESSAGE, new javax.swing.ImageIcon(getClass().getResource("/packagePrincipal/assets/imagenes/okImage.png")));
                             System.exit(1);
                         }
                     } else {
-                        int salir = JOptionPane.showConfirmDialog(null, "NO SE GUARDARON LOS DATOS, PORQUE NO SE HA REGISTRADO NADA\n "
-                                + "             ¿DESEA SALIR DE IGUAL MANERA DE LA APLICACIÓN?", "CONFIRMAR SALIDA", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
-                        if (salir == 0) {
-                            System.exit(1);
+                        if (pacientev == true || historialV == true || medicoV == true || citasV == true || cuentaV == true) {
+                            int salir = JOptionPane.showConfirmDialog(null,"¿DESEA SALIR DE LA APLICACIÓN?", "CONFIRMAR SALIDA", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
+                            if (salir == 0) {
+                                _escribirDatos = new EscrituraDeDatos();
+                                RegistroPaciente pacientes = _controladorArrayList.getRegistroPaciente();
+                                RegistroMedicos medicos = _controladorArrayList.getRegistroMedicos1();
+                                RegistroHistorialClinico historial = _controladorArrayList.getRegistroHistorial1();
+                                RegistroDatosConsulta citas = _controladorArrayList.getRegistroDatosConsulta1();
+                                RegistroCuentaPaciente cuenta = _controladorArrayList.getRegistroCuenta1();
+                                int sizePaciente = _controladorArrayList.getRegistroPaciente1().size();
+                                int sizeHistorial = _controladorArrayList.getRegistroHistorial().size();
+                                int sizeCuenta = _controladorArrayList.getRegistroCuenta().size();
+                                int sizeMedico = _controladorArrayList.getRegistroMedicos().size();
+                                int sizeCita = _controladorArrayList.getRegistroDatosConsulta().size();
+                                _sizeRegistros.setSizeRegistroCita(sizeCita);
+                                _sizeRegistros.setSizeRegistroCuenta(sizeCuenta);
+                                _sizeRegistros.setSizeRegistroHistorial(sizeHistorial);
+                                _sizeRegistros.setSizeRegistroMedico(sizeMedico);
+                                _sizeRegistros.setSizeRegistroPaciente(sizePaciente);
+                                _escribirDatos.InsertarDatosPaciente(pacientes);
+                                _escribirDatos.InsertarDatosMedico(medicos);
+                                _escribirDatos.InsertarDatosHistorial(historial);
+                                _escribirDatos.InsertarDatosCita(citas);
+                                _escribirDatos.InsertarDatosCuenta(cuenta);
+                                _escribirDatos.InsertarDatosSizeRegistros(_sizeRegistros);
+                                _sizeRegistros.setPrimerGuardado(false);
+                                System.exit(1);
+                            }
                         }
                     }
                 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AlmacenamientoHistorial>
+    <registroHistorial>
+        <historial cedulaAsociada="175765491-6">
+            <razonConsulta>VBVBC</razonConsulta>
+            <enfermedadActual>BVCB</enfermedadActual>
+            <antecedentesPersonales>CVBCVBCV</antecedentesPersonales>
+            <antecedentesFamiliares>VCBCVB</antecedentesFamiliares>
+            <antecedentesPatologicos>BVBCVB</antecedentesPatologicos>
+            <antecedentesFarmacologicos>CVBCVB</antecedentesFarmacologicos>
+            <examenFisico>VBCVBCB</examenFisico>
+            <tipoDeConsulta>BCVBCV</tipoDeConsulta>
+            <diagnostico>BCVBCVBB</diagnostico>
+            <planTratamiento>VCBVBVCBCV</planTratamiento>
+        </historial>
+    </registroHistorial>
+</AlmacenamientoHistorial>

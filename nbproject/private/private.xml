@@ -5,17 +5,9 @@
         <group>
             <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/MainClass.java</file>
             <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorMenu/ControladorMenu.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaPago/PanelPago.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaListaConsulta/PanelListaConsulta.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorPagos/ControladorPagos.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorListaCitas/ControladorListaCita.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorRegistroPaciente/ControladorCitasPaciente.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaPago/FrameEliminarCuenta.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaListaConsulta/FrameListaConsulta.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaADatosConsulta/PanelADatosConsulta.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/ControladorRegistroPaciente/ControladorACuentaPaciente.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaListaConsulta/FrameEliminarCita.java</file>
-            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/vistaMenu/PanelMenuCompleto.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/ComparadorDeSizeRegistros.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/CuentaPaciente.java</file>
+            <file>file:/C:/Users/Wjose/OneDrive/Documents/ProyectoProgramacion2022/MaruzDentProject/src/packagePrincipal/modelo/ContenedorSizeRegistros.java</file>
         </group>
     </open-files>
 </project-private>
